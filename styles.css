@@ -4,12 +4,7 @@ body {
     background-color: #f4f4f4;
 	font-size: 18px
     line-height: 1;
-}
-
-.container {
-	display: flex;
-	justify-content: center;
-	/*align-items: center; */
+	overflow-x: auto;
 }
 
 @media (min-width: 768px) {
@@ -41,6 +36,17 @@ intro {
     
 }
 
+footer {
+    padding: 10px;
+    text-align: center;
+
+}
+
+.container {
+	justify-content: center;
+	/*align-items: center; */
+}
+
 .my-list {
 	line-height: 1.5;
 }
@@ -49,8 +55,6 @@ intro {
 	line-height: .95;
 }
 
-footer {
-    padding: 10px;
-    text-align: center;
-
+.static-bottom-center {
+	
 }
