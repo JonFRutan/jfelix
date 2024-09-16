@@ -1,9 +1,3 @@
-.container {
-	justify-content: center;
-	position: relative;
-	/* align-items: center; */
-}
-
 body {
     font-family: Arial, sans-serif;
 	background-color: #f4f4f4;	
@@ -14,6 +8,14 @@ body {
 		padding: 10px;
 		max-width: none;
 	}
+}
+
+main {
+	
+}
+
+.center {
+	text-align: center;
 }
 /*
 @media (min-width: 1024px) {
@@ -44,6 +46,16 @@ footer {
     padding: 10px;
     text-align: center;
 
+}
+
+.container {
+	text-align: center;
+	/* align-items: center; */
+}
+
+.container pre {
+	display: inline-block;
+	text-align: left;
 }
 
 .my-list {
