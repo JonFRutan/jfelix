@@ -1,23 +1,28 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 50px;
+    margin: auto;
+	margin-top: 10px;
     background-color: #f4f4f4;
-	font-size: 18px
+	font-size: 16px;
     line-height: 1;
-	overflow-x: auto;
+	display: flex;
+	max-width: 600px;
+	box-sizing: border-box;
+	padding-left: 30%;
+	padding-right: 30%;
 }
 
 @media (min-width: 768px) {
 	body {
-		font-size: .9em;
+		padding: 0 2%;
 	}
 }
-
+/*
 @media (min-width: 1024px) {
 	body {
 	}
 }
-
+*/
 h2 {
 	font-size: 1.5em;
 	line-height: .2;
@@ -45,7 +50,8 @@ footer {
 
 .container {
 	justify-content: center;
-	/*align-items: center; */
+	position: relative;
+	/* align-items: center; */
 }
 
 .my-list {
