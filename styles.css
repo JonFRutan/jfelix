@@ -64,6 +64,8 @@ footer {
 
 .ascii {
 	line-height: .95;
+	font-family: monospace;
+	white-space: pre;
 }
 
 .static-bottom-center {
