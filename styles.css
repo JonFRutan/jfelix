@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-	background-color: #f4f4f4;	
+	background-color: #FFFAF0;	
 }
 
 @media (min-width: 600px) {
@@ -71,6 +71,11 @@ footer {
 	line-height: .95;
 	font-family: monospace;
 	white-space: pre;
+}
+
+.leveltwo {
+	background-color: #FFFFF0;
+	text-align: center;
 }
 
 .static-bottom-center {
