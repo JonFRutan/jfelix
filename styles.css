@@ -78,6 +78,47 @@ footer {
 	text-align: center;
 }
 
-.static-bottom-center {
-	
+.ascii-top,
+.ascii-bottom {
+  text-align: center;
+  font-family: monospace;
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
 }
+
+.ascii-row {
+  display: flex;
+  justify-content: center;
+}
+
+.ascii-side {
+  font-family: monospace;
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 5px;
+}
+
+.book-content {
+  padding: 20px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.book-box {
+  border: 2px solid;
+  padding: 15px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.book-meta {
+  font-size: 0.85em;
+}
+
+.book-thoughts {
+  margin-top: 10px;
+  font-style: italic;
+}
+
