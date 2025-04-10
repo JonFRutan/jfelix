@@ -120,5 +120,6 @@ footer {
 .book-thoughts {
   margin-top: 10px;
   font-style: italic;
+  white-space: pre;
 }
 
