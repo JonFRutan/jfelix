@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jfelix - page title here</title>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../favicon.png" type="image/png">
 </head>
 <span>
 <body class="leveltwo">
 </body>
 <footer>
+<h2><a href="../index.html">« Back</a></h2>
 </footer>
 </span>
 </html>
