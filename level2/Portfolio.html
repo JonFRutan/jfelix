@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:"https://www.w3.org/1999/xhtml/" xml:lang="en" lang:"en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jfelix - portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../favicon.png" type="image/png">
+</head>
+<span>
+<body class="leveltwo">
+    <div class="ascii-row">
+    <div class="book-content">
+    <h1 class="center">Portfolio</h1>
+        <h2 class="center" style="margin-top: 50px">Work Projects</h2>
+        <h3>Virginia Spaceport Authority</h3>
+        <div class="book-box">
+            <h3>RHEL Integration</h3>
+            <p>The VSA was beginning to reintroduce Red Hat Enterprise Linux into their tech stack, being a fan of Linux I quickly jumped to the occasion.</p>
+            <p>I wrote a set of tools to expedite the set up process for RHEL, and some others to harden the system so we meet the higher security standards.</p>
+            <li><b>VM_SETUP</b>- Tool that ran all the other setup scripts in the intended order, alongside other setups like adding a MOTD and installing basic packages for ease-of-use.</li>
+            <li><b>OVAL_SCAN</b> - Automated oval scanner. Reaches out to update to the most recent OVAL evaluations and checks the system against it. Reports back any found vulnerabilities.</li>
+            <li><b>SSH_AUDIT</b> - Script for audting ssh logs to retrieve pertinent information, login IPS, Resolved names, login count, timestamps, etc.</li>
+            <li><b>ARCTIC_WOLF</b> - Enrolls and does setup for adding our machines to a SOC service.</li>
+            <li><b>REPO_ACCESS</b> - Runs the tools necessary to expand the package repositories for RHEL systems.</li>
+            <p><i>No Public Repository, Sorry</i></p>
+            <p><b>Tools Used: </b>Bash, Red Hat Enterprise Linux, Rocky Linux</p>
+        </div>
+        <div class="book-box">
+            <h3>CardDAV Server</h3>
+            <p>I was tasked with deploying a list of all VSA employees' contact information on everyone's phones within the company.</p>
+            <p>I was provided with a CSV file of all the employees contact information and a Red Hat Enterprise Linux VM from my mentor Brian. From here it was up to me.</p>
+            <p>I utilized three open source projects to accomplish this: PostgreSQL, Radicale, and NGINX. NGINX was a reverse proxy for routing and securing traffic, PostgreSQL held the contact information and logical groupings, and Radicale served the vCards.</p>
+            <p>I combined all of these by building a suite of Python tools for generating vCards, managing the database, and updating the Radicale server. </p>
+            <p>Using Jamf we deployed a contacts payload that reached out to the server, which would route the traffic as it came in, generate vCards off the database, then return the contacts list to everyone's devices.</p>
+            <p>I also created an interal web interface using Flask for easily accessing and modifying the database, individual contacts, logical groupings, and syncing operations.</p>
+            <p>Notably the service is completely free to run and everything is on-prem, a large boon for the organization as opposed to enterprise solutions.</p>
+            <p><i>No Public Repository, Sorry</i></p>
+            <p><b>Tools Used: </b>Python, Radicale, PostgreSQL, Psycopg2, Jamf, Flask, Gunicorn, Red Hat Enterprise Linux, Hyper-V, NGINX, Internal CA SSL</p>
+        </div>  
+        <div class="book-box">
+            <h3>CACTI Server</h3>
+            <p>Cacti is a network fault monitoring and data visualization tool.</p>
+            <p>Using a Rocky Linux VM in our cluster, I set up and installed Cacti so that we could monitor the devices on our network using SNMP.</p>
+            <p>Using this tool, we were able to track and monitor our core switches down to individual interfaces for anomaly detection and to monitor our UPS voltage and battery capacities.</p>
+            <p>This entire setup is also completely free to run and everything is stored on-prem.</p>
+            <p><i>No Public Repository, Sorry</i></p>
+            <p><b>Tools Used: </b>MySQL, MariaDB, Php, RRDtool, Apache, Cacti, SNMP, Rocky Linux</p>
+        </div>  
+        <h4>Above projects can be seen here: <a href="https://www.youtube.com/watch?v=kYNhL0u4j9o&">Capstone Presentation</a></h4>
+        <h2 class="center" style="margin-top: 50px">Academic Projects</h2>
+        <br>
+        <div class="book-box">
+            <h3>OpenValve - <i>Databases</i></h3>
+            <p>OpenValve is a data collection project built for a database class.</p>
+            <p>The goal was to create a system for generating game recommendations based on overlapping game tags from a user's library.</p> 
+            <p>Using a combination of SteamWorks API calls and manual webscraping we collected tens of thousands of records within a relational database, using relation tables to connect Users, Games, and Tags.</p>
+            <p>We created a webapp frontend for manually scraping games and user accounts for tag data, and using this created an interface for selecting games and finding similar ones based on overlapping tag counts.</p>
+            <p>I've exported a semi-sanitized version of the project and posted it onto GitHub. It's lacking a couple of functionalities such as the phpMyAdmin database connection.</p>
+            <p><a href=https://github.com/JonFRutan/SteamAppScrape">GitHub</a></p>
+            <p><b>Tools Used: </b>SQL, php, SteamWorks API, Python, BS4, Flask, SQLAlchemy</p>
+        </div>    
+        <div class="book-box">
+            <h3>RamRanch - <i>VCU Hackathon</i></h3>
+            <h4>2nd Place Winner</h4>
+            <p>A habit tracking gamification project built during a 5-hour mini-hackathon.</p>
+            <p>The theme of the mini-hackathon was "Hack4Good".</p>
+            <p>A team of me and 3 others designed and developed a prototype for a gamified habit-tracking app, where fulfilling your healthy habits would benefit your ranch's rams.</p>
+            <p>We developed a prototype of the ranch system with several rams, where their needs are to be tied to your general upkeep. For example; you would set a water drinking goal, and as you complete it your ranch's daily water supply refills.</p>
+            <p>We used tkinter to develop the app prototype, and had in place API calls to other apps in order to auto-update your ranch's status.</p>
+            <p><a href="https://github.com/danielblackin/Ram-Ranch">GitHub</a></p>
+            <p><b>Tools Used: </b>Python, Tkinter, Various APIs</p>
+        </div>  
+        <div class="book-box">
+            <h3>Prescription Effect Logging Software - <i>Software Engineering</i></h3>
+            <p>Working with a team of 7 to develop software related to the healthcare field.</p>
+            <p>We designed a logging application that takes daily inputs from a user based on their perceived effects of a prescriptions, logs them, then allows the user to visualize the data.</p>
+            <p>App was developed in TypeScript using Deno as a runtime environment and DenoFresh to do the frontend work. On the backend we had a SpringBoot REST API running for data storage and other functions.</p>
+            <p>Using GraphJS and an interactive calendar a user could select a range (or set) of dates and get a visualization of inputted information across the timeframe.</p>
+            <p><a href="https://github.com/JonFRutan/AssignmentRepoDemoSE">GitHub</a></p>
+            <p><b>Tools Used: </b>JavaScript, TypeScript, Deno, React, GraphJS, SpringBoot</p>
+        </div>  
+    </div>
+</div>
+</body>
+<footer>
+<h2><a href="../index.html">« Back</a></h2>
+</footer>
+</span>
+</html>
