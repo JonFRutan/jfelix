@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-	background-color: #FFFAF0;	
+    color: #FFFFFF;
+		background-color: #2C3E50;	
 }
 
 @media (min-width: 600px) {
@@ -31,15 +32,23 @@ ul {
 h2 {
 	font-size: 1.5em;
 	line-height: .2;
+	color: #FFFFFF;
 }
 
 header {
     padding: 10px;
+    color: #FFFFFF;
     text-align: center;
 }
 
 h1 {
     margin: 0;
+    font-size: 2.5em;
+    color: #FFFFFF;
+}
+
+a {
+	color: #38B2C2;
 }
 
 intro {
