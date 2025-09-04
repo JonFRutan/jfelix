@@ -1,0 +1,22 @@
+                                                      ______________________________________________________                                                                                
+                                                      |> neofetch       |<!DOCTYPE HTML>     |NVIM:        |                          
+                                                      |    /\    jfelix |<h1>[ jfelix.space ]|1⎹ #CLI-GPT  |                                                                                
+                                                      |   /##\   Arch   |</h1>               |2⎹ Tool to   |                                                                                
+                                                      |  /#/\#\  32GB   |<p>I'm jfr</p>      |3⎹ use OpenAI|                                                                                
+                                                      |  ‾‾  ‾‾  Ryzen 9|<h2>About</h2>      |4⎹ on non-gui|                                                                                
+                                                      |-----------------|<h2>Portfolio</h2>  |5⎹ systems.  |                                                                                
+                                                      |> pacman -Syu    |<h2>Resources>/h2>  |6⎹           |                                                                                
+                                                      |> python [--<ooo]|--------------------+-------------|                                                                                
+                                                      |> kernel [-<oooo]|>ssh jfelix@freebsd |> cat hi.txt |                                                                                
+                                                      |> nvim   [----<o]|>Enter ssh key:     |Welcome to   |                                                                                
+                                                      |> pinta  [------]|jfelix@freebsd > jls|jfelix.space!|                                                                                
+                                                      |> glib   [<ooooo]|Iso, Quarantine, App|> rm hi.txt  |                                                                                
+                                                      ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾T‾‾‾‾T‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                          
+                                                                           ___|    |___                                                
+                                                                     _----‾  _|    |_  ‾----_                                                     
+                                                                    /       [________]       \___                                                                                                                                                                                       
+                                                       ____________/_________________           _\_                                                                                                                                                                                                       
+                                                      |[Q][W][E][R][T][Y][U][I][O][P]|         /_|_\                                                                                                                                                                                                            
+                                                      |[A][S][D][F][G][H][J][K][L][;]|        ⎹    ⎹ 
+                                                      |[Z][X][C][V][B][N][M][,][.][/]|         \___/                                                                  
+                                                       ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                                                
