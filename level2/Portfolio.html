@@ -19,11 +19,13 @@
             <h3>RHEL Integration</h3>
             <p>The VSA was beginning to reintroduce Red Hat Enterprise Linux into their tech stack, being a fan of Linux I quickly jumped to the occasion.</p>
             <p>I wrote a set of tools to expedite the set up process for RHEL, and some others to harden the system so we meet the higher security standards.</p>
-            <li><b>VM_SETUP</b>- Tool that ran all the other setup scripts in the intended order, alongside other setups like adding a MOTD and installing basic packages for ease-of-use.</li>
+		<ul>
+	    <li><b>VM_SETUP</b>- Tool that ran all the other setup scripts in the intended order, alongside other setups like adding a MOTD and installing basic packages for ease-of-use.</li>
             <li><b>OVAL_SCAN</b> - Automated oval scanner. Reaches out to update to the most recent OVAL evaluations and checks the system against it. Reports back any found vulnerabilities.</li>
             <li><b>SSH_AUDIT</b> - Script for audting ssh logs to retrieve pertinent information, login IPS, Resolved names, login count, timestamps, etc.</li>
             <li><b>ARCTIC_WOLF</b> - Enrolls and does setup for adding our machines to a SOC service.</li>
             <li><b>REPO_ACCESS</b> - Runs the tools necessary to expand the package repositories for RHEL systems.</li>
+		</ul>
             <p><i>No Public Repository, Sorry</i></p>
             <p><b>Tools Used: </b>Bash, Red Hat Enterprise Linux, Rocky Linux</p>
         </div>
