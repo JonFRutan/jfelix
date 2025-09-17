@@ -16,8 +16,10 @@ main {
 }
 
 ul {
-	display: inline-block;
+	display: block;
 	text-align: left;
+	margin: 0 0 1em 1.5em;
+	padding-left: 20px;
 }
 
 .center {
