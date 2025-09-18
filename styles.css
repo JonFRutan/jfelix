@@ -15,6 +15,56 @@ main {
 	
 }
 
+.torii {
+  --gate-width: 92ch;          /* tweak width */
+  --post-gap: 1ch;              /* space between posts and content */
+  width: min(92vw, var(--gate-width));
+  margin: 24px auto 8px;
+}
+
+.torii-top,
+.torii-bottom {
+  white-space: pre;
+  margin: 0 auto;        /* centers within wrapper */
+  text-align: center;
+  line-height: 1.1;
+  display: block;
+  width: 100%;           /* ensure it spans the wrapper width */
+}
+
+.torii-bar {
+  margin-bottom: -4px; /* optional: pulls posts closer to bar */
+}
+
+.torii-bar pre {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  white-space: pre;
+  text-align: center;  /* needed for multi-line ASCII */
+}
+
+.torii-inner {
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, var(--gate-width)) 1fr;
+  column-gap: var(--post-gap);
+  align-items: stretch;
+  margin-top: -1em; /* pulls posts up into the lintel */
+}
+
+
+.torii-side {
+  text-align: center;
+}
+
+
+.book-content {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 20px;
+  text-align: center;
+}
+
 ul {
 	display: block;
 	text-align: left;
@@ -25,12 +75,7 @@ ul {
 .center {
 	text-align: center;
 }
-/*
-@media (min-width: 1024px) {
-	body {
-	}
-}
-*/
+
 h2 {
 	font-size: 1.5em;
 	line-height: .2;
