@@ -16,24 +16,21 @@ main {
 }
 
 .torii {
-  --gate-width: 92ch;          /* tweak width */
-  --post-gap: 1ch;              /* space between posts and content */
-  width: min(92vw, var(--gate-width));
+  width: max-content;
   margin: 24px auto 8px;
 }
 
 .torii-top,
 .torii-bottom {
   white-space: pre;
-  margin: 0 auto;        /* centers within wrapper */
-  text-align: center;
+  margin: 0 auto;            /* center horizontally */
   line-height: 1.1;
-  display: block;
-  width: 100%;           /* ensure it spans the wrapper width */
+  display: table;            /* shrink-wrap to content width */
+  font-family: monospace;
 }
 
 .torii-bar {
-  margin-bottom: -4px; /* optional: pulls posts closer to bar */
+  margin-bottom: -10px; /* optional: pulls posts closer to lintel */
 }
 
 .torii-bar pre {
@@ -46,16 +43,22 @@ main {
 
 .torii-inner {
   display: grid;
-  grid-template-columns: 1fr minmax(auto, var(--gate-width)) 1fr;
-  column-gap: var(--post-gap);
-  align-items: stretch;
-  margin-top: -1em; /* pulls posts up into the lintel */
+  grid-template-columns: auto minmax(auto, max-content) auto;
+  column-gap: 1ch;
+  align-items: start;
 }
 
 
 .torii-side {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  line-height: 1.1;
+  display: flex;
+  justify-content: center;  /* center ASCII art inside the column */
   text-align: center;
 }
+
 
 
 .book-content {

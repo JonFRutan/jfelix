@@ -1,3 +1,7 @@
-This is the repository for my website jfelix.lol
-As of (2024-09-11) we have working HTTPS and a landing page.
-If you look at the contributors there's another person in there, this was a mistake I made while learning to use git bash. Oopsies.
+# Jfelix.space
+
+The source repo for [jfelix.space](https://jfelix.space).  
+Everything uploaded here is synced to a Rocky VM serving this site through NGINX.  
+This site will be kept HTML/CSS only for minimum resource footprint.  
+
+*Note: The other contributer listed here was because I made a mistake in setting my git name on CLI. I (JonFRutan) am the sole contributer to this repository*
