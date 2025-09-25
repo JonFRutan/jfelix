@@ -61,10 +61,15 @@
         </div>  
         <div class="book-box">
             <h3>jfelix.space</h3>
-            <p>This website.</p><p>Run off a Oracle Cloud VM running Rocky Linux 9. The project began for me to get practice and familiarity with webhosting and site administration. This domain however goes beyond just this site, and already includes a private Matrix instance, and soon will have even more. I've put a lot of work into securing my home network while running these services locally. The most onerous of learning experiences was the multitude of DNS records needed to have these interconnected websites.
-            </p>
+	    <p>This website.</p>
+	    <p>Running of an Oracle Cloud VM on Rocky 9 this is a simple static html website. However the domain contains a lot more than meets the eye. I self-host many services from my own hardware at my house including a Matrix instance, a Navidrome instance, and an Icecast server. These are subdomained and securely routed using Cloudflares tunneling system so as to secure my home network.</p>
+	    <ul>
+		    <li><b>Matrix/Element</b>: An E2E encrypted federated messaging instance. Used for secure file sharing and contacting among me and my friends.</li><br>
+		    <li><b>Navidrome</b>: A on-demand music media server. Provides a Spotify-like interface for hosting and streaming your own music files. I have this synced up to channels in my Matrix/Element server to sync sent audio files into it.</li><br>
+		    <li><b>Radio</b>: This is my personal favorite. When I was a kid I <i>adored</i> Winamp's Milkdrop visualizer, and I've always loved radio. Using Icecast as a broadcast server, Liquidsoap as a stream generator, and Navidrome for hosting the music, I created a set of online radio stations broadcasting different genres. I then took a WebGL Milkdrop project called "Butterchurn" and implemented onto the website, hooking it up to your live audio stream to provide visualizes while listening. I insist you contact me for a preview if this sounds interesting, I love showing it off!</li>
+	    </ul>
             <p><a href="https://github.com/JonFRutan/jfelix">GitHub</a></p>
-            <p><b>Tools Used: </b>Rocky Linux, Oracle Cloud, NGINX, Cloudflare Tunneling, Oodles of domain records</p>
+            <p><b>Tools Used: </b>Rocky Linux, Oracle Cloud, NGINX, Cloudflare Tunneling, JavaScript, Node, npm, Butterchurn, IceCast, Liquidsoap, Matrix-Synapse, PostgreSQL, Docker, Docker Compose</p>
         </div> 
         <h2 class="center" style="margin-top: 50px">Academic Projects</h2>
         <div class="book-box">
