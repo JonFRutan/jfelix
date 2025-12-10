@@ -10,131 +10,145 @@
 <span>
 <body>
     <div class="ascii-row">
-    <div class="book-content">
-    <h1 class="center">[ Portfolio ]</h1>
-        <h2 class="center" style="margin-top: 50px">Work Projects</h2>
-        <h3>Virginia Spaceport Authority</h3>
-        <p>During the Summer of 2025 I interned at the Virginia Spaceport Authority (VSA) as an IT/IS Intern. I worked primarily with the system administrator (Brian Bishop) and network engineer (John Phillips). At the beginning of my internship the VSA began to reintroduce Linux into their tech environment, so I quickly jumped on the opportunity and put my skills to use.</p>
-        <div class="book-box">
-            <h3>RHEL Integration</h3>
-            <p>The VSA was beginning to reintroduce Red Hat Enterprise Linux into their tech stack, being a fan of Linux I quickly jumped to the occasion.</p>
-            <p>I wrote a set of tools to expedite the set up process for RHEL, and some others to harden the system so we meet the higher security standards.</p>
-		<ul>
-	    <li><b>VM_SETUP</b>- Tool that ran all the other setup scripts in the intended order, alongside other setups like adding a MOTD and installing basic packages for ease-of-use.</li>
-            <li><b>OVAL_SCAN</b> - Automated oval scanner. Reaches out to update to the most recent OVAL evaluations and checks the system against it. Reports back any found vulnerabilities.</li>
-            <li><b>SSH_AUDIT</b> - Script for audting ssh logs to retrieve pertinent information, login IPS, Resolved names, login count, timestamps, etc.</li>
-            <li><b>ARCTIC_WOLF</b> - Enrolls and does setup for adding our machines to a SOC service.</li>
-            <li><b>REPO_ACCESS</b> - Runs the tools necessary to expand the package repositories for RHEL systems.</li>
-		</ul>
-            <p><i>No Public Repository, Sorry</i></p>
-            <p><b>Tools Used: </b>Bash, Red Hat Enterprise Linux, Rocky Linux</p>
+        <div class="portfolio-wide-content">
+            
+            <h1 class="center">[ Portfolio ]</h1>
+            
+            <div class="center jump-links">
+                <a href="#work">Work Projects</a> | 
+                <a href="#personal">Personal Projects</a> | 
+                <a href="#academic">Academic Projects</a>
+            </div>
+
+            <h2 id="work" class="center">Work Projects</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto 20px auto; text-align: left;">
+                <h3>Virginia Spaceport Authority</h3>
+                <p>During the Summer of 2025 I interned at the Virginia Spaceport Authority (VSA) as an IT/IS Intern. I worked primarily with the system administrator (Brian Bishop) and network engineer (John Phillips). At the beginning of my internship the VSA began to reintroduce Linux into their tech environment, so I quickly jumped on the opportunity and put my skills to use.</p>
+            </div>
+
+            <div class="project-grid">
+                <div class="book-box">
+                    <h3>RHEL Integration</h3>
+                    <p>The VSA was beginning to reintroduce Red Hat Enterprise Linux into their tech stack, being a fan of Linux I quickly jumped to the occasion.</p>
+                    <p>I wrote a set of tools to expedite the set up process for RHEL, and some others to harden the system so we meet the higher security standards.</p>
+                    <ul>
+                        <li><b>VM_SETUP</b>- Tool that ran all the other setup scripts...</li>
+                        <li><b>OVAL_SCAN</b> - Automated oval scanner...</li>
+                        <li><b>SSH_AUDIT</b> - Script for audting ssh logs...</li>
+                        <li><b>ARCTIC_WOLF</b> - Enrolls and does setup for SOC service.</li>
+                        <li><b>REPO_ACCESS</b> - Tools to expand package repositories.</li>
+                    </ul>
+                    <p><i>No Public Repository, Sorry</i></p>
+                    <p><b>Tools Used: </b>Bash, Red Hat Enterprise Linux, Rocky Linux</p>
+                </div>
+
+                <div class="book-box">
+                    <h3>CardDAV Server</h3>
+                    <p>I was tasked with deploying a list of all VSA employees' contact information on everyone's phones within the company.</p>
+                    <p>I utilized three open source projects to accomplish this: PostgreSQL, Radicale, and NGINX.</p>
+                    <p>I combined all of these by building a suite of Python tools for generating vCards, managing the database, and updating the Radicale server.</p>
+                    <p>Notably the service is completely free to run and everything is on-prem.</p>
+                    <p><i>No Public Repository, Sorry</i></p>
+                    <p><b>Tools Used: </b>Python, Radicale, PostgreSQL, Psycopg2, Jamf, Flask, Gunicorn, RHEL, NGINX, Internal CA SSL</p>
+                </div>
+
+                <div class="book-box">
+                    <h3>CACTI Server</h3>
+                    <p>Cacti is a network fault monitoring and data visualization tool.</p>
+                    <p>Using a Rocky Linux VM in our cluster, I set up and installed Cacti so that we could monitor the devices on our network using SNMP.</p>
+                    <p>Using this tool, we were able to track and monitor our core switches down to individual interfaces.</p>
+                    <p><i>No Public Repository, Sorry</i></p>
+                    <p><b>Tools Used: </b>MySQL, MariaDB, Php, RRDtool, Apache, Cacti, SNMP, Rocky Linux</p>
+                </div>
+            </div>
+            
+            <h4 class="center">I did a presentation to our company which can be found here: <a href="https://www.youtube.com/watch?v=kYNhL0u4j9o&">Capstone Presentation</a></h4>
+
+            <h2 id="personal" class="center" style="margin-top: 50px">Personal Projects</h2>
+            
+            <div class="project-grid">
+                <div class="book-box">
+                    <h3>CLI-GPT</h3>
+                    <p>CLI-GPT is a command line interface frontend for interacting with OpenAI's API.</p>
+                    <p>I built this program so I could use OpenAI calls on my headless FreeBSD system. It allows total customization of all of the models parameters, the ability to save and load profile configurations, and the ability to add files and images to uploads.</p>
+                    <p><a href="https://github.com/JonFRutan/CLI-GPT">GitHub</a></p>
+                    <p><b>Tools Used: </b>Python, OpenAI API, Rich Console, prompt-toolkit</p>
+                </div>
+
+                <div class="book-box">
+                    <h3>The <b>Perpetual Music Machine</b></h3>
+                    <p>An all-in-one software for hosting, managing, and broadcasting your own online radio.</p>
+                    <p>Ideally the software will be able to deploy and/or configure both the Icecast server and Liquidsoap generation while also maintaining playlist sync to outside sources for easy setlist management.</p>
+                    <p><a href="https://github.com/JonFRutan/Perpetual-Music-Machine">GitHub</a></p>
+                    <p><b>Tools Used: </b>Python, Icecast, Liquidsoap, Spotipy, SpotDL</p>
+                </div>
+
+                <div class="book-box">
+                    <h3>music.jfelix.space</h3>
+                    <p><a href="https://music.jfelix.space">Visit it here.</a></p>
+                    <p>An audiovisualized interface for tuning in to various college radio stations.</p>
+                    <p>I was very proud of my UI made for radio.jfelix.space and wanted a way to use it publicly in a copyright-safe manner. 2025-10-03 is national college radio day!</p>
+                    <p><b>Tools Used: </b>Butterchurn, JS, CSS</p>
+                </div>
+
+                <div class="book-box">
+                    <h3>GAOL</h3>
+                    <p><a href="https://gaol.jfelix.space">Visit it here.</a></p>
+                    <p>A multiplayer AI storyteller using a RAG system to generate highly dynamic and smooth adventures.</p>
+                    <p>Uses the Gemini API and a complex RAG and Prompting system handled by a backend Flask API.</p>
+                    <p><a href="https://github.com/JonFRutan/GAOL">GitHub</a></p>
+                    <p><b>Tools Used: </b>Gemini API, Vite, JavaScript, npm, Flask, socketio</p>
+                </div>
+
+                <div class="book-box">
+                    <h3>OpenValve [2.0]</h3>
+                    <p><i>Developed alongside Trevor Corcoran</i></p>
+                    <p>A steam games database, data visualizer, and SteamAPI frontend.</p>
+                    <p>Derived from a group project done for a university database class. This web application is inspired by the original, military green Steam user interface.</p>
+                    <p><a href="https://github.com/JonFRutan/OpenValve">GitHub</a></p>
+                    <p><b>Tools Used: </b>Vite, JavaScript, Kaggle, PostgreSQL, Flask, Psycopg2</p>
+                </div>
+
+                <div class="book-box">
+                    <h3>jfelix.space</h3>
+                    <p>This website.</p>
+                    <p>Running of an Oracle Cloud VM on Rocky 9. I self-host many services from my own hardware including a Matrix instance, a Navidrome instance, and an Icecast server.</p>
+                    <p><a href="https://github.com/JonFRutan/jfelix">GitHub</a></p>
+                    <p><b>Tools Used: </b>Rocky Linux, Oracle Cloud, NGINX, Cloudflare Tunneling, JavaScript, Docker</p>
+                </div>
+            </div>
+
+            <h2 id="academic" class="center" style="margin-top: 50px">Academic Projects</h2>
+            
+            <div class="project-grid">
+                <div class="book-box">
+                    <h3>OpenValve - <i>Databases</i></h3>
+                    <p>OpenValve is a data collection project built for a database class.</p>
+                    <p>The goal was to create a system for generating game recommendations based on overlapping game tags from a user's library using SteamWorks API calls.</p>
+                    <p><a href="https://github.com/JonFRutan/SteamAppScrape">GitHub</a></p>
+                    <p><b>Tools Used: </b>SQL, php, SteamWorks API, Python, BS4, Flask, SQLAlchemy</p>
+                </div>
+
+                <div class="book-box">
+                    <h3>RamRanch - <i>VCU Hackathon</i></h3>
+                    <h4>2nd Place Winner</h4>
+                    <p>A habit tracking gamification project built during a 5-hour mini-hackathon.</p>
+                    <p>We developed a prototype of the ranch system with several rams, where their needs are to be tied to your general upkeep.</p>
+                    <p><a href="https://github.com/danielblackin/Ram-Ranch">GitHub</a></p>
+                    <p><b>Tools Used: </b>Python, Tkinter, Various APIs</p>
+                </div>
+
+                <div class="book-box">
+                    <h3>Prescription Effect Logging</h3>
+                    <p>We designed a logging application that takes daily inputs from a user based on their perceived effects of a prescriptions, logs them, then allows the user to visualize the data.</p>
+                    <p><a href="https://github.com/JonFRutan/AssignmentRepoDemoSE">GitHub</a></p>
+                    <p><b>Tools Used: </b>JavaScript, TypeScript, Deno, React, GraphJS, SpringBoot</p>
+                </div>
+            </div>
+
         </div>
-        <div class="book-box">
-            <h3>CardDAV Server</h3>
-            <p>I was tasked with deploying a list of all VSA employees' contact information on everyone's phones within the company.</p>
-            <p>I was provided with a CSV file of all the employees contact information and a Red Hat Enterprise Linux VM from my mentor Brian. From here it was up to me.</p>
-            <p>I utilized three open source projects to accomplish this: PostgreSQL, Radicale, and NGINX. NGINX was a reverse proxy for routing and securing traffic, PostgreSQL held the contact information and logical groupings, and Radicale served the vCards.</p>
-            <p>I combined all of these by building a suite of Python tools for generating vCards, managing the database, and updating the Radicale server. </p>
-            <p>Using Jamf we deployed a contacts payload that reached out to the server, which would route the traffic as it came in, generate vCards off the database, then return the contacts list to everyone's devices.</p>
-            <p>I also created an interal web interface using Flask for easily accessing and modifying the database, individual contacts, logical groupings, and syncing operations.</p>
-            <p>Notably the service is completely free to run and everything is on-prem, a large boon for the organization as opposed to enterprise solutions.</p>
-            <p><i>No Public Repository, Sorry</i></p>
-            <p><b>Tools Used: </b>Python, Radicale, PostgreSQL, Psycopg2, Jamf, Flask, Gunicorn, Red Hat Enterprise Linux, Hyper-V, NGINX, Internal CA SSL</p>
-        </div>  
-        <div class="book-box">
-            <h3>CACTI Server</h3>
-            <p>Cacti is a network fault monitoring and data visualization tool.</p>
-            <p>Using a Rocky Linux VM in our cluster, I set up and installed Cacti so that we could monitor the devices on our network using SNMP.</p>
-            <p>Using this tool, we were able to track and monitor our core switches down to individual interfaces for anomaly detection and to monitor our UPS voltage and battery capacities.</p>
-            <p>This entire setup is also completely free to run and everything is stored on-prem.</p>
-            <p><i>No Public Repository, Sorry</i></p>
-            <p><b>Tools Used: </b>MySQL, MariaDB, Php, RRDtool, Apache, Cacti, SNMP, Rocky Linux</p>
-        </div>  
-        <h4>I did a presentation to our company which can be found here: <a href="https://www.youtube.com/watch?v=kYNhL0u4j9o&">Capstone Presentation</a></h4>
-        <h2 class="center" style="margin-top: 50px">Personal Projects</h2>
-        <div class="book-box">
-            <h3>CLI-GPT</h3>
-            <p>CLI-GPT is a command line interface frontend for interacting with OpenAI's API.</p>
-            <p>I built this program so I could use OpenAI calls on my headless FreeBSD system. The project began as a way of asking OpenAI questions from a terminal but I began to add on more functionalities to make it a more useful system. It allows total customization of all of the models parameters, the ability to save and load profile configurations, and the ability to add files and images to uploads.</p>
-            <p><a href="https://github.com/JonFRutan/CLI-GPT">GitHub</a></p>
-            <p><b>Tools Used: </b>Python, OpenAI API, Rich Console, prompt-toolkit</p>
-        </div>  
-        <div class="book-box">
-            <h3>The <b>Perpetual Music Machine</b></h3>
-            <p>An all-in-one software for hosting, managing, and broadcasting your own online radio.</p>
-            <p>A work in progress. I started this project in order to make it easier to host and manage my own radio broadcasts. Ideally the software will be able to deploy and/or configure both the Icecast server and Liquidsoap generation while also maintaining playlist sync to outside sources for easy setlist management.</p>
-            <p><a href="https://github.com/JonFRutan/Perpetual-Music-Machine">GitHub</a></p>
-            <p><b>Tools Used: </b>Python, Icecast, Liquidsoap, Spotipy, SpotDL</p>
-        </div>  
-        <div class="book-box">
-            <h3>music.jfelix.space</h3>
-            <p><a href="https://music.jfelix.space">Visit it here.</a></p>
-            <p>An audiovisualized interface for tuning in to various college radio stations.</p>
-            <p>I was very proud of my UI made for radio.jfelix.space and wanted a way to use it publicly in a copyright-safe manner. 2025-10-03 is national college radio day and college radios were a perfect choice for audio stream sources!</p>
-            <p><a href="">GitHub coming soon</a></p>
-            <p><b>Tools Used: </b>Butterchurn, JS, CSS</p>
-        </div>  
-        <div class="book-box">
-            <h3>GAOL</h3>
-            <p><a href="https://gaol.jfelix.space">Visit it here.</a></p>
-            <p>A multiplayer AI storyteller using a RAG system to generate highly dynamic and smooth adventures.</p>
-            <p>Uses the Gemini API and a complex RAG and Prompting system handled by a backend Flask API.</p>
-            <p><a href="https://github.com/JonFRutan/GAOL">GitHub</a></p>
-            <p><b>Tools Used: </b>Gemini API, Vite, JavaScript, npm, Flask, socketio</p>
-        </div> 
-        <div class="book-box">
-            <h3>OpenValve [2.0]</h3>
-            <p><a href="">Website coming soon.</a></p>
-            <p><i>Developed alongside Trevor Corcoran</i></p>
-            <p>A steam games database, data visualizer, and SteamAPI frontend.</p>
-            <p>Derived from a group project done for a university database class. This web application is inspired by the original, military green Steam user interface. It contains tools for examining Steam users libraries, friends lists, account details, and more. It features extensive data visualizations and even a virtual console interface for interacting with our database.</p>
-            <p><a href="https://github.com/JonFRutan/OpenValve">GitHub</a></p>
-            <p><b>Tools Used: </b>Vite, JavaScript, Kaggle, PostgreSQL, Flask, Psycopg2</p>
-        </div> 
-        <div class="book-box">
-            <h3>jfelix.space</h3>
-	    <p>This website.</p>
-	    <p>Running of an Oracle Cloud VM on Rocky 9 this is a simple static html website. However the domain contains a lot more than meets the eye. I self-host many services from my own hardware at my house including a Matrix instance, a Navidrome instance, and an Icecast server. These are subdomained and securely routed using Cloudflares tunneling system so as to secure my home network.</p>
-	    <ul>
-		    <li><b>Matrix/Element</b>: An E2E encrypted federated messaging instance. Used for secure file sharing and contacting among me and my friends.</li><br>
-		    <li><b>Music/Radio</b>: An audiovisualized frontend for college radio broadcasts. When I was a kid I <i>adored</i> Winamp's Milkdrop visualizer, and I've always loved radio. Using Icecast as a broadcast server, Liquidsoap as a stream generator, and Navidrome for hosting the music, I created a set of online radio stations broadcasting different genres. I then took a WebGL Milkdrop project called "Butterchurn" and implemented onto the website, hooking it up to your live audio stream to provide visualizes while listening. I also moved music.jfelix.space to be another instance of this UI for accessing public college radio broadcasts.</li>
-	    </ul>
-            <p><a href="https://github.com/JonFRutan/jfelix">GitHub</a></p>
-            <p><b>Tools Used: </b>Rocky Linux, Oracle Cloud, NGINX, Cloudflare Tunneling, JavaScript, Node, npm, Butterchurn, IceCast, Liquidsoap, Matrix-Synapse, PostgreSQL, Docker, Docker Compose</p>
-        </div> 
-        <h2 class="center" style="margin-top: 50px">Academic Projects</h2>
-        <div class="book-box">
-            <h3>OpenValve - <i>Databases</i></h3>
-            <p>OpenValve is a data collection project built for a database class.</p>
-            <p>The goal was to create a system for generating game recommendations based on overlapping game tags from a user's library.</p> 
-            <p>Using a combination of SteamWorks API calls and manual webscraping we collected tens of thousands of records within a relational database, using relation tables to connect Users, Games, and Tags.</p>
-            <p>We created a webapp frontend for manually scraping games and user accounts for tag data, and using this created an interface for selecting games and finding similar ones based on overlapping tag counts.</p>
-            <p>I've exported a semi-sanitized version of the project and posted it onto GitHub. It's lacking a couple of functionalities such as the phpMyAdmin database connection.</p>
-            <p><a href=https://github.com/JonFRutan/SteamAppScrape">GitHub</a></p>
-            <p><b>Tools Used: </b>SQL, php, SteamWorks API, Python, BS4, Flask, SQLAlchemy</p>
-        </div>    
-        <div class="book-box">
-            <h3>RamRanch - <i>VCU Hackathon</i></h3>
-            <h4>2nd Place Winner</h4>
-            <p>A habit tracking gamification project built during a 5-hour mini-hackathon.</p>
-            <p>The theme of the mini-hackathon was "Hack4Good".</p>
-            <p>A team of me and 3 others designed and developed a prototype for a gamified habit-tracking app, where fulfilling your healthy habits would benefit your ranch's rams.</p>
-            <p>We developed a prototype of the ranch system with several rams, where their needs are to be tied to your general upkeep. For example; you would set a water drinking goal, and as you complete it your ranch's daily water supply refills.</p>
-            <p>We used tkinter to develop the app prototype, and had in place API calls to other apps in order to auto-update your ranch's status.</p>
-            <p><a href="https://github.com/danielblackin/Ram-Ranch">GitHub</a></p>
-            <p><b>Tools Used: </b>Python, Tkinter, Various APIs</p>
-        </div>  
-        <div class="book-box">
-            <h3>Prescription Effect Logging Software - <i>Software Engineering</i></h3>
-            <p>Working with a team of 7 to develop software related to the healthcare field.</p>
-            <p>We designed a logging application that takes daily inputs from a user based on their perceived effects of a prescriptions, logs them, then allows the user to visualize the data.</p>
-            <p>App was developed in TypeScript using Deno as a runtime environment and DenoFresh to do the frontend work. On the backend we had a SpringBoot REST API running for data storage and other functions.</p>
-            <p>Using GraphJS and an interactive calendar a user could select a range (or set) of dates and get a visualization of inputted information across the timeframe.</p>
-            <p><a href="https://github.com/JonFRutan/AssignmentRepoDemoSE">GitHub</a></p>
-            <p><b>Tools Used: </b>JavaScript, TypeScript, Deno, React, GraphJS, SpringBoot</p>
-        </div>  
     </div>
-</div>
 </body>
 <footer>
 <h2><a href="../index.html">« Back</a></h2>

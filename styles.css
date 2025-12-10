@@ -181,3 +181,49 @@ footer {
   font-style: italic;
 }
 
+.portfolio-wide-content {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+  text-align: center;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.book-box {
+  border: 2px solid;
+  padding: 15px;
+  margin-top: 0; 
+  text-align: left;
+  height: 100%; 
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-box p:last-child {
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+.jump-links {
+    margin-bottom: 40px;
+    padding: 10px;
+    border-bottom: 1px solid #fff;
+}
+.jump-links a {
+    margin: 0 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: none;
+}
+.jump-links a:hover {
+    text-decoration: underline;
+}
+
