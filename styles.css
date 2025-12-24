@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Arimo", Arial, sans-serif;
     color: #FFFFFF;
 		background-color: #212931;	
 }
@@ -21,7 +21,7 @@ body {
   white-space: pre;
   margin: 0 auto;            /* center horizontally */
   line-height: 1.1;
-  display: table;            /* shrink-wrap to content width */
+  display: table;
   font-family: monospace;
 }
 
@@ -34,7 +34,7 @@ body {
   padding: 0;
   line-height: 1;
   white-space: pre;
-  text-align: center;  /* needed for multi-line ASCII */
+  text-align: center; 
 }
 
 .torii-inner {
@@ -238,7 +238,9 @@ footer {
 
 .vsa-thumbnail {
   display: block;
-  max-width: 55%;
+  max-width: 30%;
+  zoom: 80%;
+  margin-top: 10px;
   height: 160px;
   object-fit: cover;
   border: 1px solid #4AF626;
