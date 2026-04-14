@@ -14,22 +14,76 @@
         <img src="https://content.jfelix.space/ppbunny.png" style="width: 10%;"></img><br/>
         <i>PPBunny, the mascot for PPB Polling. Illustrated by <a href="https://chelsea.jfelix.space">Chelsea Hodum</a>.</i>
     </header>
+    <br/>
+    <div class="color-key">
+        <i>Section Color Code</i>
+        <table class="key-table">
+            <tr>
+                <th class="proj">Project</th>
+                <th class="insi">Insights</th>
+                <th class="extr">Technical</th>
+            </tr>
+        </table>
+    </div>
     <div class="ascii-row">
     <div class="book-content">
-    	<div class="book-box">	
-			<h3 class="center">Genesis</h3>
+    	<div class="book-box-text proj">	
+			<h3 class="center">Genesis of PPB</h3>
+            <p><i>Privacy Preserving Blockchain</i> (PPB) is the basis of our project.</p>
             <p>Seniors in the VCU College of Engineering must complete a year-long capstone project. We were given a list of some 140 to pick our top 10 from, of which <i>Privacy Preserving Blockchain</i> was my 7th pick.</p>
             <p>The name of the project matches the whole description, how we were to use blockchain to "preserve privacy" was entirely up to us as a team. Let me get this out of the way now: I knew <i>nothing</i> about working with crypto and blockchain.</p>
-            <p>You might ask "Then why select it among all those project options?" - a very fair question. I was confident I would get my first pick, so being assigned this project was surprising and disappointing.</p>
-            <p>Despite my initial pessism, over the course of the project I found myself really enjoying myself while working on it. Moreso I am very pleased with the final result and all the interesting technologies necessary to make this project work.</p>
+            <p>While I wasn't <i>thrilled</i> with this project assignment, I ended up enjoying working on it and am very pleased with the result.</p>
+            <p>This writeup will detail the development and structure of this project, I promise it'll be more interesting than it may seem.</p>
 		</div>
-			<div class="book-box">
-				<h3 class="center">The Idea</h3>
-				<p>We probably had the most freedom of any of the capstone projects, a double edged sword.</p>
+			<div class="book-box-text proj">
+				<h3 class="center">The PPB Project</h3>
+				<p>We probably had the most freedom of any of the capstone projects, which proved to be a double edged sword.</p>
                     <ul>
-                        <li><b>The Good</b>: We could pretty much choose any project idea we wanted warranted we met the two requirements of working with blockchain and preserving privacy.</li>
-                        <li><b>The Bad</b>: We had no initial direction, and being unexperienced with blockchain made it difficult to determine what was feasible.</li>
+                        <li style="margin-bottom: 10px;"><b>The Good</b>: As long as we worked with blockchain and "preserved privacy", we could pretty much do whatever we wanted.</li>
+                        <li><b>The Bad</b>: We had no initial direction, and being unexperienced with blockchain made it difficult to determine where to go.</li>
                     </ul>
+                <p>From our ideas, we settled on the most feasible: a blockchain polling system.<i>(Another idea was a blockchain-based domain registrar, more on this later)</i></p>
+                <p>Polling systems are a very common use case for blockchain technology, and our faculty advisor, Hong-Sheng Zhou, had published papers on the matter.</p>
+			</div>
+            <div class="book-box-text insi">
+				<h3 class="center">Applications of Blockchain</h3>
+				<p>Ask yourself, what are the common applications of blockchain outside of cryptocurrency? There are really only two major, modern applications:</p>
+                <ol>
+                    <li style="margin-bottom: 10px;"><b>Voting Systems</b> - Using zero-knowledge proofs and protocols (AKA zk-proofs).</li>
+                    <li><b>Private, Permissioned Blockchains</b> - Distributed Ledgers, internal private blockchain networks used for auditing of financial history and transactions.</li>
+                </ol>
+                <p>The main issue with blockchain is it's complexity and it's speed. There was a time where there was a lot of optimism with incoporating blockchain into supply chain or healthcare systems. These ambitions have fallen through, with a <a href="https://wisechainconsult.substack.com/p/8-why-did-tradelens-failed-and-and">few</a> <a href="https://www.gtreview.com/news/top-stories/we-trade-calls-it-quits-after-running-out-of-cash/">notorious</a> <a href="https://www.ledgerinsights.com/marco-polo-blockchain-trade-finance-insolvency/">cases</a>.</p>
+                <p>The problem? Blockchain encourages "trustlessness", and while blockchain accomplishes this, we still can't trust the people using it.</p>
+                <p>Blockchain is:</p>
+                <ul>
+                    <li><b>GREAT</b> for decentralizing systems and their infrastructure.</li>
+                    <li><b>GREAT</b> for publicly accountable ledgers and systems.</li>
+                    <li><b>GREAT</b> for creating private systems with cryptography.</li><br/>
+                    <li><b>AWFUL</b> for high throughput systems and tasks.</li>
+                    <li><b>AWFUL</b> for replacing existing tech infrastrcture.</li>
+                    <li><b>AWFUL</b> for storing complex or large data.</li>
+                </ul>
+                <p>So when designing a project around blockchain we need to keep in mind our general limitations and strengths of blockchain.</p>
+			</div>
+            <div class="book-box-text insi">
+				<h3 class="center">A Case For Blockchain Domain Registrars</h3>
+				<p>As previously mentioned, my proposal for a project was a blockchain-backed domain registrar. <a href="https://decentraweb.org/">Decentraweb</a> is an example of this.</p>
+                <p>Problems with our current domain registration system:</p>
+                <ul>
+                    <li>Domain registration is wholy controlled by a the centralized authority ICANN.</li>
+                    <li>Domain registration is by design <i>against privacy</i>, requiring owners to provide contact information when purchasing a domain.</li>
+                    <li>DNS is subject to spoofing, phishing, and cache poisoning.</li>
+                    <li>SSL certificates through certbot must be renewed every <b>30 days</b> for valid HTTPS connectivity.</li>
+                </ul>
+                <p>So how does a blockchain backend for this resolve these problems?</p>
+                <ul>
+                    <li>With blockchain, domain registration would become authorized and P2P, removing the need for a central controlling authority.</li>
+                    <li>Blockchain allows domain purchasers to remain anonymous if they choose to.</li>
+                    <li>Using technology like zk-proofs we can assuredly tell if a domain is legitimate without revealing any information.</li>
+                    <li>Blockchain would become the authority of ownership, we can tell with 100% accuracy who owns the domain. This allows for easy verification of legitimate websites.</li>
+                </ul>
+                <p>One of the most important pieces here is that domain registration doesn't need high thoroughput or latency. It's more than acceptable for a transaction to take a few minutes in the case of domain names, we already wait a while for DNS records to propagate!</p>
+                <p>The issue with Decentraweb, and other web3 domain registrars, is that they are <i>exclusively</i> web3. They don't sell common TLDs, like '.com' or '.org', they instead sell weird ones like '.limitless'. This is not to take away from their product; I just believe the technology should be appropriated for all common TLDs.</p>
 			</div>
 		</div>
 	</div>
