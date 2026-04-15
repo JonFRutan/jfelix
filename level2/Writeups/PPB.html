@@ -42,8 +42,8 @@
                         <li style="margin-bottom: 10px;"><b>The Good</b>: As long as we worked with blockchain and "preserved privacy", we could pretty much do whatever we wanted.</li>
                         <li><b>The Bad</b>: We had no initial direction, and being inexperienced with blockchain made it difficult to determine where to go.</li>
                     </ul>
-                <p>From our ideas, we settled on the most feasible: a blockchain polling system.<i>(Another idea was a blockchain-based domain registrar, more on this later)</i></p>
-                <p>Polling systems are a very common use case for blockchain technology, and our faculty advisor, Hong-Sheng Zhou, had published papers on the matter.</p>
+                <p>From our ideas, we settled on the most feasible: a blockchain polling system.<i> (Another idea was a blockchain-based domain registrar, more on this later)</i></p>
+                <p>Polling systems are a very common use case for blockchain technology, and our faculty advisor, Hong-Sheng Zhou, has papers published on this very topic.</p>
 			</div>
             <div class="book-box-text insi">
 				<h3 class="center">Applications of Blockchain</h3>
@@ -51,7 +51,7 @@
                 <ol>
                     <li style="margin-bottom: 10px;"><b>Decentralized Identity</b> - <a href="https://www.dock.io/post/decentralized-identity">Identity Verification Systems</a> that don't rely on centralized databases for verification. Think being able to verify your RealID with an employer through a cryptowallet.</li>
                     <li style="margin-bottom: 10px;"><b>Private, Permissioned Blockchains</b> - <a href="https://www.gao.gov/assets/gao-19-704sp.pdf">Distributed Ledgers</a>, internal private blockchain networks used for auditing of financial history and transactions.</li>
-                    <li><b>Targeted Supply Chains</b> - In scoped cases supply chain management incorporating blockchain has worked well. <a href="https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/blockchain-in-the-food-supply-chain.html">Walmart</a> uses blockchain for tracking the sources of procured food. <a href="https://www.debeersgroup.com/news-insights/business-market/archive/de-beers-group-successfully-tracks-first-diamonds-from-mine-to-r">De Beers</a> successfully used blockchain technology <a href="https://tracr.com/">Tracr</a> to track diamonds.</li>
+                    <li><b>Targeted Supply Chains</b> - In scoped cases supply chain management incorporating blockchain has worked well. <a href="https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/blockchain-in-the-food-supply-chain.html">Walmart</a> uses blockchain for tracking the sources of procured food. <a href="https://www.debeersgroup.com/news-insights/business-market/archive/de-beers-group-successfully-tracks-first-diamonds-from-mine-to-r">De Beers</a> successfully used the blockchain software <i>Tracr</i> to trace diamonds from their source.</li>
                 </ol>
                 <p>The biggest barrier of blockchain is its complexity and speed. There was a time where there was a lot of optimism with incorporating blockchain into global supply chains or healthcare systems. These ambitions have fallen through, with a <a href="https://wisechainconsult.substack.com/p/8-why-did-tradelens-failed-and-and">few</a> <a href="https://www.gtreview.com/news/top-stories/we-trade-calls-it-quits-after-running-out-of-cash/">notorious</a> <a href="https://www.ledgerinsights.com/marco-polo-blockchain-trade-finance-insolvency/">cases</a>.</p>
                 <p>The problem? Blockchain encourages "trustlessness", and while blockchain accomplishes this, we still can't trust the people using it.</p>
@@ -84,7 +84,45 @@
                     <li><b>Security</b> - The benefits of a blockchain based domain registrar are <b>immense.</b> The blockchain is an indisputable source of truth, verifying absolutely that you own this domain. This could potentially remove all renewals of SSL certificates.</li>
                 </ul>
                 <p>One of the most important pieces here is that domain registration doesn't need high throughput or latency. It's more than acceptable for a transaction to take a few minutes in the case of domain names, we already wait a while for DNS records to propagate! Furthermore, domain registration is a very simple data primitive, just a string associated with it's owner.</p>
-                <p>The issue with Decentraweb, and other web3 domain registrars, is that they are <i>exclusively</i> web3. They don't sell common TLDs, like ".com" or ".org", they instead sell web3-specific ones like ".limitless". This is not to take away from their product; I just believe the technology should be appropriated for all common TLDs.</p>
+                <p>The issue with Decentraweb, and other web3 domain registrars, is that they are <i>exclusively</i> web3. They don't sell common TLDs, like <code>.com</code> or <code>.org</code>, they instead sell web3-specific ones like <code>.limitless</code>. This is not to take away from their product; I just believe the technology should be appropriated for all common TLDs.</p>
+			</div>
+            <div class="book-box-text proj">
+				<h3 class="center">MACI & Our Goal</h3>
+				<p>Let's return to our PPB capstone project.</p>
+                <p>One large benefit of going with polling is that there is a prevalent ecosystem of voting projects, and more importantly, frameworks for blockchain polling.</p>
+                <p><b>MACI</b> stands for <a href="https://maci.pse.dev/">Minimal Anti-Collusion Infrastructure</a>. It provides the smart-contracts that make private, secure blockchain voting accessible for development. The MACI framework is invaluable to blockchain voting systems. While reading the MACI roadmap I came across an interesting statement:</p>
+                <p><i>"It's no secret that one of MACI long standing issues has [sic] having a centralised coordinator. They are able to see all of the votes in cleartext, which allows them to collude with bribers themselves, as well as voters."</i></p>
+                <p>"Perfect!" I said in response. Not in celebration of voter privacy being violated, but now we had a goal: <b>decentralize the MACI coordinator</b>.</p>
+                <p>The project was no longer just another blockchain voting system, it would be about pushing the boundaries of secure, private voting!</p>
+            </div>
+            <div class="book-box-text extr">
+				<h3 class="center">Smart Contracts</h3>
+				<p>Smart Contracts are immutable (never-changing) pieces of code that exist on the blockchain network.</p>
+                <p>MACI has a set of <a href="https://maci.pse.dev/docs/category/smart-contracts">smart-contracts</a>, each providing a different piece of functionality necessary to the voting system. Notable are:</p>
+                <ul>
+                    <li><code>MACI.sol</code> - The core contract, providing access to creating polls and signing up users.</li>
+                    <li><code>Policy.sol</code> - Defines the registration process for MACI polls, providing several authentication options. `FreeForAll` allows anyone to sign up.</li>
+                    <li><code>PollFactory.sol</code> - Deploys new polls. Every time a poll is created, it receives three smart contracts:</li>
+                    <ul>
+                        <li><code>Poll.sol</code> - Accepts votes and accepts users into the poll.</li>
+                        <li><code>MessageProcessor.sol</code> - Prepares parameters for zk-SNARK circuits <i>(More on these later...)</i> for verifying proofs.</li>
+                        <li><code>Tally.sol</code> - Submits processed votes to the tally results.</li>
+                    </ul>
+                </ul>
+                <p>There are a few other smart contracts but these are the primary players in our system. The contracts are able to communicate between each other, but there is a missing piece: Where do votes, users, and polls come from? They come from MACIs Coordinator.</p>
+            </div>
+            <div class="book-box-text extr">
+				<h3 class="center">MACIs Coordinator</h3>
+				<p>The coordinator is responsible for sending user registrations to <code>MACI.sol</code>, sending poll creations to <code>PollFactory.sol</code>, and sending votes to <code>Poll.sol</code>.</p>
+            </div>
+            <div class="book-box-text proj">
+                <h3 class="center">Where To Begin</h3>
+                <p>Our original intention was to fork an already existing voting software, such as zkElect, PolyVote, or AnonVote. However after testing out a few of these I ran into several issues: </p>
+                <ul>
+                    <li><b>Setup</b> - Setting up these projects was always very difficult due to each having specific environmental configurations.</li>
+                    <li><b>Usability</b> - They all required you to bring your own crypto wallet. This is a <b>massive</b> barrier for entry and makes it way harder for the average end-user to participate.</li>
+                    <li><b>Extensibility</b> - Without knowing or understanding the structure of these projects it's not easy to extend them with our desired upgrades and functionality.</li>
+                </ul>
 			</div>
 		</div>
 	</div>
