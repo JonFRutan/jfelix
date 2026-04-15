@@ -101,8 +101,8 @@
                 <p>MACI has a set of <a href="https://maci.pse.dev/docs/category/smart-contracts">smart-contracts</a>, each providing a different piece of functionality necessary to the voting system. Notable are:</p>
                 <ul>
                     <li><code>MACI.sol</code> - The core contract, providing access to creating polls and signing up users.</li>
-                    <li><code>Policy.sol</code> - Defines the registration process for MACI polls, providing several authentication options. `FreeForAll` allows anyone to sign up.</li>
-                    <li><code>PollFactory.sol</code> - Deploys new polls. Every time a poll is created, it receives three smart contracts:</li>
+                    <li><code>Policy.sol</code> - Defines the registration process for MACI polls, providing several authentication options. The default, "FreeForAll", allows anyone to sign up.</li>
+                    <li><code>PollFactory.sol</code> - Deploys new polls. Every time a poll is created, it gets three corresponding smart contracts:</li>
                     <ul>
                         <li><code>Poll.sol</code> - Accepts votes and accepts users into the poll.</li>
                         <li><code>MessageProcessor.sol</code> - Prepares parameters for zk-SNARK circuits <i>(More on these later...)</i> for verifying proofs.</li>
@@ -114,7 +114,7 @@
             <div class="book-box-text extr">
 				<h3 class="center">MACIs Coordinator</h3>
 				<p>The coordinator is responsible for sending user registrations to <code>MACI.sol</code>, sending poll creations to <code>PollFactory.sol</code>, and sending votes to <code>Poll.sol</code>.</p>
-                <p>The coordinator is <b>NOT</b> on the blockchain. Rather it is a backend system for managing and interacting with all of the smart contracts. MACIs Coordinator is a set of APIs that may be used to interface with the contracts. There is no interface or frontend for using it, that is up to the developer to create.</p>
+                <p>The coordinator is <b>NOT</b> on the blockchain. Rather it is a backend system for managing and interacting with all of the smart contracts. MACIs Coordinator is a set of APIs that may be used to interface with the contracts.</p>
                 <p>The MACI important coordinator endpoints are:</p>
                 <ul>
                     <li><code>{domain}.{tld}/v1/deploy/maci</code> - This deploys the MACI smart contract, starting the MACI service.</li>
@@ -127,17 +127,27 @@
                         <li><code>{domain}.{tld}/v1/proof/submit</code> - Submits the final tally.</li>
                     </ul>
                     <li><code>{domain}.{tld}/v1/schedule/poll</code> - Schedules a poll to automatically finalize (running merge, generate, and submit) once it's end time passes.</li>
-                    <li><code>{domain}.{tld}/v1/health</code> - Checks that env variables are correct, zkeys are accessbile, and rapidsnark  </li>
+                    <li><code>{domain}.{tld}/v1/health</code> - Checks that env variables are correct, zkeys are accessbile, and if <i>rapidsnark</i> is available.</li>
                 </ul>
+                <p>MACI 3.x offers a UI interface for their coordinator service, earlier versions did not offer this and thus every command needed to be entered from a command line or scripted together in a backend tool.</p>
             </div>
             <div class="book-box-text proj">
                 <h3 class="center">Where To Begin</h3>
-                <p>Our original intention was to fork an already existing voting software, such as zkElect, PolyVote, or AnonVote. However after testing out a few of these I ran into several issues: </p>
+                <p>Our original intention was to fork an already existing voting software, such as <i>zkElect</i>, <i>PolyVote</i>, or <i>AnonVote</i>. However after testing out a few of these I ran into several issues: </p>
                 <ul>
                     <li><b>Setup</b> - Setting up these projects was always very difficult due to each having specific environmental configurations.</li>
                     <li><b>Usability</b> - They all required you to bring your own crypto wallet. This is a <b>massive</b> barrier for entry and makes it way harder for the average end-user to participate.</li>
                     <li><b>Extensibility</b> - Without knowing or understanding the structure of these projects it's not easy to extend them with our desired upgrades and functionality.</li>
                 </ul>
+                <p>The real killer here is bringing your own crypto wallet, it makes testing, development, and participation more difficult. With <i>zkElect</i> to create a poll I had to install a crypto wallet, register an account, then hook it up to our virtual ethereum network.</p>
+                <p><code>Not enough funds.</code> - the error says. Okay, to add funds to my wallet on a virtual network I need to access the deployer wallet and distribute myself some Ethereum. I deploy a poll, and go to vote on it.</p>
+                <p><code>Not enough funds.</code> - the error says. I guess it cost too much to deploy the poll and now I'm out of Ethereum.</p>
+                <p>I think you understand the point, crypto outside of the major currency exchange platforms isn't very accessible. Here is where our two major project requirements cemented themselves:</p>
+                <ol>
+                    <li><b>Make the backend extendable</b> - The backend must be extensible so that it may be decentralized, preferably written a language simpler than TypeScript.</li>
+                    <li><b>Make it accessible</b> - Abstract away as much, if not all, of the cryptocurrency/wallet aspects from end-users.</li>
+                </ol>
+                <p>By focusing on the first requirement the second becomes easier. The project would no longer be a fork, instead it was to be built from the ground up on the foundations of MACI.</p>
 			</div>
 		</div>
 	</div>
