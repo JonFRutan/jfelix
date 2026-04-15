@@ -114,6 +114,21 @@
             <div class="book-box-text extr">
 				<h3 class="center">MACIs Coordinator</h3>
 				<p>The coordinator is responsible for sending user registrations to <code>MACI.sol</code>, sending poll creations to <code>PollFactory.sol</code>, and sending votes to <code>Poll.sol</code>.</p>
+                <p>The coordinator is <b>NOT</b> on the blockchain. Rather it is a backend system for managing and interacting with all of the smart contracts. MACIs Coordinator is a set of APIs that may be used to interface with the contracts. There is no interface or frontend for using it, that is up to the developer to create.</p>
+                <p>The MACI important coordinator endpoints are:</p>
+                <ul>
+                    <li><code>{domain}.{tld}/v1/deploy/maci</code> - This deploys the MACI smart contract, starting the MACI service.</li>
+                    <li><code>{domain}.{tld}/v1/deploy/poll</code> - Deploys a new poll on the MACI instance. Needs start / end dates, candidate count, and voting mode.</li>
+                    <li><code>{domain}.{tld}/v1/subgraph/deploy</code> - Deploys the MACI subgraph which indexes and tracks the created smart contracts.</li>
+                    <li>Poll Finalization Endpoints</li>
+                    <ul>
+                        <li><code>{domain}.{tld}/v1/proof/merge</code> - Merges all votes into a Merkle state tree.</li>
+                        <li><code>{domain}.{tld}/v1/proof/generate</code> - Generates a zk-SNARK proof for the final tally.</li>
+                        <li><code>{domain}.{tld}/v1/proof/submit</code> - Submits the final tally.</li>
+                    </ul>
+                    <li><code>{domain}.{tld}/v1/schedule/poll</code> - Schedules a poll to automatically finalize (running merge, generate, and submit) once it's end time passes.</li>
+                    <li><code>{domain}.{tld}/v1/health</code> - Checks that env variables are correct, zkeys are accessbile, and rapidsnark  </li>
+                </ul>
             </div>
             <div class="book-box-text proj">
                 <h3 class="center">Where To Begin</h3>
