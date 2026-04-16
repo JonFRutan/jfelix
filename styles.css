@@ -324,6 +324,15 @@ footer {
   margin-left: 6%;
 }
 
+.book-box-ss-wider {
+  border: solid 1px;
+  max-width: 90%;
+  /*these three things center images well*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .book-box-ss {
   border: solid 1px;
   max-width: 70%;
