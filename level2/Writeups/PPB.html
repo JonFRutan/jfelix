@@ -164,9 +164,40 @@
                 <p class="book-box-ss-alt-text">A screenshot of the current PPB login page.</p>
                 <img class="book-box-ss" src="../../images/ppbadmin.png"/>
                 <p class="book-box-ss-alt-text">A screenshot of the current PPB admin panel.</p>
-                <p>The frontend isn't just an interface for using the MACI API calls though, it handles some important privacy-preserving functionality. This includes two keypairs, and one temporary keypair per vote.</p>
-                <p><b>MACI Identity Keypair</b> - Generated with BabyJubJub. When you register an account, a keypair is generated. The public half of this pair is sent to the server to register the user on the state tree, the private half is stored client side and never leaves. When a vote is cast, you sign it with your private key to prove it's a legitimate vote. This allows authorized vote changing before the poll has ended. It also allows a user to join polls with a ZK-proof! This means a user can say "I know a the private half of a keypair that exists in the state tree." This is done without revealing the public key in question, preventing double-registration.</p>
-                <p><b>The "Vote" Keypair</b> - Generated with BabyJubJub every time a user casts a vote. These are used once, then discarded. Ephemeral keypairs are standard for ECDH encryption. This encrypts the PCommand (vote message format) and removes all linkability between votes, meaning a user can't be triangulated off multiple votes. </p>
+                <p>The frontend isn't just an interface for using the MACI API calls though, it handles some important privacy-preserving functionality. This includes an account keypair, and one temporary keypair per vote.</p>
+                <p><b>MACI Identity Keypair</b> - Generated with BabyJubJub. When you register an account, a keypair is generated.</p>
+                <ol>
+                    <li>The public half of the keypair is sent to the coordinator to register the user. The private half <b>never leaves the client</b>.</li>
+                    <li>When the client votes, the vote is signed with their private key. This proves it's a legitimate vote, and allows a user to change their vote until the poll has ended.</li>
+                </ol>
+                <p>This keypair allows a user to join polls with a ZK-proof, meaning a user can say "I know a the private half of a public key that's registered." This is done without revealing the public key in question, preventing double-registration.</p>
+                <p><b>The "Vote" Keypair</b> - Generated with BabyJubJub every time a user casts a vote.</p>
+                <ul>
+                    <li>This encrypts the PCommand (vote message format) and removes all linkability between votes, meaning a user can't be triangulated off multiple votes.</li>
+                    <li>These keypairs are used once, then discarded.</li>
+                </ul>
+                <h3>What about the crypto wallets?</h3>
+                <p>They're gone.</p>
+                <p>Everything crypto related is handled by the backend. Voting on PPB Polling requires not an ounce of knowledge on cryptocurrency. I'll go into more detail about how we abstracted this away from the end user when I talk about the backend.</p>
+                <p>The frontend is not just a UI atop MACI, it plays a vital role in protecting users confidentiality and privacy.</p>
+            </div>
+            <div class="book-box-text insi">
+				<h3 class="center">The Private Half of the Identity Keypair</h3>
+				<p>In the last section I noted that the private half of the identity keypair never leaves the client. This is an intentional design choice recommended by MACI. When creating the identity keypair we have two routes to go:</p>
+                <ol>
+                    <li>Send the whole keypair to the server.</li>
+                        <ul>
+                            <li><b>THE GOOD</b>: Users could sign in from any device since they can recall their private-key from the server.</li>
+                            <li><b>THE BAD</b>: If the private-keys were accessed by a malicious actor or made public, all votes could be decrypted and read in plaintext. The coordinator becomes a supreme liability and single-point-of-failure.</li>
+                        </ul>
+                    <li>Only send the public half of the keypair to the server.</li>
+                        <ul>
+                            <li><b>THE GOOD</b>: As long as a user keeps their private key secret, their votes will be encrypted, thus untraceable.</li>
+                            <li><b>THE BAD</b>: If you lose your private key, you lose your account. You also cannot vote on other devices.</li>
+                        </ul>
+                </ol>
+                <p>Weighing the good and bad, it's preferable to lose user accounts than it would be to lose the anti-collusion functionality of the server. This is the nature of blockchain though; centralized trustlessness means decentralized responsibility.</p>
+                <p><i>Potential PPB Polling upgrade: Keep a users private key encrypted locally and only decrypt it when they've entered their password.</i></p>
 			</div>
             <div class="book-box-text extr">
 				<h3 class="center">Zero-Knowledge Proofs & zk-SNARKS</h3>
