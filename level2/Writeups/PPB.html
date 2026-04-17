@@ -201,16 +201,23 @@
 			</div>
             <div class="book-box-text extr">
 				<h3 class="center">Zero-Knowledge Proofs & zk-SNARKS</h3>
+                <h3>Zero-Knowledge Proofs (ZKPs)</h3>
 				<p>Zero-Knowledge Proofs are foundational to how MACI creates a private, collusion resistant voting platform. Quoted from <code>Ethereum.org</code>:</p>
                 <p><i>A zero-knowledge proof is a way of proving the validity of a statement without revealing the statement itself. The ‘prover’ is the party trying to prove a claim, while the ‘verifier’ is responsible for validating the claim.</i></p>
                 <p>Let's say I'm the prover, and you are the verifier. <i>Lightning McQueen</i> is hidden in this picture below:</p>
                 <img class="book-box-ss-wider" src="../../images/hiddencharacter.png"/>
                 <p class="book-box-ss-alt-text">A picture filled with cartoon characters, with Lightning McQueen hidden among them.</p>
-                <p>I know where the hidden <i>Lightning McQueen</i> is in this image AND I'll prove it to you:</p>
+                <p>I know where the hidden <i>Lightning McQueen</i> is in this image. Here's my proof:</p>
                 <img class="book-box-ss" src="../../images/hiddencharacter2.png"/>
-                <p>This is a rather silly analogy, but it illustrates the point well. I've proven that I know certain information, without revealing anything about said information.</p>
-                <h3>zk-SNARKs</h3>
-                <p>Stands for <b>Z</b>ero-<b>K</b>nowledge <b>S</b>uccint <b>N</b>on-Interactive <b>ARgument</b> of <b>K</b>nowledge. zk-SNARKs are special in that they require no interaction between the prover and verifier, their proof size is small, and verification is fast.</p>
+                <p>I haven't helped you find it, but you should know believe that <i>I</i> know where it is. This is a rather silly analogy, but it illustrates the point well. I've proven that I know certain information, without revealing anything about said information.</p>
+                <p><b>There is always a chance a proof could be guessed.</b> To account for this, provers and verifiers run ZKPs and zk-SNARKS by each other many times, to virtually eliminate the chance of solutions being arbitrarily guessed.</p>
+                <h3>How do they actually work?</h3>
+                <p>ZKPs and zk-SNARKs are advanced cryptographic methods for validation. I am not knowledgable enough or qualified to explain them in their full detail. I will <a href="https://www.di.ens.fr/~nitulesc/files/Survey-SNARKs.pdf">provide</a> <a href="https://arxiv.org/abs/2202.06877">some</a> <a href="https://csrc.nist.gov/projects/pec/zkproof">links</a> for more informative reading. I'll explain it to the best of my ability though.</p>
+                <p><b>Computationally Asymmetric Problems</b> - These are problems that are easy to verify, but hard to solve. Let's say I have the semiprime number <code>7.01770176x10<sup>9</sup></code>. What two prime numbers make up this number? It may be a bit difficult to compute that but if I gave you <code>83557</code> and <code>83987</code> and tell you it's the factors, you can easily multiply them to verify if I'm correct. The point here is we can verify correctness easily without exactly being able to reverse-engineer the problem.</p>
+                <p><b>Polynomials</b> - ZKPs convert statements into polynomial equations. The verifier then picks a random point and checks where it lies on the polynomial, a fake polynomial has a miniscule chance of getting the correct number. To use our previous example, we could try guessing random prime numbers, but the odds of picking the correct one are highly improbable. This is the foundation of <b>interactive</b> ZK proofs. However this is impractical in blockchain settings.</p>
+                <p><b>Non-Interactivity through Fiat-Shamir Transform</b> - <i>Bear with me here.</i> Instead of the verifier sending random challenges, they just send a hashed value of their transcript so far. This means it can automatically generated unpredictable values to challenge the prover, meaning a dedicated verifier is unnecessary and anybody can take a chance at proving themselves.</p>
+                                <h3>zk-SNARKs</h3>
+                <p>Stands for <b>Z</b>ero-<b>K</b>nowledge <b>S</b>uccint <b>N</b>on-Interactive <b>AR</b>gument of <b>K</b>nowledge. zk-SNARKs are special in that they require no interaction between the prover and verifier, their proof size is small, and verification is fast. MACI uses zk-SNARKs, specifically <code>Groth16</code> proofs, exclusively.</p>
             </div>
             <div class="book-box-text proj">
                 <h3 class="center">The Backend</h3>
