@@ -46,7 +46,8 @@
                 <p>Polling systems are a very common use case for blockchain technology, and our faculty advisor, Hong-Sheng Zhou, has papers published on this very topic.</p>
 			</div>
             <div class="book-box-text insi">
-				<h3 class="center">Applications of Blockchain</h3>
+                <details>
+				<summary><h3 class="center">Applications of Blockchain</h3></summary>
 				<p>Is blockchain actually used anywhere other than cryptocurrency? If we ignore DeFi, cryptoexchanges, and things like NFTs we see a few commercial applications:</p>
                 <ol>
                     <li style="margin-bottom: 10px;"><b>Decentralized Identity</b> - <a href="https://www.dock.io/post/decentralized-identity">Identity Verification Systems</a> that don't rely on centralized databases for verification. Think being able to verify your RealID with an employer through a cryptowallet.</li>
@@ -66,9 +67,11 @@
                 </ul>
                 <p>Looking at proposed implementations of blockchain we can see why it fell through when taking into account its strengths and limitations. Can you really store healthcare information on the blockchain? Due to the complexity of the data and its inherent immutability once on the blockchain: its not practical.</p>
                 <p>Blockchain may not be universally applicable but it's still a very useful technology. Let's look at a case where blockchain technology is very applicable.</p>
+                </details>
 			</div>
             <div class="book-box-text insi">
-				<h3 class="center">A Case For Blockchain Domain Registrars</h3>
+                <details>
+				<summary><h3 class="center">A Case For Blockchain Domain Registrars</h3></summary>
 				<p>As previously mentioned, my proposal for a project was a blockchain-backed domain registrar. <a href="https://decentraweb.org/">Decentraweb</a> is an example of this.</p>
                 <p>Problems with our current domain registration system:</p>
                 <ul>
@@ -81,11 +84,12 @@
                 <ul>
                     <li><b>Decentralization</b> - Domain names would be wholly controlled by their owners in a P2P architecture. No central authority may charge you a lease for having it or revoke it from you.</li>
                     <li><b>Optional Anonymity</b> - Domain owners may pseudonymize themselves to prevent their data from becoming publicly accessible in Whois databases.</li>
-                    <li><b>Security</b> - The benefits of a blockchain based domain registrar are <b>immense.</b> The blockchain is an indisputable source of truth, verifying absolutely that you own this domain. This could potentially remove all renewals of SSL certificates.</li>
+                    <li><b>Security</b> - The benefits of a blockchain based domain registrar are <b>immense.</b> The blockchain is an indisputable source of truth, verifying absolutely that you own this domain.</li>
                 </ul>
                 <p>One of the most important pieces here is that domain registration doesn't need high throughput or latency. It's more than acceptable for a transaction to take a few minutes in the case of domain names, we already wait a while for DNS records to propagate! Furthermore, domain registration is a very simple data primitive, just a string associated with it's owner.</p>
                 <p>The issue with Decentraweb, and other web3 domain registrars, is that they are <i>exclusively</i> web3. They don't sell common TLDs, like <code>.com</code> or <code>.org</code>, they instead sell web3-specific ones like <code>.limitless</code>. This is not to take away from their product; I just believe the technology should be appropriated for all common TLDs.</p>
-			</div>
+			</details>
+            </div>
             <div class="book-box-text proj">
 				<h3 class="center">MACI & Our Goal</h3>
                 <img class="book-box-ss" src="https://maci.pse.dev/img/maci-card.png"/>
@@ -94,12 +98,13 @@
                 <p>One large benefit of going with polling is that there is a prevalent ecosystem of voting projects, and more importantly, frameworks for blockchain polling.</p>
                 <p><b>MACI</b> stands for <a href="https://maci.pse.dev/">Minimal Anti-Collusion Infrastructure</a>. It provides the smart-contracts that make private, secure blockchain voting accessible for development. The MACI framework is invaluable to blockchain voting systems. While reading the MACI roadmap I came across an interesting statement:</p>
                 <p><i>"It's no secret that one of MACI long standing issues has [sic] having a centralised coordinator. They are able to see all of the votes in cleartext, which allows them to collude with bribers themselves, as well as voters."</i></p>
-                <p>"Perfect!" I said in response. Not in celebration of voter privacy being violated, but now we had a goal: <b>decentralize the MACI coordinator</b>.</p>
-                <p>The project was no longer just another blockchain voting system, it would be about pushing the boundaries of secure, private voting!</p>
+                <p>"Perfect!" I said in response. Not in celebration of voter privacy being violated, but now we had a goal: <b>do something about the MACI coordinator</b>.</p>
+                <p>The project was no longer just another blockchain voting system, it would be about pushing the boundaries of anti-collusionary voting.</p>
             </div>
             <div class="book-box-text extr">
-				<h3 class="center">Smart Contracts</h3>
-				<p>Smart Contracts are immutable (never-changing) pieces of code that exist on the blockchain network.</p>
+                <details>
+				<summary><h3 class="center">Smart Contracts</h3></summary>
+				<p>Smart Contracts establish terms of agreement between parties, what makes them "smart" is they are actually pieces of code that exist on the blockchain network. These are immutable (never-changing) and independent, meaning they reliably carry out their functions. </p>
                 <p>MACI has a set of <a href="https://maci.pse.dev/docs/category/smart-contracts">smart-contracts</a>, each providing a different piece of functionality necessary to the voting system. Notable are:</p>
                 <ul>
                     <li><code>MACI.sol</code> - The core contract, providing access to creating polls and signing up users.</li>
@@ -112,9 +117,11 @@
                     </ul>
                 </ul>
                 <p>There are a few other smart contracts but these are the primary players in our system. The contracts are able to communicate between each other, but there is a missing piece: Where do votes, users, and polls come from? They come from MACIs Coordinator.</p>
+                </details>
             </div>
             <div class="book-box-text extr">
-				<h3 class="center">MACIs Coordinator</h3>
+                <details>
+				<summary><h3 class="center">MACIs Coordinator</h3></summary>
 				<p>The coordinator is responsible for sending user registrations to <code>MACI.sol</code>, sending poll creations to <code>PollFactory.sol</code>, and sending votes to <code>Poll.sol</code>.</p>
                 <p>The coordinator is <b>NOT</b> on the blockchain. Rather it is a backend system for managing and interacting with all of the smart contracts. MACIs Coordinator is a set of APIs that may be used to interface with the contracts.</p>
                 <p>The MACI important coordinator endpoints are:</p>
@@ -132,6 +139,7 @@
                     <li><code>{domain}.{tld}/v1/health</code> - Checks that env variables are correct, zkeys are accessbile, and if <i>rapidsnark</i> is available.</li>
                 </ul>
                 <p>MACI 3.x offers a UI interface for their coordinator service, earlier versions did not offer this and thus every command needed to be entered from a command line or scripted together in a backend tool.</p>
+                </details>
             </div>
             <div class="book-box-text proj">
                 <h3 class="center">Where To Begin</h3>
@@ -144,13 +152,45 @@
                 <p>The real killer here is bringing your own crypto wallet, it makes testing, development, and participation more difficult. With <i>zkElect</i> to create a poll I had to install a crypto wallet, register an account, then hook it up to our virtual ethereum network.</p>
                 <p><code>Not enough funds.</code> - the error says. Okay, to add funds to my wallet on a virtual network I need to access the deployer wallet and distribute myself some Ethereum. I deploy a poll, and go to vote on it.</p>
                 <p><code>Not enough funds.</code> - the error says. I guess it cost too much to deploy the poll and now I'm out of Ethereum.</p>
-                <p>I think you understand the point, crypto outside of the major currency exchange platforms isn't very accessible. Here is where our two major project requirements cemented themselves:</p>
+                <p>I think you understand the point, crypto outside of the major currency exchange platforms isn't very accessible. Here is where our three major project requirements cemented themselves:</p>
                 <ol>
                     <li><b>Make the backend extendable</b> - The backend must be extensible so that it may be decentralized, preferably written a language simpler than TypeScript.</li>
                     <li><b>Make it accessible</b> - Abstract away as much, if not all, of the cryptocurrency/wallet aspects from end-users.</li>
+                    <li><b>Weaken the coordinator</b> - Mitigate the amount of control the coordinator has over the entire voting system; reduce its value as a target for malicious actors.</li>
                 </ol>
-                <p>By focusing on the first requirement the second becomes easier. The project would no longer be a fork, instead it was to be built from the ground up on the foundations of MACI.</p>
+                <p>By focusing on the first requirement the rest become easier. The project would no longer be a fork, instead it was to be built from the ground up on the foundations of MACI.</p>
 			</div>
+            <div class="book-box-text proj">
+                <h3 class="center">Weakening The Coordinator</h3>
+                <p>The coordinator is necessary for MACIs function; it's also its Achille's Heel. As stated by the developers of MACI: if you can access the coordinator you can see everyone and their votes. Ideally, we could have multiple coordinators that must act in consensus to conduct their responsibilites. This is not an easy approach and it still has poses some problems:</p>
+                <ul>
+                    <li>Eventually somebody has to hold the decryption key, we'd still have a single "super node".</li>
+                    <li>Implementing consensus on multiple coordinator nodes would be extraordinarily difficult. We can only rely on majority rules, such as the Byzantine Fault Tolerance (BFT) limit of <code>n≥3f+1</code>. We'd need a lot of computers.</li>
+                    <li>Voting becomes less reliable. We would need to make sure a vote reaches every coordinator node using a broadcaster system. Then how do we handle when the votes get out of sync or have time arrival differences at nodes?</li>
+                </ul>
+                <p>So decentralizing the coordinator is impractical; instead we need to weaken it. This is where the simplest solution comes in: <b>keep the decryption key out of the coordinator</b>.</p>
+                <p>It <i>would</i> need it eventually, but by removing it until the time of decryption the coordinator is a far weaker entity in the MACI system. It wouldn't help much to just keep the key on another server, so we can actually split the key into pieces using <b>Threshold Key Cryptography</b> and share pieces to as many independent nodes as we want.</p>
+                <img class="book-box-ss-light" src="https://content.jfelix.space/ppbdiagram1.png"/>
+                <p>This is a <b>Guardian Node</b> system. Independent nodes will each hold a piece of the split key, the coordinator will request the key pieces when it's ready to finalize the poll, and the nodes may choose to provide their share.</p>
+                <p>With this system:</p>
+                <ul>
+                    <li>Guardian nodes can be modified to run a set of integrity checks on the coordinator and blockchain before sharing their key piece.</li>
+                    <li>Votes cannot be read until a consensus is reached among the guardian nodes <b>AFTER</b> the poll has been finalized.</li>
+                    <li>We can control how many pieces we split our key into and the necessary threshold to reassemble it.</li>
+                </ul>
+                Our coordinator will now consist of three services:
+                <ol>
+                    <li><b>The Backend</b> - The central server that communicates with the smart contracts, guardians, and clients.</li>
+                    <li><b>The Guardians</b> - A set of nodes each holding a share of the split decryption key.</li>
+                    <li><b>The Threshold</b> - A program that breaks the private decryption key into <code>k</code> pieces, sets the threshold for reassembling the key, then distributes it to the</li>
+                </ol>
+			</div>
+            <div class="book-box-text extr">
+            <details>
+				<summary><h3 class="center">Threshold Cryptography & Secret Sharing</h3></summary>
+                <p>Our guardian is built on the concept of a <b>Threshold Cryptosystem</b> where we split out secret key among a number of independent parties. </p>
+            </details>
+            </div>
             <div class="book-box-text proj">
                 <h3 class="center">The Frontend</h3>
                 <p>The frontend for PPB Polling is a React/Vite webapp written in TypeScript. TypeScript was chosen because MACI is written in it. The webapp is split into three sections:</p>
@@ -182,7 +222,8 @@
                 <p>The frontend is not just a UI atop MACI, it plays a vital role in protecting users confidentiality and privacy.</p>
             </div>
             <div class="book-box-text insi">
-				<h3 class="center">The Private Half of the Identity Keypair</h3>
+                <details>
+				<summary><h3 class="center">The Private Half of the Identity Keypair</h3></summary>
 				<p>In the last section I noted that the private half of the identity keypair never leaves the client. This is an intentional design choice recommended by MACI. When creating the identity keypair we have two routes to go:</p>
                 <ol>
                     <li>Send the whole keypair to the server.</li>
@@ -198,31 +239,37 @@
                 </ol>
                 <p>Weighing the good and bad, it's preferable to lose user accounts than it would be to lose the anti-collusion functionality of the server. This is the nature of blockchain though; centralized trustlessness means decentralized responsibility.</p>
                 <p><i>Potential PPB Polling upgrade: Keep a users private key encrypted locally and only decrypt it when they've entered their password.</i></p>
+                </details>
 			</div>
             <div class="book-box-text extr">
-				<h3 class="center">Zero-Knowledge Proofs & zk-SNARKS</h3>
+            <details>
+				<summary><h3 class="center">Zero-Knowledge Proofs & zk-SNARKS</h3></summary>
                 <h3>Zero-Knowledge Proofs (ZKPs)</h3>
 				<p>Zero-Knowledge Proofs are foundational to how MACI creates a private, collusion resistant voting platform. Quoted from <code>Ethereum.org</code>:</p>
                 <p><i>A zero-knowledge proof is a way of proving the validity of a statement without revealing the statement itself. The ‘prover’ is the party trying to prove a claim, while the ‘verifier’ is responsible for validating the claim.</i></p>
-                <p>Let's say I'm the prover, and you are the verifier. <i>Lightning McQueen</i> is hidden in this picture below:</p>
+                <p>Let's say I'm the prover, and you are the verifier.</p>
+                <p><b>The Statement</b>: <i>Lightning McQueen</i> is hidden in this picture.</p>
                 <img class="book-box-ss-wider" src="../../images/hiddencharacter.png"/>
                 <p class="book-box-ss-alt-text">A picture filled with cartoon characters, with Lightning McQueen hidden among them.</p>
                 <p>I know where the hidden <i>Lightning McQueen</i> is in this image. Here's my proof:</p>
                 <img class="book-box-ss" src="../../images/hiddencharacter2.png"/>
                 <p>I haven't helped you find it, but you should know believe that <i>I</i> know where it is. This is a rather silly analogy, but it illustrates the point well. I've proven that I know certain information, without revealing anything about said information.</p>
-                <p><b>There is always a chance a proof could be guessed.</b> To account for this, provers and verifiers run ZKPs and zk-SNARKS by each other many times, to virtually eliminate the chance of solutions being arbitrarily guessed.</p>
+                <p><b>There is always a chance a proof could be guessed.</b> To account for this, provers and verifiers run ZKPs by each other many times, to virtually eliminate the chance of solutions being arbitrarily guessed. zk-SNARKs do not require this multi-pass setup however.</p>
                 <h3>How do they actually work?</h3>
-                <p>ZKPs and zk-SNARKs are advanced cryptographic methods for validation. I am not knowledgable enough or qualified to explain them in their full detail. I will <a href="https://www.di.ens.fr/~nitulesc/files/Survey-SNARKs.pdf">provide</a> <a href="https://arxiv.org/abs/2202.06877">some</a> <a href="https://csrc.nist.gov/projects/pec/zkproof">links</a> for more informative reading. I'll explain it to the best of my ability though.</p>
+                <p>ZKPs and zk-SNARKs are advanced cryptographic methods for validation. They enable authentication by the verifier while maintaining the anonymity of the prover. I'll explain the fundamentals of how they work to provide a better understanding of <i>how</i> MACI can protect voters privacy, while still only counting legitimate votes.</p>
                 <p><b>Computationally Asymmetric Problems</b> - These are problems that are easy to verify, but hard to solve. Let's say I have the semiprime number <code>7.01770176x10<sup>9</sup></code>. What two prime numbers make up this number? It may be a bit difficult to compute that but if I gave you <code>83557</code> and <code>83987</code> and tell you it's the factors, you can easily multiply them to verify if I'm correct. The point here is we can verify correctness easily without exactly being able to reverse-engineer the problem.</p>
                 <p><b>Polynomials</b> - ZKPs convert statements into polynomial equations. The verifier then picks a random point and checks where it lies on the polynomial, a fake polynomial has a miniscule chance of getting the correct number. To use our previous example, we could try guessing random prime numbers, but the odds of picking the correct one are highly improbable. This is the foundation of <b>interactive</b> ZK proofs. However this is impractical in blockchain settings.</p>
-                <p><b>Non-Interactivity through Fiat-Shamir Transform</b> - <i>Bear with me here.</i> Instead of the verifier sending random challenges, they just send a hashed value of their transcript so far. This means it can automatically generated unpredictable values to challenge the prover, meaning a dedicated verifier is unnecessary and anybody can take a chance at proving themselves.</p>
-                                <h3>zk-SNARKs</h3>
+                <p><b>Non-Interactivity through Fiat-Shamir Transform</b> - <i>Bear with me here.</i> Instead of the verifier sending random challenges, they just send a hashed value of their transcript so far. This means it can automatically generate unpredictable values to challenge the prover, so a dedicated verifier is unnecessary.</p>
+                <h3>zk-SNARKs</h3>
                 <p>Stands for <b>Z</b>ero-<b>K</b>nowledge <b>S</b>uccint <b>N</b>on-Interactive <b>AR</b>gument of <b>K</b>nowledge. zk-SNARKs are special in that they require no interaction between the prover and verifier, their proof size is small, and verification is fast. MACI uses zk-SNARKs, specifically <code>Groth16</code> proofs, exclusively.</p>
+                <p>SNARKs require a trusted setup ceremony, a computation involving multiple parties that generate public parameters called a <b>Common Reference String</b> (CRS). While the ceremony is happening; every attending party generates a secret, random value that contributes to the CRS. This value is called the "trapdoor", leaking of these values can lead to security compromises. So long as a single participant destroys their "trapdoor", the system is secure. This "trapdoor" leakage threshold is variable depending on the SNARK scheme being used.</p>
+                <p>I am not the person to explain them in full detail, so I will <a href="https://www.di.ens.fr/~nitulesc/files/Survey-SNARKs.pdf">provide</a> <a href="https://arxiv.org/abs/2202.06877">some</a> <a href="https://csrc.nist.gov/projects/pec/zkproof">links</a> if you'd like more advanced coverage of the subjects. I know enough about them to understand their purpose in MACI</p>
+            </details>
             </div>
             <div class="book-box-text proj">
                 <h3 class="center">The Backend</h3>
+                <p>The backend is responsbile for connecting every piece</p>
                 <p><b>The Coordinator Keypair</b> - The keypair used to decrypt votes. We use Shamir's Secret Sharing to divide the private key, creating a fault-tolerant threshold protection system. This allows us to remove the ability for the backend to see votes in plaintext, resolving a major issue in MACI.</p>
-                <p>Chungus Ipsum. Chungus Ipsum. Chungus Ipsum. Chungus Ipsum. Chungus Ipsum. Chungus Ipsum. Chungus Ipsum. Chungus Ipsum. </p>
 			</div>
             <div class="book-box-text proj">
                 <h3 class="center">The Guardians</h3>
