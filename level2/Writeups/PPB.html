@@ -65,7 +65,7 @@
                     <li><b>AWFUL</b> for replacing existing tech infrastrcture.</li>
                     <li><b>AWFUL</b> for storing complex or large data.</li>
                 </ul>
-                <p>Looking at proposed implementations of blockchain we can see why it fell through when taking into account its strengths and limitations. Can you really store healthcare information on the blockchain? Due to the complexity of the data and its inherent immutability once on the blockchain: its not practical.</p>
+                <p>Looking at proposed implementations of blockchain we can see why it fell through when taking into account its strengths and limitations. Can you really store healthcare information on the blockchain? Due to the complexity of the data and its inherent immutability once on the blockchain: it's not practical.</p>
                 <p>Blockchain may not be universally applicable but it's still a very useful technology. Let's look at a case where blockchain technology is very applicable.</p>
                 </details>
 			</div>
@@ -94,7 +94,6 @@
 				<h3 class="center">MACI & Our Goal</h3>
                 <img class="book-box-ss" src="https://maci.pse.dev/img/maci-card.png"/>
                 <p class="book-box-ss-alt-text">The MACI Logo</p>
-				<p>Let's return to our PPB capstone project.</p>
                 <p>One large benefit of going with polling is that there is a prevalent ecosystem of voting projects, and more importantly, frameworks for blockchain polling.</p>
                 <p><b>MACI</b> stands for <a href="https://maci.pse.dev/">Minimal Anti-Collusion Infrastructure</a>. It provides the smart-contracts that make private, secure blockchain voting accessible for development. The MACI framework is invaluable to blockchain voting systems. While reading the MACI roadmap I came across an interesting statement:</p>
                 <p><i>"It's no secret that one of MACI long standing issues has [sic] having a centralised coordinator. They are able to see all of the votes in cleartext, which allows them to collude with bribers themselves, as well as voters."</i></p>
@@ -206,9 +205,10 @@
                 </ul>
                 <p>The weaknesses of SSS are evident in PPB Polling as mentioned earlier. There are two points at which we are holding the entire decryption key, so there is still room for improvement on the security of the voting system.</p>
                 <h3>Mathematical Principles</h3>
-                <p>We'll quickly cover some of the mathematic principals that make </p>
+                <p><i>Buckle Up.</i> MACI keys are BabyJubJub Scalars</p>
                 <ul>
-                    <li><b>Polynomial Interpolation</b> - </li>
+                    <li><b>Polynomial Interpolation</b> - A polynomial of degree <code>k-1</code> is uniquely determined by exactly <code>k</code> points. This is a general problem and can be approached with something like solving a system of equations.</li>
+                    <li><b>Lagrange Interpolation</b> - An alternative approach to finding a polynomial with the <code>k</code> points. For each given point <i>i</i>, we make a basis polynomial (g[x]) that equals 1 at g[i] and 0 at all other g[j]. This results in a final polynomial of <code>f[x] = &Sigma; y<sub>i</sub> · g[x]</code>. During Shamir reconstruction we want where f[0], so we evaluate every g[0] for each point, and sum up the share values.</li>
                 </ul>
             </details>
             </div>
@@ -284,7 +284,7 @@
                 <h3>zk-SNARKs</h3>
                 <p>Stands for <b>Z</b>ero-<b>K</b>nowledge <b>S</b>uccint <b>N</b>on-Interactive <b>AR</b>gument of <b>K</b>nowledge. zk-SNARKs are special in that they require no interaction between the prover and verifier, their proof size is small, and verification is fast. MACI uses zk-SNARKs, specifically <code>Groth16</code> proofs, exclusively.</p>
                 <p>SNARKs require a trusted setup ceremony, a computation involving multiple parties that generate public parameters called a <b>Common Reference String</b> (CRS). While the ceremony is happening; every attending party generates a secret, random value that contributes to the CRS. This value is called the "trapdoor", leaking of these values can lead to security compromises. So long as a single participant destroys their "trapdoor", the system is secure. This "trapdoor" leakage threshold is variable depending on the SNARK scheme being used.</p>
-                <p>I am not the person to explain them in full detail, so I will <a href="https://www.di.ens.fr/~nitulesc/files/Survey-SNARKs.pdf">provide</a> <a href="https://arxiv.org/abs/2202.06877">some</a> <a href="https://csrc.nist.gov/projects/pec/zkproof">links</a> if you'd like more advanced coverage of the subjects. I know enough about them to understand their purpose in MACI</p>
+                <p>I am not the person to explain them in full detail, so I will <a href="https://www.di.ens.fr/~nitulesc/files/Survey-SNARKs.pdf">provide</a> <a href="https://arxiv.org/abs/2202.06877">some</a> <a href="https://csrc.nist.gov/projects/pec/zkproof">links</a> if you'd like more advanced coverage of the subjects.</p>
             </details>
             </div>
             <div class="book-box-text proj">
