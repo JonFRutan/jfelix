@@ -188,7 +188,28 @@
             <div class="book-box-text extr">
             <details>
 				<summary><h3 class="center">Threshold Cryptography & Secret Sharing</h3></summary>
-                <p>Our guardian is built on the concept of a <b>Threshold Cryptosystem</b> where we split out secret key among a number of independent parties. </p>
+                <p>Our guardian is built on the concept of a <b>Threshold Cryptosystem</b> where we split out secret key among a number of independent parties. This section may get complex, so I'll do my best to balance the technical side with general explanations.</p>
+                <h3>Shamir's Secret Sharing (SSS)</h3>
+                <p>A secret sharing algorithm. A secret split by SSS cannot be revealed unless a predefined threshold is met. No information about the secret can be gained from any number of shares below the threshold.</p>
+                <p>Properties of SSS:</p>
+                <ul>
+                    <li><b>Highly Secure</b> - The system is <i>information-theoretic secure</i>, meaning an adversary with unlimited compute and time would still not be able to break it.</li>
+                    <li><b>Minimal</b> - The size of each piece will not exceed the size of the original data.</li>
+                    <li><b>Extensible</b> - Shares can be dynamically added or deleted without affecting existing shares.</li>
+                    <li><b>Dynamic</b> - We can strengthen the security without changing the secret. This can be done by occasionally changing the polynomial (with the exception of the free term, which will be static) and constructing new shares for the participants.</li>
+                    <li><b>Flexibility</b> - We can allocate varying numbers of shares to each participant. An example may be a company where we want our Chief-of-Security to have 3 shares instead of a standard 1 share.</li>
+                </ul>
+                <p>Weaknesses of SSS:</p>
+                <ul>
+                    <li><b>No verifiable secret sharing</b> - SSS does not provide a way to verify the correctness of each share, meaning fake shares may be submitted. These fake shares wouldn't work towards decryption, but cannot be verified upon submission.</li>
+                    <li><b>Single point of failure</b> - The entire key must exist somewhere before being split, and somewhere after being reassembled.</li>
+                </ul>
+                <p>The weaknesses of SSS are evident in PPB Polling as mentioned earlier. There are two points at which we are holding the entire decryption key, so there is still room for improvement on the security of the voting system.</p>
+                <h3>Mathematical Principles</h3>
+                <p>We'll quickly cover some of the mathematic principals that make </p>
+                <ul>
+                    <li><b>Polynomial Interpolation</b> - </li>
+                </ul>
             </details>
             </div>
             <div class="book-box-text proj">
