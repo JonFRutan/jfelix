@@ -181,7 +181,7 @@
                 <ol>
                     <li><b>The Backend</b> - The central server that communicates with the smart contracts, guardians, and clients.</li>
                     <li><b>The Guardians</b> - A set of nodes each holding a share of the split decryption key.</li>
-                    <li><b>The Threshold</b> - A program that breaks the private decryption key into <code>k</code> pieces, sets the threshold for reassembling the key, then distributes it to the</li>
+                    <li><b>The Threshold</b> - A program that breaks the private decryption key into <code>k</code> pieces, sets the threshold for reassembling the key, then sets the distribution to be given to each guardian node.</li>
                 </ol>
 			</div>
             <div class="book-box-text extr">
@@ -204,12 +204,18 @@
                     <li><b>Single point of failure</b> - The entire key must exist somewhere before being split, and somewhere after being reassembled.</li>
                 </ul>
                 <p>The weaknesses of SSS are evident in PPB Polling as mentioned earlier. There are two points at which we are holding the entire decryption key, so there is still room for improvement on the security of the voting system.</p>
-                <h3>Mathematical Principles</h3>
-                <p><i>Buckle Up.</i> MACI keys are BabyJubJub Scalars</p>
-                <ul>
-                    <li><b>Polynomial Interpolation</b> - A polynomial of degree <code>k-1</code> is uniquely determined by exactly <code>k</code> points. This is a general problem and can be approached with something like solving a system of equations.</li>
-                    <li><b>Lagrange Interpolation</b> - An alternative approach to finding a polynomial with the <code>k</code> points. For each given point <i>i</i>, we make a basis polynomial (g[x]) that equals 1 at g[i] and 0 at all other g[j]. This results in a final polynomial of <code>f[x] = &Sigma; y<sub>i</sub> · g[x]</code>. During Shamir reconstruction we want where f[0], so we evaluate every g[0] for each point, and sum up the share values.</li>
-                </ul>
+                <h4>Mathematical Principles</h4>
+                <p><i>Buckle Up.</i></p>
+                <p><b>Polynomial Interpolation</b> - A polynomial of degree <code>k-1</code> is uniquely determined by exactly <code>k</code> points. E.g. a line can be defined by 2 points, a parabola can be defined by 3, etc. This is a general problem and can be approached with something like solving a system of equations.</p>
+                <p><b>Lagrange Interpolation</b> - An alternative approach to finding a polynomial with the <code>k</code> points. For each given point <i>i</i>, we make a basis polynomial (g[x]) that equals 1 at g[i] and 0 at all other g[j]. This results in a final polynomial of <code>f[x] = &Sigma; y<sub>i</sub> · g[x]</code>. During Shamir reconstruction we want where f[0], so we evaluate every g[0] for each point, and sum up the share values.</p>
+                <p><i>Example:</i> Supposed we have the secret number 6767, and we want to split it into 4 (n=4) shares with a threshold of 3 (k=3) <code>k-1=2</code> numbers are created at random, so we'll use a<sub>0</sub>=6767 (the secret), a<sub>1</sub>=123 and a<sub>2</sub>=456 Our polynomial for producing shares is therefore:</p>
+                <p><code>f[x] = 6767 + 123x + 456x<sup>2</sup></code> We'll create 4 points to create the shares, starting from x=1 since x=0 is our secret:</p>
+                <ol>
+                    <li><i>S</i><sub>1</sub> = [1, 7346]</li>
+                    <li><i>S</i><sub>2</sub> = [2, 8837]</li>
+                    <li><i>S</i><sub>3</sub> = [3, 11240]</li>
+                    <li><i>S</i><sub>4</sub> = [1, 14555]</li>
+                </ol> 
             </details>
             </div>
             <div class="book-box-text proj">
