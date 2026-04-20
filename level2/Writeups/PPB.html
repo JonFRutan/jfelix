@@ -186,6 +186,18 @@
 			</div>
             <div class="book-box-text extr">
             <details>
+                <summary><h3 class="center">The Universe - In Cryptography</h3></summary>
+                <p>In cryptography we need a couple of requirements:</p>
+                <ul>
+                    <li><b>Arithmetic must work</b> - All of our standard arithmetic operations need to behave normally and reversibly.</li>
+                    <li><b>Numbers must be bounded</b> - A 256-bit private key <b>must</b> remain 256-bits. Operations shouldn't change the bit count or make the numbers infeasible to work with (like multi-million digits)/</li>
+                    <li><b>Certain problems should be hard to reverse</b> - Modular exponentiation (<code>a<sup>x</sup> % p</code>) is fast, but trying to solve for <code>x</code>? Not so fast, in fact at a certain point it's computationally infeasible. This is the <b>discrete logarithm problem</b>.</li>
+                </ul>
+                <p>So in order to accomodate these requirements, we create a <b>universe</b> of numbers in which our values can fall. This is easily applied by using the modulus (<code>%</code>) operator, which creates a bounding affect and a range of operable numbers. It also gurantees that the reversal of exponentiation on integers is no longer trivial. This modulus application <b>must be done with a prime number</b>.</p>
+            </details>
+            </div>
+            <div class="book-box-text extr">
+            <details>
 				<summary><h3 class="center">Threshold Cryptography & Secret Sharing</h3></summary>
                 <p>Our guardian is built on the concept of a <b>Threshold Cryptosystem</b> where we split out secret key among a number of independent parties. This section may get complex, so I'll do my best to balance the technical side with general explanations.</p>
                 <h3>Shamir's Secret Sharing (SSS)</h3>
@@ -204,18 +216,303 @@
                     <li><b>Single point of failure</b> - The entire key must exist somewhere before being split, and somewhere after being reassembled.</li>
                 </ul>
                 <p>The weaknesses of SSS are evident in PPB Polling as mentioned earlier. There are two points at which we are holding the entire decryption key, so there is still room for improvement on the security of the voting system.</p>
-                <h4>Mathematical Principles</h4>
+                <h4>Mathematical Principles Of SSS</h4>
                 <p><i>Buckle Up.</i></p>
                 <p><b>Polynomial Interpolation</b> - A polynomial of degree <code>k-1</code> is uniquely determined by exactly <code>k</code> points. E.g. a line can be defined by 2 points, a parabola can be defined by 3, etc. This is a general problem and can be approached with something like solving a system of equations.</p>
                 <p><b>Lagrange Interpolation</b> - An alternative approach to finding a polynomial with the <code>k</code> points. For each given point <i>i</i>, we make a basis polynomial (g[x]) that equals 1 at g[i] and 0 at all other g[j]. This results in a final polynomial of <code>f[x] = &Sigma; y<sub>i</sub> · g[x]</code>. During Shamir reconstruction we want where f[0], so we evaluate every g[0] for each point, and sum up the share values.</p>
-                <p><i>Example:</i> Supposed we have the secret number 6767, and we want to split it into 4 (n=4) shares with a threshold of 3 (k=3) <code>k-1=2</code> numbers are created at random, so we'll use a<sub>0</sub>=6767 (the secret), a<sub>1</sub>=123 and a<sub>2</sub>=456 Our polynomial for producing shares is therefore:</p>
-                <p><code>f[x] = 6767 + 123x + 456x<sup>2</sup></code> We'll create 4 points to create the shares, starting from x=1 since x=0 is our secret:</p>
+                <p><i>Splitting Example:</i> Supposed we have the secret number <code>6767</code>, and we want to split it into 4 (n=4) shares with a threshold of 3 (k=3) <code>k-1=2</code> numbers are created at random, so we'll use a<sub>0</sub>=6767 (the secret), a<sub>1</sub>=123 and a<sub>2</sub>=456 Our polynomial for producing shares is therefore:</p>
+                <p><math><mrow><mi>f[x]</mi><mo>=</mo><mn>6767</mn><mo>+</mo><mn>123</mn><mi>x</mi><mo>+</mo><mn>456</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></math> We'll create 4 points to create the shares, starting from x=1 since x=0 is our secret:</p>
                 <ol>
                     <li><i>S</i><sub>1</sub> = [1, 7346]</li>
                     <li><i>S</i><sub>2</sub> = [2, 8837]</li>
                     <li><i>S</i><sub>3</sub> = [3, 11240]</li>
-                    <li><i>S</i><sub>4</sub> = [1, 14555]</li>
+                    <li><i>S</i><sub>4</sub> = [4, 14555]</li>
                 </ol> 
+                <p><i>Reconstruction Example</i>: Any subset of 3 of these points is enough to reconstruct the original polynomial. We'll need to compute the Lagrange basis polynomials, remember that the goal is to reconstruct the polynomial in which f[0] results in our original secret.</p>
+                <p>We will be using the points:</p> 
+                <ol>
+                    <li><i>(x<sub>0</sub>, y<sub>0</sub>) = [1, 7346]</i></li>
+                    <li><i>(x<sub>1</sub>, y<sub>1</sub>) = [2, 8837]</i></li>
+                    <li><i>(x<sub>2</sub>, y<sub>2</sub>) = [4, 14555]</i></li>
+                </ol>
+                    <math display="block">
+                        <!-- l0 for Lagrange -->
+                        <mrow>
+                            <msub><mi>l</mi><mn>0</mn></msub><mi>(x)</mi>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub></mrow>
+                                <mrow><msub><mi>x</mi><mn>0</mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub></mrow>
+                                <mrow><msub><mi>x</mi><mn>0</mn></msub><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>2</mn></mrow>
+                                <mrow><mn>1</mn><mo>-</mo><mn>2</mn></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>4</mn></mrow>
+                                <mrow><mn>1</mn><mo>-</mo><mn>4</mn></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>4</mn></mrow>
+                                <mrow><mn>-1</mn></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>2</mn></mrow>
+                                <mrow><mn>-3</mn></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                                <mrow><mn>3</mn></mrow>
+                            </mfrac>
+                            <mo>-</mo>
+                            <mrow><mn>2</mn><mi>x</mi></mrow>
+                            <mo>+</mo>
+                            <mfrac>
+                                <mrow><mn>8</mn></mrow>
+                                <mrow><mn>3</mn></mrow>
+                            </mfrac>
+                        </mrow>
+                        </math>
+                        <!-- l1 for Lagrange -->
+                        <math display="block" style="margin-top:15px;">
+                        <mrow>
+                            <msub><mi>l</mi><mn>1</mn></msub><mi>(x)</mi>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><msub><mi>x</mi><mn>0</mn></msub></mrow>
+                                <mrow><msub><mi>x</mi><mn>1</mn></msub><mo>-</mo><msub><mi>x</mi><mn>0</mn></msub></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub></mrow>
+                                <mrow><msub><mi>x</mi><mn>1</mn></msub><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>1</mn></mrow>
+                                <mrow><mn>2</mn><mo>-</mo><mn>1</mn></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>4</mn></mrow>
+                                <mrow><mn>2</mn><mo>-</mo><mn>4</mn></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>1</mn></mrow>
+                                <mrow><mn>1</mn></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>4</mn></mrow>
+                                <mrow><mn>-2</mn></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mo>-</mo>
+                            <mfrac>
+                                <mrow><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                                <mrow><mn>2</mn></mrow>
+                            </mfrac>
+                            <mo>+</mo>
+                            <mfrac>
+                                <mrow><mn>5</mn><mi>x</mrow>
+                                <mrow><mn>2</mn></mrow>
+                            </mfrac>
+                            <mo>-</mo>
+                            <mrow><mn>2</mn></mrow>
+                        </mrow>
+                        </math>
+                        <!-- l2 for Lagrange -->
+                        <math display="block" style="margin-top:15px;">
+                        <mrow>
+                            <msub><mi>l</mi><mn>2</mn></msub><mi>(x)</mi>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><msub><mi>x</mi><mn>0</mn></msub></mrow>
+                                <mrow><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>0</mn></msub></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub></mrow>
+                                <mrow><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>1</mn></mrow>
+                                <mrow><mn>4</mn><mo>-</mo><mn>1</mn></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>2</mn></mrow>
+                                <mrow><mn>4</mn><mo>-</mo><mn>2</mn></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>1</mn></mrow>
+                                <mrow><mn>3</mn></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>2</mn></mrow>
+                                <mrow><mn>2</mn></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                                <mrow><mn>6</mn></mrow>
+                            </mfrac>
+                            <mo>-</mo>
+                            <mfrac>
+                                <mrow><mi>x</mi></mrow>
+                                <mrow><mn>2</mn></mrow>
+                            </mfrac>
+                            <mo>+</mo>
+                            <mfrac>
+                                <mrow><mn>1</mn></mrow>
+                                <mrow><mn>3</mn></mrow>
+                            </mfrac>
+                        </mrow>
+                        </math>
+                        <br/>
+                        Now we'll use the formula for polynomial interpolation:
+                        <math display="block" style="margin-top: 15px;">
+                            <mrow><mi>f(x)</mi></mrow>
+                            <mo>=</mo>
+                            <munderover>
+                            <mo>&sum;</mo>
+                            <mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow>
+                            <mi>2</mi>
+                            </munderover>
+                            <mrow><msub><mi>y</mi><mi>j</mi></msub></mrow>
+                            <mo>⋅</mo>
+                            <mrow><msub><mi>l</mi><mi>j</mi></msub><mi>(x)</mi></mrow>
+                        </math>
+                        <math display="block" style="margin-top: 15px;">
+                            <mo>=</mo>
+                            <mrow><msub><mi>y</mi><mi>0</mi></msub><msub><mi>l</mi><mi>0</mi></msub><mi>(x)</mi></mrow>
+                            <mo>+</mo>
+                            <mrow><msub><mi>y</mi><mi>1</mi></msub><msub><mi>l</mi><mi>1</mi></msub><mi>(x)</mi></mrow>
+                            <mo>+</mo>
+                            <mrow><msub><mi>y</mi><mi>2</mi></msub><msub><mi>l</mi><mi>2</mi></msub><mi>(x)</mi></mrow>
+                        </math>
+                        <math display="block" style="margin-top: 15px;">
+                            <mo>=</mo>
+                            <mrow><mn>7346</mn>
+                            <mi>(</mi>                            
+                            <mfrac>
+                                <mrow><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                                <mrow><mn>3</mn></mrow>
+                            </mfrac>
+                            <mo>-</mo>
+                            <mrow><mn>2</mn><mi>x</mi>
+                            </mrow>
+                            <mo>+</mo>
+                            <mfrac>
+                                <mrow><mn>8</mn></mrow>
+                                <mrow><mn>3</mn></mrow>
+                            </mfrac>
+                            <mi>)</mi></mrow>
+
+                            <mo>+</mo>
+
+                            <mrow><mn>8837</mn>
+                            <mi>(</mi>
+                            <mo>-</mo>
+                            <mfrac>
+                                <mrow><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                                <mrow><mn>2</mn></mrow>
+                            </mfrac>
+                            <mo>+</mo>
+                            <mfrac>
+                                <mrow><mn>5</mn><mi>x</mrow>
+                                <mrow><mn>2</mn></mrow>
+                            </mfrac>
+                            <mo>-</mo>
+                            <mrow><mn>2</mn></mrow>
+                            <mi>)</mi>
+                            </mrow>
+
+                            <mo>+</mo>
+
+                            <mrow><mn>14555</mn>
+                                <mi>(</mi>
+                                    <mfrac>
+                                    <mrow><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                                    <mrow><mn>6</mn></mrow>
+                                </mfrac>
+                                <mo>-</mo>
+                                <mfrac>
+                                    <mrow><mi>x</mi></mrow>
+                                    <mrow><mn>2</mn></mrow>
+                                </mfrac>
+                                <mo>+</mo>
+                                <mfrac>
+                                    <mrow><mn>1</mn></mrow>
+                                    <mrow><mn>3</mn></mrow>
+                                </mfrac>
+                                <mi>)</mi></mrow>
+                        </math>
+                        <math display="block" style="margin-top: 15px;">
+                            <mo>=</mo>
+                            <mrow><mi>f[x]</mi><mo>=</mo><mn>6767</mn><mo>+</mo><mn>123</mn><mi>x</mi><mo>+</mo><mn>456</mn><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                        </math>
+                        <br/>
+                    What do we get at f[0]? <code>6767</code>, our secret key!
+                </p>
+                <p>This is the fundamental math behind Shamir's Secret Sharing, but modern interpretations optimize it to reduce the redudant calculations. To optimize it we split the computation into two phases by separating the parts that depend on x-coordinates from the parts that depend on y-values. This is called the <b>Barycentric Form</b> of Lagrange interpolation. In our implementation we use the standard Lagrange Interpolation since our share indices are just the natural numbers <code>1 -> n</code>, however if we had hashed guardian IDs or thousands of shares (large x-coordinates), we'd optimize it and use the Barycentric form.</p>
+                <p>The final thing I'd like to cover in this section is <b>Fermat's Little Theorem</b>, which states:</p>
+                <p><i>Let 'p' be a prime number, and 'a' be any integer. Then a<sup>p</sup>-a is always divisble by p.</i></p>
+                <p>If you read the above section on our operable "universe", inside of the modulus we <b>cannot divide</b> (in the way we do normally). Instead we need to multiply by the <b>modular inverse</b>, and this is computed using Fermat's theorem:</p>
+                <p><math display="block" style="line-height:2vw;">
+                    <mrow><msup><mi>a</mi><mn>-1</mn></msup><mo>=</mo><msup><mi>a</mi><mrow><mi>p</mi><mo>-</mo><mn>2</mn></mrow></msup><mo>%</mo><mi>p</mi></mrow>
+                </math>
+                <i>Example; say our "universe" is 0-7 (p) and we want to find the equivalent of dividing by 5 (a)</i><br/>
+                <math display="block" style="margin-top: 5px;">
+                    <mrow><msup><mi>a</mi><mn>-1</mn></msup><mo>=</mo><msup><mi>5</mi><mrow><mi>7</mi><mo>-</mo><mn>2</mn></mrow></msup><mo>%</mo><mi>7</mi>
+                </math>
+                <math display="block" style="margin-top: 5px;">
+                    <mrow><msup><mi>a</mi><mn>-1</mn></msup><mo>=</mo><msup><mi>5</mi><mn>5</mn></msup><mo>%</mo><mi>7</mi>
+                </math>
+                <math display="block" style="margin-top: 5px;">
+                    <mrow><msup><mi>a</mi><mn>-1</mn></msup><mo>=</mo><mn>3125</mn><mo>%</mo><mi>7</mi>
+                </math>
+                <math display="block" style="margin-top: 5px; margin-bottom: 10px;">
+                    <mrow><msup><mi>a</mi><mn>-1</mn></msup><mo>=</mo><mn>3</mn>
+                </math>
+                To prove this result works, let's try multiplying it against 5, our result should be 1: <br/>
+                <math display="block">
+                    <mrow><mi>(</mi><mn>5</mn><mo>⋅</mo><mn>3</mn><mi>)</mi><mo>%</mo><mn>7</mn><mo>=</mo><mn>15</mn><mo>%</mo><mn>7</mn><mo>=</mo><mn>1</mn></mrow>
+                </math>
+                </p>
+                <p>We apply this every time we need to divide while operating in the bounded "universe", particularly during our Lagrange interpolation where we have fractional terms in the polynomial.</p>
             </details>
             </div>
             <div class="book-box-text proj">
