@@ -333,6 +333,10 @@ footer {
   margin-right: auto;
 }
 
+.math-block {
+  font-size: clamp(.9rem, .5vw, 2rem);
+}
+
 .book-box-ss {
   border: solid 1px;
   max-width: 70%;
@@ -433,13 +437,16 @@ details summary {
     list-style: none;
 }
 
+details summary::-webkit-details-marker {
+    display: none;
+}
+
 details summary::after {
-    margin-top: -25px;
     content: '▾';
-    font-size: 2em;
+    font-size: 1.4em;
 }
 
 details[open] summary::after {
     content: '▴';
-    font-size: 2em;
+    font-size: 1.4em;
 }
