@@ -348,7 +348,7 @@ footer {
 
 .book-box-ss-light {
   border: solid 1px #000000;
-  max-width: 70%;
+  max-width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -450,3 +450,25 @@ details[open] summary::after {
     content: '▴';
     font-size: 1.4em;
 }
+
+li details summary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    list-style: none;
+}
+
+li details summary::after {
+    content: '▾';
+    font-size: 1em;
+    margin-top: 0;
+    margin-left: 8px;
+}
+
+li details[open] summary::after {
+    content: '▴';
+    font-size: 1em;
+}
+

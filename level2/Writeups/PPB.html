@@ -48,9 +48,9 @@
                         <li style="margin-bottom: 10px;"><b>The Good</b>: As long as we worked with blockchain and "preserved privacy", we could pretty much do whatever we wanted.</li>
                         <li><b>The Bad</b>: We had no initial direction, and being inexperienced with blockchain made it difficult to determine where to go.</li>
                     </ul>
-                <p>From our ideas, we settled on the most feasible: a blockchain polling system.<br/><i>(Another idea was a blockchain-based domain registrar, more on this later)</i></p>
-                <p>Polling systems are a very common use case for blockchain technology, and our faculty advisor, Hong-Sheng Zhou, has papers published on this very topic.</p>
-			</div>
+                <p>From our ideas, we settled on the most feasible: a blockchain polling system. Polling systems are a very common use case for blockchain technology, and our faculty advisor, Hong-Sheng Zhou, has papers published on this very topic.</p>
+                <p><i>(Another idea was a blockchain-based domain registrar, more on this later)</i></p>
+            </div>
             <div class="book-box-text insi">
                 <details>
 				<summary><h3 class="center">Applications of Blockchain</h3></summary>
@@ -110,7 +110,7 @@
                 <details>
 				<summary><h3 class="center">Smart Contracts</h3></summary>
 				<p>Smart Contracts establish terms of agreement between parties, what makes them "smart" is they are actually pieces of code that exist on the blockchain network. These are immutable (never-changing) and independent, meaning they reliably carry out their functions. </p>
-                <p>MACI has a set of <a href="https://maci.pse.dev/docs/category/smart-contracts">smart-contracts</a>, each providing a different piece of functionality necessary to the voting system. Notable are:</p>
+                <p>MACI has a set of <a href="https://maci.pse.dev/docs/category/smart-contracts">smart contracts</a>, each providing a different piece of functionality necessary to the voting system. These are written in <a href="https://www.soliditylang.org/">Solidity</a>. Notable are:</p>
                 <ul>
                     <li><code>MACI.sol</code> - The core contract, providing access to creating polls and signing up users.</li>
                     <li><code>Policy.sol</code> - Defines the registration process for MACI polls, providing several authentication options. The default, "FreeForAll", allows anyone to sign up.</li>
@@ -190,6 +190,34 @@
                     <li><b>The Threshold</b> - A program that breaks the private decryption key into <code>k</code> pieces, sets the threshold for reassembling the key, then sets the distribution to be given to each guardian node.</li>
                 </ol>
 			</div>
+            <div class="book-box-text extr">
+            <details>
+                <summary><h3 class="center">Encryptionary</h3></summary>
+                <p>I use a lot of unexplained vocabulary and schemas throughout this document. You can reference this section for a reminder on individual terms, or the purposes of some of our implemented schemas.</p>
+                <h4>Glossary</h4>
+                <p>Terms that will be useful to know when reading, or are worth defining for consistency.</p>
+                <ul>
+                    <li><b>Collusion</b> - The cooperation of parties done in order to cheat or deceive others. In elections this may be coercion to vote for a specific candidate by threat or bribery.</li>
+                    <li><b>Hash</b> - A hash is a one-way function that turns any input into nondescript text. Used for sending and storing sensitive data, passwords are often hashed before being stored. <b>One-way, irreversible.</b></li>
+                    <li><b>Encryption</b> - Similar to a hash, but it must be <b>reversible</b>. You encrypt information much like you'd hash information, then you must be able to take this hash and turn it back into the original data. <b>Two-way, reversible.</b></li>
+                    <li><b>Brute Force Attacks</b> - Attempting to break into a system by randomly guessing passwords until you finally get it. Sounds silly, but super powerful machines can try this millions of times a minute.</li>
+                    <li><b>Salt</b> - Random data added as input to a value before hashing it. If two people use the same password, salt makes them look different in a database. Salt is used to defend against brute force attacks, specifically <a href="https://www.beyondidentity.com/glossary/rainbow-table-attack">rainbow table</a> attacks.</li>
+                    <li><b>Byzantine Fault Tolerance (BFT)</b> - A property of distributed systems that makes sure consensus is reached by a minimum consensus of participants. The BFT limit is defined as <code>n ≥ 3f + 1</code>, where <code>n</code> is how many participants are necessary to accomodate up to <code>f</code> malicious or faulty participants.</li>
+                </ul>
+                <h4>Schemas Used in PPB Polling</h4>
+                <p>Includes hashing, encryption, and cipher schemas. This topic can be very technical, so I've tried to simplify it as much as I can with the first italicized sentence.</p>
+                <ul>
+                    <li><b>bcrypt</b> - <i>Hides your password, so only you can log in.</i> - Used in the backend within <code>auth.py</code>. It <i>slowly</i> hashes passwords before database storage. This is based on the <b>Blowfish</b> cipher. It uses salting, and can purposely be slowed down to mitigate brute-force attacks.</li>
+                    <li><b>XOR Stream Cipher</b> - <i>Scrambles the parts of the vote reading key until a password unscrambles it.</i> - Used in <code>guardian_service.py</code> and <code>guardian_node.py</code> for encryption of locally stored key values. XOR means "Exclusive Or", in your data stream everything is a 1 or 0, when XORing data, if both are 0 or both are 1, XOR returns 0. If only one of them is 1, XOR returns 1. XOR is perfectly inversable, so we can cipher data by using any random string and XORing it against our data, then reversing it.</li>
+                    <li><b>BabyJubJub</b> - <i>The math system votes are built on, works well with MACIs proof systems.</i> - An elliptic curve built for use in zk-SNARK circuits. Curves like <code>secp256k1</code> are expensive inside ZK proofs since it's a different number range (defined by the modulus applied to it) than the proof circuit zk-SNARKs use. BabyJuJub's field prime matches the field of <code>Groth16</code>, which is the proving system MACI uses. This makes elliptic curve operations cheap enough to have inside of the proofs. Every voter keypair and ephemeral vote keypair in PPB Polling is a BabyJubJub keypair.</li>
+                    <li><b>ECDH</b> - <i>Let's two people lock and unlock the same secret without ever sharing the key.</i> - <b>Elliptic Curve Diffie-Hellman</b> is a key agreement protocol, it allows two independent parties to decrypt the same message only using public information by using it with their own private information. Every vote is encrypted with ECDH with a per-vote keypair and the coordinators public key, and only the coordinators private-key can decrypt it.</li>
+                    <li><b>HS256 (HMAC-SHA256)</b> - <i>Stamps your login request so the server knows nobody has messed with it.</i> - Used in <code>auth.py</code> with <i>python-jose</i> for signing JWTs. HMAC is Hashed-based Message Authentication Code. It creates a tamper-evident signature on JWT payloads using a shared secret.</li>
+                    <li><b>Groth16</b> - <i>Proves a vote is valid, without revealing anything about it.</i> - A zk-SNARK proving scheme. Groth16 creates the smallest proofs of any zk-SNARK scheme. Our backend uses rapidsnark to run Groth16 proof generation. MACI uses it generate and verify all ZKPs. Groth16 expresses a computation as a set of arithmetic constraints, and proofs only ever require three elliptic curve points. It requires a trusted setup ceremony per circuit, MACI comes with a set of <code>zkey</code> files for this purpose.</li>
+                    <li><b>SHA256</b> - <i>"Fingerprints" all data so if anything is tampered with, we know right away.</i> - Used in <code>key_manager.py</code> for <code>compute_share_checksum()</code> AND in <code>compute_checksum()</code> AND in the guardians for verifying the integrity of their own share values. SHA256 is very common hashing function designed by the NSA. <b>It is not used for passwords</b>, only for integrity checking on data where the original input isn't secret - e.g. the encrypted share data for guardians.</li>
+                    <li><b>PBKDF2-HMAC-SHA256</b> - <i>Turns weak passwords into strong cryptographic keys.</i> - <i>Password-Based Key Derivation Function 2</i>. Most passwords are short and predictable so they make poor cryptographic keys. PBKDF2 stretches it out into a fixed-length key, making brute-force attacks very expensive. It also incorporates salting to make brute-forcing even more difficult.</li>
+                </ul>
+            </details>
+            </div>
             <div class="book-box-text proj">
                 <h3 class="center">The Frontend</h3>
                 <p>The frontend for PPB Polling is a React/Vite webapp written in TypeScript. TypeScript was chosen because MACI is written in it. The webapp is split into three sections:</p>
@@ -266,6 +294,17 @@
             </details>
             </div>
             <div class="book-box-text proj">
+                <h3 class="center">Custodial Wallets</h3>
+                <p>What percentage of people, when going to vote in a poll, would immediately click right off when they are prompted to connect their locally installed crypto-wallet to a virtual Ethereum network at a given RPC? I'd venture a guess at 99%.</p>
+                <p>Even those familiar with cryptocurrency would have their eyes glaze over at the prospect of hooking it up to a virtual network, so it was a high priority to abstract away all of the crypto wallet elements from the end-users.</p>
+                <p>Fortunately, this isn't as difficult as it may sound. We moved the responsibility to our backend where it creates a contained, managed wallet in association with every user account.</p>
+                <p>These custodial wallets are only accessible by the user account associated with it, these are a 1-to-1 pairing in the database.</p>
+                <img src="../../images/ppbdiagram2.png" class="book-box-ss-light"/>
+                <p class="book-box-ss-alt-text">A diagram showing the database creating a new account with an associated custodial wallet. Note that passwords are not stored in plaintext, but appear that way for visual clarity.</p>
+                <p>The Python <code>eth-account</code> <a href="https://eth-account.readthedocs.io/en/stable/eth_account.html">library</a> is an abstraction of the broader <code>Web3.py</code> <a href="https://github.com/ethereum/web3.py">library</a> that specifically handles Ethereum network accounts. Using <code>eth-account</code> we are able to generate a private wallet keypair for every user to associate to their custodial account. Then we can use the <code>Web3.py</code> library to sign a transaction from the deployer wallet into the newly created account, keeping it perpetually funded, and thus always able to participate in polls.</p>
+                <p>With these libraries available, custodial wallet management on the backend was really not too difficult. In fact it was more difficult removing the wallet connectivity artifacts from the frontend then adding the wallet management to the backend.</p>
+            </div>
+            <div class="book-box-text proj">
                 <h3 class="center">The Backend</h3>
                 <p>The backend is responsible for connecting all the pieces together, and as mentioned in the <b>Where to Begin</b> section, consists of three major parts: <b>The Coordinator, the Guardians, and the Threshold</b>. In this section we'll cover the general functionality of the backend, and the implementation of the MACI coordinator.</p>
                 <p>The backend is primarily is written in Python and uses FastAPI for most of it's work in communicating with other services, and importantly the smart contracts established by MACI. Some important libraries and their usages include:</p>
@@ -309,7 +348,7 @@
             </div>
             <div class="book-box-text extr">
             <details>
-                <summary><h3 class="center">The Universe - In Cryptography</h3></summary>
+                <summary><h3 class="center">The Universe: In a Cryptographic Context</h3></summary>
                 <p>In cryptography we need a couple of requirements:</p>
                 <ul>
                     <li><b>Arithmetic must work</b> - All of our standard arithmetic operations need to behave normally and reversibly.</li>
@@ -317,12 +356,13 @@
                     <li><b>Certain problems should be hard to reverse</b> - Modular exponentiation (<code>a<sup>x</sup> % p</code>) is fast, but trying to solve for <code>x</code>? Not so fast, in fact at a certain point it's computationally infeasible. This is the <b>discrete logarithm problem</b>.</li>
                 </ul>
                 <p>So in order to accomodate these requirements, we create a <b>universe</b> of numbers in which our values can fall. This is easily applied by using the modulus (<code>%</code>) operator, which creates a bounding affect and a range of operable numbers. It also gurantees that the reversal of exponentiation on integers is no longer trivial. This modulus application <b>must be done with a prime number</b>.</p>
+                <p>Why a prime number? So our modulus can cover every number 0 - [prime] inclusively. If we used something like </p>
                 <p>In the case of PPB Polling we used the Ethereum standard field prime: <b>secp256k1</b>. This has been called <a href="https://www.nervos.org/knowledge-base/secp256k1_a_key%20algorithm_(explainCKBot)">cryptocurrency's key elliptical curve</a>. We modulus every arithmetic operation with this prime number when working within <b>modular arithmetic</b>.</p>
             </details>
             </div>
             <div class="book-box-text extr">
             <details>
-				<summary><h3 class="center">Threshold Cryptography & Secret Sharing</h3></summary>
+				<summary><h3 class="center">Shamir's Secret Sharing</h3></summary>
                 <p>Our guardian system is built on the concept of a <b>Threshold Cryptosystem</b> where we split out secret key among a number of independent parties. This section may get complex, so I'll do my best to balance the technical side with general explanations.</p>
                 <h3>Shamir's Secret Sharing (SSS)</h3>
                 <p>A secret sharing algorithm. A secret split by SSS cannot be revealed unless a predefined threshold is met. No information about the secret can be gained from any number of shares below the threshold.</p>
@@ -669,31 +709,18 @@
                     </ul>
                     <p><i>Note: In guardian services we encrypt the local share over 100,000 passes because it is a defined <a href="https://aembit.io/glossary/master-password/">NIST Standard</a></i>.</p>
                 </details>
-            </div>
-            <div class="book-box-text extr">
-            <details>
-                <summary><h3 class="center">Encryption Terms</h3></summary>
-                <p>We talk about <b>a lot</b> of different ciphers and encryption schemes. I'm going to cover each one mentioned, <i>why</i> we use it, and <i>where</i> it's used. After that I'll have a glossary of terms frequently used.</p>
-                <h4>Glossary</h4>
-                <ul>
-                    <li><b>Hash</b> - A hash is a one-way function that turns any input into nondescript text. Used for sending and storing sensitive data, passwords are often hashed before being stored.</li>
-                    <li><b>Brute Force Attacks</b> - Attempting to break into a system by randomly guessing passwords until you finally get it. Sounds silly, but super powerful machines can try this millions of times a minute.</li>
-                    <li><b>Salt</b> - Random data added as input to a value before hashing it. If two people use the same password, salt makes them look different in a database. Salt is used to defend against brute force attacks, specifically <a href="https://www.beyondidentity.com/glossary/rainbow-table-attack">rainbow table</a> attacks.</li>
-                </ul>
-                <h4>Encryption Schemas</h4>
-                <ul>
-                    <li><b>bcrypt</b> - Used in the backend within <code>auth.py</code>. It <i>slowly</i> hashes passwords before database storage. This is based on the <b>Blowfish</b> cipher. It uses salting, and can purposely be slowed down to mitigate brute-force attacks.</li>
-                    <li><b>XOR Stream Cipher</b> - Used in <code>guardian_service.py</code> and <code>guardian_node.py</code> for encryption of locally stored key values. XOR means "Exclusive Or", in your data stream everything is a 1 or 0, when XORing data, if both are 0 or both are 1, XOR returns 0. If only one of them is 1, XOR returns 1. XOR is perfectly inversable, so we can cipher data by using any random string and XORing it against our data, then reversing it.</li>
-                    <li><b>HS256 (HMAC-SHA256)</b> - Used in <code>auth.py</code> with <i>python-jose</i> for signing JWTs. HMAC is Hashed-based Message Authentication Code. It creates a tamper-evident signature on JWT payloads using a shared secret.</li>
-                    <li><b>SHA256</b> - Used in <code>key_manager.py</code> for <code>compute_share_checksum()</code> AND in <code>compute_checksum()</code> AND in the guardians for verifying the integrity of their own share values. SHA256 is very common hashing function designed by the NSA. <b>It is not used for passwords</b>, only for integrity checking on data where the original input isn't secret - e.g. the encrypted share data for guardians.</li>
-                    <li><b>PBKDF2-HMAC-SHA256</b> - <i>Password-Based Key Derivation Function 2</i>. Most passwords are short and predictable so they make poor cryptographic keys. PBKDF2 stretches it out into a fixed-length key, making brute-force attacks very expensive. It also incorporates salting to make brute-forcing even more difficult.</li>
-                </ul>
-            </details>
+                <p>The threshold is primarily used during the set up of the voting system, and is invoked as a library by the coordinator otherwise. It doesn't run independent services on it's own besides it's setup script.</p>
             </div>
             <div class="book-box-text proj">
                 <h3 class="center">The Guardians</h3>
                 <p>The Guardian nodes are each responsible for holding a piece of the split MACI coordinator private key. Our SSS implementation allows us to create as many guardian nodes as we desire, and with any defined threshold. Furthermore the dynamicism of SSS allows us to create more nodes for key-shares as long as we don't modify the currently existing shares.</p>
-                <p>In production environments, a guardian service would be isolated to its own machine or hardened container. </p>
+                <p>In production environments, a guardian service would be isolated to its own machine or hardened container. They operate on a loop, conducting two actions every 6 seconds; their heartbeat and their ceremonie checking. These nodes have three primary functions:</p>
+                <ol>
+                    <li><b>Heartbeat</b> - The guardians will send a heartbeat signal to the backend every 6 seconds to let it know they're alive and well.</li>
+                    <li><b>Watch For Ceremonies</b> - The guardians will check the available ceremonies API every 6 seconds</li>
+                    <li><b>Submit their share of the key</b> - If a ceremony is found they will submit their share of the key.</li>
+                </ol>
+                <p>It should be noted that the guardians as of now <b>immediately submit</b> their key share, with no preprocessing or integrity checking on the backend.</p>
             </div>
             <div class="book-box-text extr">
                 <h3 class="center">The Development Environment</h3>
