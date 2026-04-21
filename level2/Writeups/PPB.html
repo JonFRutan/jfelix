@@ -592,7 +592,21 @@
             </div>
             <div class="book-box-text proj">
                 <h3 class="center">The Backend</h3>
-                <p>The backend is responsbile for connecting every piece</p>
+                <p>The backend is responsible for connecting all the pieces together, and as mentioned in the <b>Where to Begin</b> section, consists of three major parts: <b>The Coordinator, the Guardians, and the Threshold</b>. In this section we'll cover the general functionality of the backend, and the implementation of the MACI coordinator.</p>
+                <p>The backend is primarily is written in Python and uses FastAPI for most of it's work in communicating with other services, and importantly the smart contracts established by MACI. Some important libraries and their usages include:</p>
+                <ul>
+                    <li><b>SQLAlchemy</b> - Used for database operations with SQLite.</li>
+                    <li><b>Pydantic</b> - Defines the API structures for validation and reads configurations from environmental variables.</li>
+                    <li><b>Web3 & eth-account</b> - Handles the Ethereum interactions like signing transactions (voting), sending ETH to other wallets, and calling the smart contract functions.</li>
+                    <li><b>python-jose & passlib</b> - Jose for JWT creation and decoding. Passlib is for bcrypt password hashing.</li>
+                </ul>
+                <details >
+                    <summary>Summary Of Every File</summary>
+                    <p>The backend folder structure is a flat directory with every Python file in it. Not ideal, but works for our purposes.</p>
+                    <ul>
+                        <li><code>settings.py</code> - </li>
+                    </ul>
+                </details>
                 <p><b>The Coordinator Keypair</b> - The keypair used to decrypt votes. We use Shamir's Secret Sharing to divide the private key, creating a fault-tolerant threshold protection system. This allows us to remove the ability for the backend to see votes in plaintext, resolving a major issue in MACI.</p>
 			</div>
             <div class="book-box-text proj">
