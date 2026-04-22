@@ -429,7 +429,7 @@ footer {
     background-clip: content-box;
 }
 
-details summary {
+details > summary {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -437,21 +437,21 @@ details summary {
     list-style: none;
 }
 
-details summary::-webkit-details-marker {
+details > summary::-webkit-details-marker {
     display: none;
 }
 
-details summary::after {
+details > summary::after {
     content: '▾';
     font-size: 1.4em;
 }
 
-details[open] summary::after {
+details[open] > summary::after {
     content: '▴';
     font-size: 1.4em;
 }
 
-li details summary {
+li details > summary {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -460,15 +460,48 @@ li details summary {
     list-style: none;
 }
 
-li details summary::after {
+li details > summary::after {
     content: '▾';
     font-size: 1em;
     margin-top: 0;
     margin-left: 8px;
 }
 
-li details[open] summary::after {
+li details[open] > summary::after {
     content: '▴';
     font-size: 1em;
 }
 
+.schema-dropdown {
+  margin-bottom: 10px;
+}
+
+.schema-dropdown > summary {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  list-style: none; 
+  font-size: 1.1em;
+}
+
+.schema-dropdown > summary::-webkit-details-marker {
+  display: none; 
+}
+
+.schema-dropdown > summary::after {
+  content: '▾';
+  margin-left: 8px;
+  font-size: 1.2em;
+}
+
+.schema-dropdown[open] > summary::after {
+  content: '▴';
+  font-size: 1.2em;
+}
+
+.schema-definition {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  padding-left: 15px; 
+  line-height: 1.5;
+}
