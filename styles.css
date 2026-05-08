@@ -1,4 +1,5 @@
 :root {
+  --base-color: #161b20;
   --bg-color: #212931;
   --div-color: #212931;   /*analogous 1*/
   --insi-color: #212131;  /*analogous 2*/
@@ -14,15 +15,34 @@
 body {
     font-family: "Arimo", Arial, sans-serif;
     color: #FFFFFF;
-    background-color: var(--bg-color);
+    background-color: var(--base-color);
     margin: 0;
-    padding: clamp(10px, 3vw, 20px); 
 }
 
-@media (min-width: 600px) {
-  body {
-    padding: 10px;
-    max-width: none;
+.content {
+  width: min(70%, 900px);
+  min-width: 320px;
+  padding-top: 5vh;
+  margin: auto;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  border-left: solid black 2px;
+  border-right: solid black 2px;
+}
+
+/* mobile styling */
+@media (max-width: 768px) {
+  .content {
+    width: 100%;
+    min-width: unset;
+    border-left: none;
+    border-right: none;
+    padding: 15px;
+  }
+  
+  .container pre {
+    font-size: clamp(3px, 1.8vw, 11px);
+    line-height: 1;
   }
 }
 
