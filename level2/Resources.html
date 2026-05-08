@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns:"https://www.w3.org/1999/xhtml/" xml:lang="en" lang:"en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +7,24 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="icon" href="../images/favicon.png" type="image/png">
 </head>
-<span>
-<body class="container">
-    <header>
-        <h1>[ Resources ]</h1>
-    </header>
-<p style="margin-top: 5px">This page is for friends: providing helpful tools, resources, and articles.</p>
+<body>
+    <nav class="sidenav">
+        <a href="../index.html">Home</a>
+        <a href="./About.html">About</a>
+        <a href="./Portfolio.html">Portfolio</a>
+        <a href="./Writeups.html">Posts</a>
+        <a href="./Torii.html">Torii</a>
+    </nav>
+    <div class="content">
+        <header>
+            <h1>[ Resources ]</h1>
+        </header>
+        <div class="book-content">
+            <p style="margin-top: 5px">This page is for friends: providing helpful tools, resources, and articles.</p>
 
-<h2 style="margin-top: 40px">Linux / BSD</h2>
-<div class="container">
-<pre class="ascii, center">
+            <h2 style="margin-top: 40px">Linux / BSD</h2>
+            <div class="container">
+                <pre class="ascii center">
                    -`                    felix
                   .o+`                   -----------
                  `ooo/                   OS: Arch Linux x86_64
@@ -36,54 +44,50 @@
   `+sso+:-`                 `.-/+oso:    
  `++:.                           `-/+/   
  .`                                 `/
-</pre>
-</div>
-<i style="font-size: .7em">Obligatory neofetch screenshot</i>
-<p><a href="https://archlinux.org/">Arch »</a> - My preferred "daily-driver" - Minamalist install with an great package manager.</p>
-<p><a href="https://www.salixos.org/">SalixOS »</a> - Salix is a more user-friendly and intuitive derivative of Slackware.</p>
-<p><a href="https://www.freebsd.org/">FreeBSD »</a> - My favorite OS. Jails for containerization, ZFS filesystem... what's not to love?</p>
+                </pre>
+            </div>
+            <i style="font-size: .7em">Obligatory neofetch screenshot</i>
+            <p><a href="https://archlinux.org/">Arch »</a> - My preferred "daily-driver" - Minamalist install with an great package manager.</p>
+            <p><a href="https://www.salixos.org/">SalixOS »</a> - Salix is a more user-friendly and intuitive derivative of Slackware.</p>
+            <p><a href="https://www.freebsd.org/">FreeBSD »</a> - My favorite OS. Jails for containerization, ZFS filesystem... what's not to love?</p>
 
-<h2 style="margin-top: 50px">VPNs</h2>
-<p>If the Internet is a window with a pleasant view of the world, VPNs are the blinds to keep the world from getting a pleasant view of you.</p>
-<p>"I have nothing to hide" - This is correct, because you <i>won't</i> have anything to hide. Protect as much personal data and info as you can.</p>
-<p><b>VPNs are not enough for total privacy.</b> They are simply a good first step and generally sufficient for daily browsing.</p>
-<p>I'll probably do a write-up on the importance of online privacy and VPNs in the future on a separate page. For now I'll recommend and talk about a few.</p>
-<p><b><u>BE CAUTIOUS OF FREE VPNs</b></u></p>
-<h3 style="margin-top: 30px"> Mullvad</h3>
-<p>My current VPN provider. No-logs, cheap, and the most private. Accounts have no personal info, and they accept crypto (including xmr).</p>
-<p>Mullvad provides a <a href="https://mullvad.net/en/blog/tag/audits">list of external audits »</a> and has a flawless track record in regards to logs and user information.</p>
-<p>Mullvad also offers a <a href="https://mullvad.net/en/browser">secure browser »</a> they developed with the Tor Project. Unlike Tor, it's meant to be used with a VPN.</p>
-<p>Visit their site: <a href="https://mullvad.net/en">Mullvad »</a></p>
-<h3 style="margin-top: 30px">ProtonVPN</h3>
-<p>Proton offers a suite of services alongside their VPN. With their VPN they provide email, a password manager, and cloud storage.</p>
-<p>They've passed several <a href="https://protonvpn.com/blog/no-logs-audit?srsltid=AfmBOoqscBGUEARr6fDEtr1xQ_7uyCmX3xO39b7pLeFzTK64-IV87899">no-logs policy audits »</a>. I've seen <a href="https://restoreprivacy.com/protonmail-discloses-user-data-leading-to-arrest-in-spain/">one instance »</a> of user data turnover from Proton.</p>
-<p>They do offer a <a href="https://protonvpn.com/free-vpn?srsltid=AfmBOopEmtVWZylR8j5OvmQfcwNzQMAEGbTPt4NsC1axrovVSfsPMbpT">free tier »</a>. If you are absolutely not willing to pay money for a VPN, use Proton.</p>
-<p>Visit their site: <a href="https://protonvpn.com/">Proton »</a></p>
+            <h2 style="margin-top: 50px">VPNs</h2>
+            <p>If the Internet is a window with a pleasant view of the world, VPNs are the blinds to keep the world from getting a pleasant view of you.</p>
+            <p>"I have nothing to hide" - This is correct, because you <i>won't</i> have anything to hide. Protect as much personal data and info as you can.</p>
+            <p><b>VPNs are not enough for total privacy.</b> They are simply a good first step and generally sufficient for daily browsing.</p>
+            <p>I'll probably do a write-up on the importance of online privacy and VPNs in the future on a separate page. For now I'll recommend and talk about a few.</p>
+            <p><b><u>BE CAUTIOUS OF FREE VPNs</u></b></p>
+            <h3 style="margin-top: 30px">Mullvad</h3>
+            <p>My current VPN provider. No-logs, cheap, and the most private. Accounts have no personal info, and they accept crypto (including xmr).</p>
+            <p>Mullvad provides a <a href="https://mullvad.net/en/blog/tag/audits">list of external audits »</a> and has a flawless track record in regards to logs and user information.</p>
+            <p>Mullvad also offers a <a href="https://mullvad.net/en/browser">secure browser »</a> they developed with the Tor Project. Unlike Tor, it's meant to be used with a VPN.</p>
+            <p>Visit their site: <a href="https://mullvad.net/en">Mullvad »</a></p>
+            <h3 style="margin-top: 30px">ProtonVPN</h3>
+            <p>Proton offers a suite of services alongside their VPN. With their VPN they provide email, a password manager, and cloud storage.</p>
+            <p>They've passed several <a href="https://protonvpn.com/blog/no-logs-audit">no-logs policy audits »</a>. I've seen <a href="https://restoreprivacy.com/protonmail-discloses-user-data-leading-to-arrest-in-spain/">one instance »</a> of user data turnover from Proton.</p>
+            <p>They do offer a <a href="https://protonvpn.com/free-vpn">free tier »</a>. If you are absolutely not willing to pay money for a VPN, use Proton.</p>
+            <p>Visit their site: <a href="https://protonvpn.com/">Proton »</a></p>
 
-
-<h2 style="margin-top: 50px;">Misc/Unsorted</h2>
-<p>The FBI recommends using an adblocker: <a href="https://www.ic3.gov/Media/Y2022/PSA221221?=8324278624">ic3.gov »</a> - <a href="https://web.archive.org/web/20221222162340/https://www.ic3.gov/Media/Y2022/PSA221221?=8324278624">[mirror]</a></p>
-<p>View an IPs public torrent downloads and distributions: <a href="https://iknowwhatyoudownload.com/en/peer/">iknowwhatyoudownload.com »</a></p>
-<p>Ricard Bejarano - SMS phishing is way too easy: <a href="https://www.bejarano.io/sms-phishing/"> bejarano.io »</a></p>
-<p>List of known Tor exit nodes: <a href="https://check.torproject.org/torbulkexitlist">check.torproject.org »</a></p>
-<p>Pentesting Resource Repo: <a href="https://github.com/xalgord/Massive-Web-Application-Penetration-Testing-Bug-Bounty-Notes">github.com »</a></p>
-<p>Martin Vigo - Getting a phone number from an email and Phonerator: <a href="https://www.martinvigo.com/phonerator-an-advanced-valid-phone-number-generator/">martinvigo.com »</a></p>
-<p>DeHashed - A compromised asset database: <a href="https://dehashed.com/">dehashed.com »</a></p>
-<p>Old school website about frogs: <a href="https://allaboutfrogs.org/">allaboutfrogs.com »</a></p>
-<p>Amazing ASCII art website: <a href="https://ascii.co.uk/">ascii.co.uk »</a></p>
-<p>Sherlock - OSINT tool for searching usernames across the web: <a href="https://github.com/sherlock-project/sherlock">github.com »</a></p>
-<p>Pentesting simulations and learning: <a href="https://0x0539.net">0x0539 »</a></p>
-<p>Steganography tool: <a href="https://tbpaolini.github.io/imgconceal/">imgconceal.github »</a></p>
-<p>Neat fully visual search engine: <a href="https://same.energy/">same.energy »</a></p>
-<p>Old school website about Pre-IBM PC Computers: <a href="https://www.pc-history.org/">pc-history.org »</a></p>
-<p>Dovydas Vėsa - Who owns your VPN?: <a href="https://vpnpro.com/blog/hidden-vpn-owners-unveiled-97-vpns-23-companies/">vpnpro.com »</a></p>
-<p><a href=""></a></p>
-<p><a href=""></a></p>
-
-
+            <h2 style="margin-top: 50px;">Misc/Unsorted</h2>
+            <p>The FBI recommends using an adblocker: <a href="https://www.ic3.gov/Media/Y2022/PSA221221?=8324278624">ic3.gov »</a> - <a href="https://web.archive.org/web/20221222162340/https://www.ic3.gov/Media/Y2022/PSA221221?=8324278624">[mirror]</a></p>
+            <p>View an IPs public torrent downloads and distributions: <a href="https://iknowwhatyoudownload.com/en/peer/">iknowwhatyoudownload.com »</a></p>
+            <p>Ricard Bejarano - SMS phishing is way too easy: <a href="https://www.bejarano.io/sms-phishing/">bejarano.io »</a></p>
+            <p>List of known Tor exit nodes: <a href="https://check.torproject.org/torbulkexitlist">check.torproject.org »</a></p>
+            <p>Pentesting Resource Repo: <a href="https://github.com/xalgord/Massive-Web-Application-Penetration-Testing-Bug-Bounty-Notes">github.com »</a></p>
+            <p>Martin Vigo - Getting a phone number from an email and Phonerator: <a href="https://www.martinvigo.com/phonerator-an-advanced-valid-phone-number-generator/">martinvigo.com »</a></p>
+            <p>DeHashed - A compromised asset database: <a href="https://dehashed.com/">dehashed.com »</a></p>
+            <p>Old school website about frogs: <a href="https://allaboutfrogs.org/">allaboutfrogs.com »</a></p>
+            <p>Amazing ASCII art website: <a href="https://ascii.co.uk/">ascii.co.uk »</a></p>
+            <p>Sherlock - OSINT tool for searching usernames across the web: <a href="https://github.com/sherlock-project/sherlock">github.com »</a></p>
+            <p>Pentesting simulations and learning: <a href="https://0x0539.net">0x0539 »</a></p>
+            <p>Steganography tool: <a href="https://tbpaolini.github.io/imgconceal/">imgconceal.github »</a></p>
+            <p>Neat fully visual search engine: <a href="https://same.energy/">same.energy »</a></p>
+            <p>Old school website about Pre-IBM PC Computers: <a href="https://www.pc-history.org/">pc-history.org »</a></p>
+            <p>Dovydas Vėsa - Who owns your VPN?: <a href="https://vpnpro.com/blog/hidden-vpn-owners-unveiled-97-vpns-23-companies/">vpnpro.com »</a></p>
+        </div>
+        <footer>
+            <h2><a href="../index.html">« Back</a></h2>
+        </footer>
+    </div>
 </body>
-<footer>
-<h2><a href="../index.html">« Back</a></h2>
-</footer>
-</span>
 </html>
