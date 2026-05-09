@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="https://www.w3.org/1999/xhtml/" xml:lang="en" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,222 +16,856 @@
         <a href="../Torii.html">Torii</a>
     </nav>
     <div class="content">
-        <header>
-            <h1>[ Blockchain &amp; PPB Polling ]</h1>
-            <img src="https://content.jfelix.space/ppbunny.png" style="width: 10%;"/><br/>
-            <i>Bebop, the mascot for PPB Polling. Illustrated by <a href="https://chelsea.jfelix.space">Chelsea Hodum</a>.</i>
-            <p class="center" style="font-weight: bolder;"><a href="https://ppb.jfelix.space/#/demo">View PPB Polling's design &amp; demo here »</a></p>
-        </header>
+    <header>
+        <h1>[ Blockchain & PPB Polling ]</h1>
+        <img src="https://content.jfelix.space/ppbunny.png" style="width: 10%;"/><br/>
+        <i>Bebop, the mascot for PPB Polling. Illustrated by <a href="https://chelsea.jfelix.space">Chelsea Hodum</a>.</i>
+        <p display="block" class="center" style="font-weight: bolder;"><a href="https://ppb.jfelix.space/#/demo">View PPB Polling's design & demo here »</a></p>
+    </header>
         <br/>
-        <div class="color-key">
-            <i>Section Color Code</i>
-            <table class="key-table">
-                <tr>
-                    <th class="proj">Project</th>
-                    <th class="insi">Insights</th>
-                    <th class="extr">Technical</th>
-                </tr>
-            </table>
-        </div>
-        <div class="ascii-row">
-            <div class="book-content">
-                <div class="book-box-text proj">
-                    <h3 class="center">Genesis of PPB</h3>
-                    <p><i>Privacy Preserving Blockchain</i> (PPB) is the basis of our project.</p>
-                    <p>Seniors in the VCU College of Engineering must complete a year-long capstone project. We were given a list of some 140 to pick our top 10 from, of which <i>Privacy Preserving Blockchain</i> was my 7th pick.</p>
-                    <p>The name of the project matches the whole description; how we were to use blockchain to "preserve privacy" was entirely up to us as a team. Let me get this out of the way now: I knew <i>nothing</i> about working with crypto and blockchain.</p>
-                    <p>While I wasn't <i>thrilled</i> with this project assignment, I ended up enjoying working on it and am very pleased with the result.</p>
-                    <p>This writeup will detail the development and structure of this project, I promise it'll be more interesting than it may seem.</p>
-                </div>
-                <div class="book-box-text proj">
-                    <h3 class="center">The PPB Project</h3>
-                    <p>We probably had the most freedom of any of the capstone projects, which proved to be a double edged sword.</p>
+    <div class="color-key">
+        <i>Section Color Code</i>
+        <table class="key-table">
+            <tr>
+                <th class="proj">Project</th>
+                <th class="insi">Insights</th>
+                <th class="extr">Technical</th>
+            </tr>
+        </table>
+    </div>
+    <div class="ascii-row">
+    <div class="book-content">
+    	<div class="book-box-text proj">	
+			<h3 class="center">Genesis of PPB</h3>
+            <p><i>Privacy Preserving Blockchain</i> (PPB) is the basis of our project.</p>
+            <p>Seniors in the VCU College of Engineering must complete a year-long capstone project. We were given a list of some 140 to pick our top 10 from, of which <i>Privacy Preserving Blockchain</i> was my 7th pick.</p>
+            <p>The name of the project matches the whole description; how we were to use blockchain to "preserve privacy" was entirely up to us as a team. Let me get this out of the way now: I knew <i>nothing</i> about working with crypto and blockchain.</p>
+            <p>While I wasn't <i>thrilled</i> with this project assignment, I ended up enjoying working on it and am very pleased with the result.</p>
+            <p>This writeup will detail the development and structure of this project, I promise it'll be more interesting than it may seem.</p>
+		</div>
+			<div class="book-box-text proj">
+				<h3 class="center">The PPB Project</h3>
+				<p>We probably had the most freedom of any of the capstone projects, which proved to be a double edged sword.</p>
                     <ul>
                         <li style="margin-bottom: 10px;"><b>The Good</b>: As long as we worked with blockchain and "preserved privacy", we could pretty much do whatever we wanted.</li>
                         <li><b>The Bad</b>: We had no initial direction, and being inexperienced with blockchain made it difficult to determine where to go.</li>
                     </ul>
-                    <p>From our ideas, we settled on the most feasible: a blockchain polling system. Polling systems are a very common use case for blockchain technology, and our faculty advisor, Hong-Sheng Zhou, has papers published on this very topic.</p>
-                    <p><i>(Another idea was a blockchain-based domain registrar, more on this later)</i></p>
-                </div>
-                <div class="book-box-text insi">
-                    <details>
-                        <summary><h3 class="center">Applications of Blockchain</h3></summary>
-                        <p>Is blockchain actually used anywhere other than cryptocurrency? If we ignore DeFi, cryptoexchanges, and things like NFTs we see a few commercial applications:</p>
-                        <ol>
-                            <li style="margin-bottom: 10px;"><b>Decentralized Identity</b> - <a href="https://www.dock.io/post/decentralized-identity">Identity Verification Systems</a> that don't rely on centralized databases for verification.</li>
-                            <li style="margin-bottom: 10px;"><b>Private, Permissioned Blockchains</b> - <a href="https://www.gao.gov/assets/gao-19-704sp.pdf">Distributed Ledgers</a>, internal private blockchain networks used for auditing of financial history and transactions.</li>
-                            <li><b>Targeted Supply Chains</b> - <a href="https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/blockchain-in-the-food-supply-chain.html">Walmart</a> uses blockchain for tracking food sources. <a href="https://www.debeersgroup.com/news-insights/business-market/archive/de-beers-group-successfully-tracks-first-diamonds-from-mine-to-r">De Beers</a> used <i>Tracr</i> to trace diamonds from their source.</li>
-                        </ol>
-                        <p>The biggest barrier of blockchain is its complexity and speed. There was a time where there was a lot of optimism with incorporating blockchain into global supply chains or healthcare systems. These ambitions have fallen through, with a <a href="https://wisechainconsult.substack.com/p/8-why-did-tradelens-failed-and-and">few</a> <a href="https://www.gtreview.com/news/top-stories/we-trade-calls-it-quits-after-running-out-of-cash/">notorious</a> <a href="https://www.ledgerinsights.com/marco-polo-blockchain-trade-finance-insolvency/">cases</a>.</p>
-                        <p>Blockchain is:</p>
-                        <ul>
-                            <li><b>GREAT</b> for decentralizing systems and their infrastructure.</li>
-                            <li><b>GREAT</b> for publicly accountable ledgers and systems.</li>
-                            <li><b>GREAT</b> for creating private systems with cryptography.</li><br/>
-                            <li><b>AWFUL</b> for high throughput systems and tasks.</li>
-                            <li><b>AWFUL</b> for replacing existing tech infrastructure.</li>
-                            <li><b>AWFUL</b> for storing complex or large data.</li>
-                        </ul>
-                    </details>
-                </div>
-                <div class="book-box-text insi">
-                    <details>
-                        <summary><h3 class="center">A Case For Blockchain Domain Registrars</h3></summary>
-                        <p>As previously mentioned, my proposal for a project was a blockchain-backed domain registrar. <a href="https://decentraweb.org/">Decentraweb</a> is an example of this.</p>
-                        <p>Problems with our current domain registration system:</p>
-                        <ul>
-                            <li><b>Centralization</b> - Domain registration is wholly controlled by the centralized authority ICANN.</li>
-                            <li><b>Privacy (Lack thereof)</b> - Domain registration requires owners to provide contact information, publicly available through <a href="https://lookup.icann.org/en">ICANN Lookup</a> and <a href="https://www.whois.com/whois/">Whois</a>.</li>
-                            <li><b>Vulnerabilities</b> - DNS is subject to spoofing, phishing, and cache poisoning.</li>
-                            <li><b>Security</b> - (<a href="https://www.digicert.com/blog/tls-certificate-lifetimes-will-officially-reduce-to-47-days">Soon</a>) SSL certificates must be renewed every <b>47 days</b>.</li>
-                        </ul>
-                        <p>A blockchain backend resolves these with decentralization, optional anonymity, and an indisputable cryptographic source of truth for domain ownership.</p>
-                        <p>The issue with Decentraweb, and other web3 domain registrars, is that they are <i>exclusively</i> web3, selling web3-specific TLDs rather than common ones like <code>.com</code>.</p>
-                    </details>
-                </div>
-                <div class="book-box-text proj">
-                    <h3 class="center">MACI &amp; Our Goal</h3>
-                    <img class="book-box-ss" src="https://maci.pse.dev/img/maci-card.png"/>
-                    <p class="book-box-ss-alt-text">The MACI Logo</p>
-                    <p><b>MACI</b> stands for <a href="https://maci.pse.dev/">Minimal Anti-Collusion Infrastructure</a>. It provides the smart-contracts that make private, secure blockchain voting accessible for development. One statement from the MACI roadmap stood out:</p>
-                    <p><i>"It's no secret that one of MACI long standing issues has [sic] having a centralised coordinator. They are able to see all of the votes in cleartext, which allows them to collude with bribers themselves, as well as voters."</i></p>
-                    <p>"Perfect!" I said in response. Now we had a goal: <b>do something about the MACI coordinator</b>.</p>
-                    <p>The project was no longer just another blockchain voting system, it would be about pushing the boundaries of anti-collusionary voting.</p>
-                </div>
-                <div class="book-box-text extr">
-                    <details>
-                        <summary><h3 class="center">Smart Contracts</h3></summary>
-                        <p>Smart Contracts establish terms of agreement between parties as actual pieces of code that exist on the blockchain — immutable and independent. MACI has a set of <a href="https://maci.pse.dev/docs/category/smart-contracts">smart contracts</a> written in <a href="https://www.soliditylang.org/">Solidity</a>. Notable are:</p>
-                        <ul>
-                            <li><code>MACI.sol</code> - The core contract.</li>
-                            <li><code>Policy.sol</code> - Defines the registration process.</li>
-                            <li><code>PollFactory.sol</code> - Deploys new polls, each with three corresponding contracts: <code>Poll.sol</code>, <code>MessageProcessor.sol</code>, and <code>Tally.sol</code>.</li>
-                        </ul>
-                    </details>
-                </div>
-                <div class="book-box-text extr">
-                    <details>
-                        <summary><h3 class="center">MACIs Coordinator</h3></summary>
-                        <p>The coordinator is a backend system (NOT on the blockchain) for managing and interacting with all smart contracts via APIs. It handles user registrations, poll creation, and vote submission. Its key vulnerability: whoever controls it can see all votes in cleartext.</p>
-                    </details>
-                </div>
-                <div class="book-box-text proj">
-                    <h3 class="center">Where To Begin</h3>
-                    <p>Our original intention was to fork existing voting software. However after testing several options I ran into consistent issues: difficult setup, mandatory crypto wallets, and poor extensibility. These three issues cemented our project requirements:</p>
-                    <ol>
-                        <li><b>Make the backend extendable</b> - Preferably written in a simpler language than TypeScript.</li>
-                        <li><b>Make it accessible</b> - Abstract away all cryptocurrency/wallet aspects from end-users.</li>
-                        <li><b>Weaken the coordinator</b> - Mitigate the coordinator's control and reduce its value as an attack target.</li>
-                    </ol>
-                    <p>The project would no longer be a fork, instead built from the ground up on the foundations of MACI.</p>
-                </div>
-                <div class="book-box-text extr">
-                    <details>
-                        <summary><h3 class="center">Jon's Encryptionary</h3></summary>
-                        <p>A glossary of important terms used throughout this writeup.</p>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li><details class="schema-dropdown"><summary><b>Byzantine Fault Tolerance [BFT]</b></summary><p class="schema-definition">A property of distributed systems ensuring consensus is reached by a minimum number of participants. The BFT limit: <code>n ≥ 3f + 1</code>.</p></details></li>
-                            <li><details class="schema-dropdown"><summary><b>Collusion</b></summary><p class="schema-definition">Cooperation to cheat or deceive. In elections: coercion to vote a certain way by threat or bribery.</p></details></li>
-                            <li><details class="schema-dropdown"><summary><b>Encryption</b></summary><p class="schema-definition">Similar to a hash, but reversible. <b>Two-way.</b></p></details></li>
-                            <li><details class="schema-dropdown"><summary><b>Hash</b></summary><p class="schema-definition">A one-way function turning any input into nondescript text. <b>One-way, irreversible.</b></p></details></li>
-                            <li><details class="schema-dropdown"><summary><b>BabyJubJub</b></summary><p class="schema-definition">An elliptic curve built for zk-SNARK circuits. Its field prime matches Groth16's, making elliptic curve operations cheap inside proofs. Every voter keypair in PPB uses BabyJubJub.</p></details></li>
-                            <li><details class="schema-dropdown"><summary><b>ECDH</b></summary><p class="schema-definition">Elliptic Curve Diffie-Hellman. Lets two parties unlock the same secret without sharing the key. Every vote is ECDH-encrypted with the coordinator's public key.</p></details></li>
-                            <li><details class="schema-dropdown"><summary><b>Groth16</b></summary><p class="schema-definition">A zk-SNARK proving scheme creating the smallest possible proofs. MACI uses it to generate and verify all ZKPs.</p></details></li>
-                            <li><details class="schema-dropdown"><summary><b>bcrypt</b></summary><p class="schema-definition">Intentionally slow password hashing used in <code>auth.py</code>. Based on the Blowfish cipher, with salting and configurable slowness to mitigate brute-force attacks.</p></details></li>
-                        </ul>
-                    </details>
-                </div>
-                <div class="book-box-text proj">
-                    <h3 class="center">Weakening The Coordinator</h3>
-                    <p>The coordinator is MACI's Achilles' Heel. The simplest solution: <b>keep the decryption key out of the coordinator</b> until the moment of decryption — and even then, split it using <b>Threshold Key Cryptography</b>.</p>
-                    <img class="book-box-ss-light" src="https://content.jfelix.space/ppbdiagram1.png"/>
-                    <p class="book-box-ss-alt-text">A diagram showing a key being split into three pieces, then distributed among 3 computers.</p>
-                    <p>This is a <b>Guardian Node</b> system. Independent nodes hold pieces of the split key. The coordinator requests pieces only when ready to finalize, and nodes may choose to provide their share. With this system, votes cannot be read until consensus is reached among guardian nodes after the poll has finalized.</p>
-                    <p>Our coordinator consists of three services: <b>The Backend</b> (communicates with smart contracts, guardians, and clients), <b>The Guardians</b> (nodes holding split key shares), and <b>The Threshold</b> (splits the private key into <code>k</code> pieces).</p>
-                </div>
-                <div class="book-box-text proj">
-                    <h3 class="center">The Frontend</h3>
-                    <p>A React/Vite webapp in TypeScript with three sections: the user interface, the admin interface, and an interactive demo for our expo.</p>
-                    <img class="book-box-ss" src="../../images/ppblogin.png"/>
-                    <p class="book-box-ss-alt-text">The PPB login page.</p>
-                    <img class="book-box-ss" src="../../images/ppbadmin.png"/>
-                    <p class="book-box-ss-alt-text">The PPB admin panel.</p>
-                    <p>The frontend handles critical privacy functionality: a persistent <b>MACI Identity Keypair</b> (BabyJubJub — private key never leaves the client) and a per-vote <b>ephemeral keypair</b> that removes linkability between votes.</p>
-                    <h3>What about the crypto wallets?</h3>
-                    <p>They're gone. Everything crypto related is handled by the backend. Voting on PPB Polling requires not an ounce of knowledge on cryptocurrency.</p>
-                </div>
-                <div class="book-box-text insi">
-                    <details>
-                        <summary><h3 class="center">The Private Half of the Identity Keypair</h3></summary>
-                        <p>The private half of the identity keypair never leaves the client by design. Sending it to the server would let any actor who gains access decrypt all votes. Keeping it client-side means a lost key loses an account — a far better outcome than a compromised voting system.</p>
-                        <p><i>Potential upgrade: Keep the private key encrypted locally, decrypted only when the user enters their password.</i></p>
-                    </details>
-                </div>
-                <div class="book-box-text proj">
-                    <h3 class="center">Custodial Wallets</h3>
-                    <p>We moved all wallet responsibility to the backend, creating a contained, managed wallet in association with every user account. Using Python's <code>eth-account</code> and <code>Web3.py</code> libraries, a keypair is generated per user and kept perpetually funded from the deployer wallet — so users can always participate without knowing anything about cryptocurrency.</p>
-                    <img src="../../images/ppbdiagram2.png" class="book-box-ss-light"/>
-                    <p class="book-box-ss-alt-text">Diagram of account creation with associated custodial wallet.</p>
-                </div>
-                <div class="book-box-text extr">
-                    <details>
-                        <summary><h3 class="center">Zero-Knowledge Proofs &amp; zk-SNARKS</h3></summary>
-                        <p>A zero-knowledge proof lets a prover demonstrate knowledge of something without revealing the thing itself. MACI uses zk-SNARKs (<b>Z</b>ero-<b>K</b>nowledge <b>S</b>uccinct <b>N</b>on-Interactive <b>AR</b>guments of <b>K</b>nowledge) — specifically Groth16 — to verify votes are legitimate without revealing who voted for what.</p>
-                        <p>The math rests on <b>computationally asymmetric problems</b> (easy to verify, hard to reverse), <b>polynomial representations</b> of statements, and <b>non-interactivity via the Fiat-Shamir transform</b> (hashing the transcript instead of requiring a live verifier). For deeper reading: <a href="https://www.di.ens.fr/~nitulesc/files/Survey-SNARKs.pdf">Survey</a>, <a href="https://arxiv.org/abs/2202.06877">arXiv</a>, <a href="https://csrc.nist.gov/projects/pec/zkproof">NIST</a>.</p>
-                    </details>
-                </div>
-                <div class="book-box-text proj">
-                    <h3 class="center">The Backend</h3>
-                    <p>Primarily Python with FastAPI. Key libraries: <b>SQLAlchemy</b> (SQLite), <b>Web3 &amp; eth-account</b> (Ethereum), <b>python-jose &amp; passlib</b> (JWT &amp; bcrypt), <b>uvicorn</b> (web server).</p>
-                    <p>The <b>Coordinator Keypair</b> is divided by SSS and distributed to guardians. The backend cannot read votes until the threshold is met, after which the key is reassembled, used, then destroyed.</p>
-                    <details>
-                        <summary><b>Summary Of Each File</b></summary>
-                        <ul>
-                            <li><code>main.py</code> - FastAPI entry point.</li>
-                            <li><code>auth.py</code> - Password hashing (bcrypt), JWT creation/decoding.</li>
-                            <li><code>database.py</code> - SQLAlchemy engine and DB calls.</li>
-                            <li><code>models.py</code> - 5 tables: User, CustodialWallet, Poll, TallyResult, VoteReceipt.</li>
-                            <li><code>wallet_service.py</code> - Custodial wallet creation and funding; MACI signups, poll joining, vote publishing.</li>
-                            <li><code>tally_pipeline.py</code> - Off-chain proof generation pipeline. Temporarily holds the MACI coordinator private key.</li>
-                            <li><code>routes_threshold.py</code> - SSS key splitting, guardian management, and key reconstruction triggering.</li>
-                            <li><code>routes_guardians.py</code> - Heartbeat signals, active node listing, ceremony checking.</li>
-                        </ul>
-                    </details>
-                </div>
-                <div class="book-box-text extr">
-                    <details>
-                        <summary><h3 class="center">Shamir's Secret Sharing</h3></summary>
-                        <p>A secret splitting algorithm where a secret cannot be revealed unless a predefined threshold of shares is met. Properties: information-theoretically secure, minimal share size, extensible, and flexible (variable shares per participant).</p>
-                        <p>The math: a polynomial of degree <code>k-1</code> is uniquely determined by <code>k</code> points (Lagrange Interpolation). The secret is the polynomial's value at <code>x=0</code>. Shares are points on the polynomial; any <code>k</code> of them reconstruct it. Division inside the bounded field prime uses modular inverses via <b>Fermat's Little Theorem</b>: <code>a⁻¹ = a^(p-2) % p</code>.</p>
-                    </details>
-                </div>
-                <div class="book-box-text proj">
-                    <h3 class="center">The Threshold</h3>
-                    <p>Runs in four stages: <b>Setup</b> (splits the coordinator private key into <code>n</code> encrypted shares), <b>Storage</b> (each guardian receives and re-encrypts their share locally with PBKDF2), <b>Open Ceremony</b> (guardians detect and submit to active ceremonies), <b>Reassembly</b> (on threshold met: checksum verification → polynomial verification → key reconstruction → decryption → key destruction).</p>
-                    <p>Only standard library Python is used (<code>hashlib</code>, <code>secrets</code>, <code>base64</code>, <code>urllib</code>) to protect against supply-chain risks.</p>
-                </div>
-                <div class="book-box-text proj">
-                    <h3 class="center">The Guardians</h3>
-                    <p>Independent nodes each holding a piece of the split key. They operate on a 6-second loop: send a heartbeat, check for open ceremonies, and submit their share if one is found. Extensible for human oversight, poll validity checking, or peer-to-peer coordination before submission.</p>
-                </div>
-                <div class="book-box-text proj">
-                    <h3 class="center">Rapidsnark</h3>
-                    <p><a href="https://github.com/iden3/rapidsnark">Rapidsnark</a> is a Groth16 prover that made proof generation at least 2500× faster than the default snarkjs — turning multi-minute timeouts into negligible waits during testing.</p>
-                </div>
-                <div class="book-box-text proj">
-                    <h3 class="center">The Development Environment</h3>
-                    <p>MACI requires significant setup (pnpm deps, ~8GB zkeys, coordinator keypair, contract deployment). All of this is automated via a Makefile with commands like <code>make dev</code>, <code>make guardians</code>, <code>make backend-setup</code>, and <code>make clean</code>.</p>
-                </div>
-                <div class="book-box-text proj">
-                    <h3 class="center">Terminus of PPB</h3>
-                    <p>The original problem statement asked us to apply cryptographic techniques to blockchain to keep data private yet provably correct. PPB Polling fulfills this: it identified a real vulnerability in the MACI coordinator and established a concrete mitigation through threshold key distribution and guardian nodes.</p>
-                </div>
-                <p><i>Jon Rutan, 2026</i></p>
+                <p>From our ideas, we settled on the most feasible: a blockchain polling system. Polling systems are a very common use case for blockchain technology, and our faculty advisor, Hong-Sheng Zhou, has papers published on this very topic.</p>
+                <p><i>(Another idea was a blockchain-based domain registrar, more on this later)</i></p>
             </div>
-        </div>
-        <footer>
-            <h2><a href="../Writeups.html">« Back</a></h2>
-        </footer>
-    </div>
+            <div class="book-box-text insi">
+                <details>
+				<summary><h3 class="center">Applications of Blockchain</h3></summary>
+				<p>Is blockchain actually used anywhere other than cryptocurrency? If we ignore DeFi, cryptoexchanges, and things like NFTs we see a few commercial applications:</p>
+                <ol>
+                    <li style="margin-bottom: 10px;"><b>Decentralized Identity</b> - <a href="https://www.dock.io/post/decentralized-identity">Identity Verification Systems</a> that don't rely on centralized databases for verification. Think being able to verify your RealID with an employer through a cryptowallet.</li>
+                    <li style="margin-bottom: 10px;"><b>Private, Permissioned Blockchains</b> - <a href="https://www.gao.gov/assets/gao-19-704sp.pdf">Distributed Ledgers</a>, internal private blockchain networks used for auditing of financial history and transactions.</li>
+                    <li><b>Targeted Supply Chains</b> - In scoped cases supply chain management incorporating blockchain has worked well. <a href="https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/blockchain-in-the-food-supply-chain.html">Walmart</a> uses blockchain for tracking the sources of procured food. <a href="https://www.debeersgroup.com/news-insights/business-market/archive/de-beers-group-successfully-tracks-first-diamonds-from-mine-to-r">De Beers</a> successfully used the blockchain software <i>Tracr</i> to trace diamonds from their source.</li>
+                </ol>
+                <p>The biggest barrier of blockchain is its complexity and speed. There was a time where there was a lot of optimism with incorporating blockchain into global supply chains or healthcare systems. These ambitions have fallen through, with a <a href="https://wisechainconsult.substack.com/p/8-why-did-tradelens-failed-and-and">few</a> <a href="https://www.gtreview.com/news/top-stories/we-trade-calls-it-quits-after-running-out-of-cash/">notorious</a> <a href="https://www.ledgerinsights.com/marco-polo-blockchain-trade-finance-insolvency/">cases</a>.</p>
+                <p>The problem? Blockchain encourages "trustlessness", and while blockchain accomplishes this, we still can't trust the people using it.</p>
+                <p>Blockchain is:</p>
+                <ul>
+                    <li><b>GREAT</b> for decentralizing systems and their infrastructure.</li>
+                    <li><b>GREAT</b> for publicly accountable ledgers and systems.</li>
+                    <li><b>GREAT</b> for creating private systems with cryptography.</li><br/>
+                    <li><b>AWFUL</b> for high throughput systems and tasks.</li>
+                    <li><b>AWFUL</b> for replacing existing tech infrastructure.</li>
+                    <li><b>AWFUL</b> for storing complex or large data.</li>
+                </ul>
+                <p>Looking at proposed implementations of blockchain we can see why it fell through when taking into account its strengths and limitations. Can you really store healthcare information on the blockchain? Due to the complexity of the data and its inherent immutability once on the blockchain: it's not practical.</p>
+                <p>Blockchain may not be universally applicable but it's still a very useful technology. Let's look at a case where blockchain technology is very applicable.</p>
+                </details>
+			</div>
+            <div class="book-box-text insi">
+                <details>
+				<summary><h3 class="center">A Case For Blockchain Domain Registrars</h3></summary>
+				<p>As previously mentioned, my proposal for a project was a blockchain-backed domain registrar. <a href="https://decentraweb.org/">Decentraweb</a> is an example of this.</p>
+                <p>Problems with our current domain registration system:</p>
+                <ul>
+                    <li><b>Centralization</b> - Domain registration is wholly controlled by the centralized authority ICANN. ICANN controls who can have IPs and domain names and have the authority to revoke them at their will. (More on this soon...)</li>
+                    <li><b>Privacy (Lack thereof)</b> - Domain registration is by design <b>against privacy</b>, requiring owners to provide contact information when purchasing a domain. This is all also publicly available through <a href="https://lookup.icann.org/en">ICANN Lookup</a> and <a href="https://www.whois.com/whois/">Whois</a>.</li>
+                    <li><b>Vulnerabilities</b> - DNS is subject to spoofing, phishing, and cache poisoning.</li>
+                    <li><b>Security</b> - (<a href="https://www.digicert.com/blog/tls-certificate-lifetimes-will-officially-reduce-to-47-days">Soon</a>) SSL certificates through certbot must be renewed every <b>47 days</b> for valid HTTPS connectivity.</li>
+                </ul>
+                <p>So how does a blockchain backend for this resolve these problems?</p>
+                <ul>
+                    <li><b>Decentralization</b> - Domain names would be wholly controlled by their owners in a P2P architecture. No central authority may charge you a lease for having it or revoke it from you.</li>
+                    <li><b>Optional Anonymity</b> - Domain owners may pseudonymize themselves to prevent their data from becoming publicly accessible in Whois databases.</li>
+                    <li><b>Security</b> - The benefits of a blockchain based domain registrar are <b>immense.</b> The blockchain is an indisputable source of truth, verifying absolutely that you own this domain.</li>
+                </ul>
+                <p>One of the most important pieces here is that domain registration doesn't need high throughput or latency. It's more than acceptable for a transaction to take a few minutes in the case of domain names, we already wait a while for DNS records to propagate! Furthermore, domain registration is a very simple data primitive, just a string associated with its owner.</p>
+                <p>The issue with Decentraweb, and other web3 domain registrars, is that they are <i>exclusively</i> web3. They don't sell common TLDs, like <code>.com</code> or <code>.org</code>, they instead sell web3-specific ones like <code>.limitless</code>. This is not to take away from their product; I just believe the technology should be appropriated for all common TLDs.</p>
+			</details>
+            </div>
+            <div class="book-box-text proj">
+				<h3 class="center">MACI & Our Goal</h3>
+                <img class="book-box-ss" src="https://maci.pse.dev/img/maci-card.png"/>
+                <p class="book-box-ss-alt-text">The MACI Logo</p>
+                <p>One large benefit of going with polling is that there is a prevalent ecosystem of voting projects, and more importantly, frameworks for blockchain polling.</p>
+                <p><b>MACI</b> stands for <a href="https://maci.pse.dev/">Minimal Anti-Collusion Infrastructure</a>. It provides the smart-contracts that make private, secure blockchain voting accessible for development. The MACI framework is invaluable to blockchain voting systems. One statement from the MACI roadmap stood out:</p>
+                <p><i>"It's no secret that one of MACI long standing issues has [sic] having a centralised coordinator. They are able to see all of the votes in cleartext, which allows them to collude with bribers themselves, as well as voters."</i></p>
+                <p>"Perfect!" I said in response. Not in celebration of voter privacy being violated, but now we had a goal: <b>do something about the MACI coordinator</b>.</p>
+                <p>The project was no longer just another blockchain voting system, it would be about pushing the boundaries of anti-collusionary voting.</p>
+            </div>
+            <div class="book-box-text extr">
+                <details>
+				<summary><h3 class="center">Smart Contracts</h3></summary>
+				<p>Smart Contracts establish terms of agreement between parties, what makes them "smart" is they are actually pieces of code that exist on the blockchain network. These are immutable (never-changing) and independent, meaning they reliably carry out their functions. </p>
+                <p>MACI has a set of <a href="https://maci.pse.dev/docs/category/smart-contracts">smart contracts</a>, each providing a different piece of functionality necessary to the voting system. These are written in <a href="https://www.soliditylang.org/">Solidity</a>. Notable are:</p>
+                <ul>
+                    <li><code>MACI.sol</code> - The core contract, providing access to creating polls and signing up users.</li>
+                    <li><code>Policy.sol</code> - Defines the registration process for MACI polls, providing several authentication options. The default, "FreeForAll", allows anyone to sign up.</li>
+                    <li><code>PollFactory.sol</code> - Deploys new polls. Every time a poll is created, it gets three corresponding smart contracts:</li>
+                    <ul>
+                        <li><code>Poll.sol</code> - Accepts votes and accepts users into the poll.</li>
+                        <li><code>MessageProcessor.sol</code> - Prepares parameters for zk-SNARK circuits <i>(More on these later...)</i> for verifying proofs.</li>
+                        <li><code>Tally.sol</code> - Submits processed votes to the tally results.</li>
+                    </ul>
+                </ul>
+                <p>There are a few other smart contracts but these are the primary players in our system. The contracts are able to communicate between each other, but there is a missing piece: Where do votes, users, and polls come from? They come from MACIs Coordinator.</p>
+                </details>
+            </div>
+            <div class="book-box-text extr">
+                <details>
+				<summary><h3 class="center">MACIs Coordinator</h3></summary>
+				<p>The coordinator is responsible for sending user registrations to <code>MACI.sol</code>, sending poll creations to <code>PollFactory.sol</code>, and sending votes to <code>Poll.sol</code>.</p>
+                <p>The coordinator is <b>NOT</b> on the blockchain. Rather it is a backend system for managing and interacting with all of the smart contracts. MACIs Coordinator is a set of APIs that may be used to interface with the contracts.</p>
+                <p>The MACI important coordinator endpoints are:</p>
+                <ul>
+                    <li><code>{domain}.{tld}/v1/deploy/maci</code> - This deploys the MACI smart contract, starting the MACI service.</li>
+                    <li><code>{domain}.{tld}/v1/deploy/poll</code> - Deploys a new poll on the MACI instance. Needs start / end dates, candidate count, and voting mode.</li>
+                    <li><code>{domain}.{tld}/v1/subgraph/deploy</code> - Deploys the MACI subgraph which indexes and tracks the created smart contracts.</li>
+                    <li>Poll Finalization Endpoints</li>
+                    <ul>
+                        <li><code>{domain}.{tld}/v1/proof/merge</code> - Merges all votes into a Merkle state tree.</li>
+                        <li><code>{domain}.{tld}/v1/proof/generate</code> - Generates a zk-SNARK proof for the final tally.</li>
+                        <li><code>{domain}.{tld}/v1/proof/submit</code> - Submits the final tally.</li>
+                    </ul>
+                    <li><code>{domain}.{tld}/v1/schedule/poll</code> - Schedules a poll to automatically finalize (running merge, generate, and submit) once it's end time passes.</li>
+                    <li><code>{domain}.{tld}/v1/health</code> - Checks that env variables are correct, zkeys are accessible, and if <i>rapidsnark</i> is available.</li>
+                </ul>
+                <p>MACI 3.x offers a UI interface for their coordinator service, earlier versions did not offer this and thus every command needed to be entered from a command line or scripted together in a backend tool.</p>
+                </details>
+            </div>
+            <div class="book-box-text proj">
+                <h3 class="center">Where To Begin</h3>
+                <p>Our original intention was to fork an already existing voting software, such as <i>zkElect</i>, <i>PolyVote</i>, or <i>AnonVote</i>. However after testing out a few of these I ran into several issues: </p>
+                <ul>
+                    <li><b>Setup</b> - Setting up these projects was always very difficult due to each having specific environmental configurations.</li>
+                    <li><b>Usability</b> - They all required you to bring your own crypto wallet. This is a <b>massive</b> barrier for entry and makes it way harder for the average end-user to participate.</li>
+                    <li><b>Extensibility</b> - Without knowing or understanding the structure of these projects it's not easy to extend them with our desired upgrades and functionality.</li>
+                </ul>
+                <p>The real killer here is bringing your own crypto wallet, it makes testing, development, and participation more difficult. With <i>zkElect</i> to create a poll I had to install a crypto wallet, register an account, then hook it up to our virtual ethereum network.</p>
+                <p><code>Not enough funds.</code> - the error says. Okay, to add funds to my wallet on a virtual network I need to access the deployer wallet and distribute myself some Ethereum. I deploy a poll, and go to vote on it.</p>
+                <p><code>Not enough funds.</code> - the error says. I guess it cost too much to deploy the poll and now I'm out of Ethereum.</p>
+                <p>I think you understand the point, crypto outside of the major currency exchange platforms isn't very accessible. Here is where our three major project requirements cemented themselves:</p>
+                <ol>
+                    <li><b>Make the backend extendable</b> - The backend must be extensible so that it may be decentralized, preferably written in a language simpler than TypeScript.</li>
+                    <li><b>Make it accessible</b> - Abstract away as much, if not all, of the cryptocurrency/wallet aspects from end-users.</li>
+                    <li><b>Weaken the coordinator</b> - Mitigate the amount of control the coordinator has over the entire voting system; reduce its value as a target for malicious actors.</li>
+                </ol>
+                <p>By focusing on the first requirement the rest become easier. The project would no longer be a fork, instead it was to be built from the ground up on the foundations of MACI.</p>
+			</div>
+            <div class="book-box-text extr">
+            <details>
+                <summary><h3 class="center">Jon's Encryptionary</h3></summary>
+                <p>Throughout this writeup there are <i>a lot</i> of terms used that may not be self-evident or that presume prior knowledge. I'll define important terms here for reference, as many of them are prerequisite knowledge for understanding the more complex sections.</p>
+                <h4>Glossary</h4>
+                <p>Terms that will be useful to know when reading, or are worth defining.</p>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>Brute Force Attacks</b></summary>
+                            <p class="schema-definition">Attempting to break into a system by randomly guessing passwords until you finally get it. Sounds silly, but super powerful machines can try this millions of times a minute.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>Byzantine Fault Tolerance [BFT]</b></summary>
+                            <p class="schema-definition">A property of distributed systems that makes sure consensus is reached by a minimum consensus of participants. The BFT limit is defined as <code>n ≥ 3f + 1</code>, where <code>n</code> is how many participants are necessary to accomodate up to <code>f</code> malicious or faulty participants.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>Collusion</b></summary>
+                            <p class="schema-definition">The cooperation of parties done in order to cheat or deceive others. In elections this may be coercion to vote for a specific candidate by threat or bribery.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>Distributed Systems</b></summary>
+                            <p class="schema-definition">When several individual computers are cooperatively running a program or service.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>Encryption</b></summary>
+                            <p class="schema-definition">Similar to a hash, but it must be <b>reversible</b>. You encrypt information much like you'd hash information, then you must be able to take this hash and turn it back into the original data. <b>Two-way, reversible.</b></p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>Hash</b></summary>
+                            <p class="schema-definition">A hash is a one-way function that turns any input into nondescript text. Used for sending and storing sensitive data, passwords are often hashed before being stored. <b>One-way, irreversible.</b></p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>Node</b></summary>
+                            <p class="schema-definition">A node is an independent party among a set of other parties. This generally refers to an isolated service or machine working among a distributed system.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>Salt</b></summary>
+                            <p class="schema-definition">Random data added as input to a value before hashing it. If two people use the same password, salt makes them look different in a database. Salt is used to defend against brute force attacks, specifically <a href="https://www.beyondidentity.com/glossary/rainbow-table-attack">rainbow table</a> attacks.</p>
+                        </details>
+                    </li>
+                </ul>
+                <h4>Schemas Used in PPB Polling</h4>
+                <p>Includes hashing, encryption, and cipher schemas. These get very technical quickly, so I've tried to simplify it as much as I can with the first sentence.</p>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>bcrypt</b></summary>
+                            <p class="schema-definition"><b>Hides your password, so only you can log in.</b> Used in the backend within <code>auth.py</code>. It <i>slowly</i> hashes passwords before database storage. It's intentionally slow because logins must prioritize security over throughput. This is based on the <b>Blowfish</b> cipher. It uses salting, and can purposely be slowed down to mitigate brute-force attacks.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>XOR Stream Cipher</b></summary>
+                            <p class="schema-definition"><b>Scrambles the parts of the vote reading key until a password unscrambles it.</b> Used in <code>guardian_service.py</code> and <code>guardian_node.py</code> for encryption of locally stored key values. XOR means "Exclusive Or", in your data stream everything is a 1 or 0, when XORing data, if both are 0 or both are 1, XOR returns 0. If only one of them is 1, XOR returns 1. XOR is perfectly invertible, so we can cipher data by using any random string and XORing it against our data, then reversing it.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>BabyJubJub</b></summary>
+                            <p class="schema-definition"><b>The math system all votes are based on, works well with MACIs proof systems.</b> An elliptic curve built for use in zk-SNARK circuits. Curves like <code>secp256k1</code> are expensive inside ZK proofs since it's a different number range (defined by the modulus applied to it) than the proof circuit zk-SNARKs use. BabyJubJub's field prime matches the field of <code>Groth16</code>, which is the proving system MACI uses. This makes elliptic curve operations cheap enough to have inside of the proofs. Every voter keypair and ephemeral vote keypair in PPB Polling is a BabyJubJub keypair.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>ECDH</b></summary>
+                            <p class="schema-definition"><b>[Elliptic Curve Diffie-Hellman] Lets two people lock and unlock the same secret without ever sharing the key.</b> A key agreement protocol, it allows two independent parties to decrypt the same message only using public information by using it with their own private information. Every vote is encrypted with ECDH with a per-vote keypair and the coordinators public key, and only the coordinators private-key can decrypt it.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>HS256 (HMAC-SHA256)</b></summary>
+                            <p class="schema-definition"><b>[Hash-based Message Authentication Code] Stamps your login request so the server knows nobody has messed with it.</b> This is used in <code>auth.py</code> with <i>python-jose</i> for signing JWTs. HMAC is Hash-based Message Authentication Code. It creates a tamper-evident signature on JWT payloads using a shared secret.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>Groth16</b></summary>
+                            <p class="schema-definition"><b>Proves a vote is valid, without revealing anything about it.</b> A zk-SNARK proving scheme. Groth16 creates the smallest proofs of any zk-SNARK scheme. Our backend uses rapidsnark to run Groth16 proof generation. MACI uses it generate and verify all ZKPs. Groth16 expresses a computation as a set of arithmetic constraints, and proofs only ever require three elliptic curve points. It requires a trusted setup ceremony per circuit, MACI comes with a set of <code>zkey</code> files for this purpose.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>SHA256</b></summary>
+                            <p class="schema-definition"><b>[Secure Hash Algorithm] "Fingerprints" all data so if anything is tampered with, we know right away.</b> Used in <code>key_manager.py</code> for <code>compute_share_checksum()</code> AND in <code>compute_checksum()</code> AND in the guardians for verifying the integrity of their own share values. SHA256 is very common hashing function designed by the NSA. <b>It is not used for passwords</b>, only for integrity checking on data where the original input isn't secret - e.g. the encrypted share data for guardians.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="schema-dropdown">
+                            <summary><b>PBKDF2-HMAC-SHA256</b></summary>
+                            <p class="schema-definition"><b>[Password-Based Key Derivation Function 2] Turns weak passwords into strong cryptographic keys.</b> Most passwords are short and predictable so they make poor cryptographic keys. PBKDF2 stretches it out into a fixed-length key, making brute-force attacks very expensive. It also incorporates salting to make brute-forcing even more difficult.</p>
+                        </details>
+                    </li>
+                </ul>
+            </details>
+            </div>
+            <div class="book-box-text proj">
+                <h3 class="center">Weakening The Coordinator</h3>
+                <p>The coordinator is necessary for MACIs function; it's also its Achilles' Heel. As stated by the developers of MACI: if you can access the coordinator you can see everyone and their votes. Ideally, we could have multiple coordinators that must act in consensus to conduct their responsibilities. This is not an easy approach and it still poses some problems:</p>
+                <ul>
+                    <li>Eventually somebody has to hold the decryption key, we'd still have a single "super node".</li>
+                    <li>Implementing consensus on multiple coordinator nodes would be extraordinarily difficult. We can only rely on majority rules, such as the Byzantine Fault Tolerance (BFT) limit of <code>n≥3f+1</code>. We'd need a lot of computers.</li>
+                    <li>Voting becomes less reliable. We would need to make sure a vote reaches every coordinator node using a broadcaster system. Then how do we handle when the votes get out of sync or have time arrival differences at nodes?</li>
+                </ul>
+                <p>So decentralizing the coordinator is impractical; instead we need to weaken it. This is where the simplest solution comes in: <b>keep the decryption key out of the coordinator</b>.</p>
+                <p>It <i>would</i> need it eventually, but by removing it until the time of decryption the coordinator is a far weaker entity in the MACI system. It wouldn't help much to just keep the key on another server, so we can actually split the key into pieces using <b>Threshold Key Cryptography</b> and share pieces to as many independent nodes as we want.</p>
+                <img class="book-box-ss-light" src="https://content.jfelix.space/ppbdiagram1.png"/>
+                <p class="book-box-ss-alt-text">A diagram showing a key being split into three pieces, then distributed among 3 computers.</p>
+                <p>This is a <b>Guardian Node</b> system. Independent nodes will each hold a piece of the split key, the coordinator will request the key pieces when it's ready to finalize the poll, and the nodes may choose to provide their share.</p>
+                <p>With this system:</p>
+                <ul>
+                    <li>Guardian nodes can be modified to run a set of integrity checks on the coordinator and blockchain before sharing their key piece.</li>
+                    <li>Votes cannot be read until a consensus is reached among the guardian nodes <b>AFTER</b> the poll has been finalized.</li>
+                    <li>We can control how many pieces we split our key into and the necessary threshold to reassemble it.</li>
+                </ul>
+                Our coordinator will now consist of three services:
+                <ol>
+                    <li><b>The Backend</b> - The central server that communicates with the smart contracts, guardians, and clients.</li>
+                    <li><b>The Guardians</b> - A set of nodes each holding a share of the split decryption key.</li>
+                    <li><b>The Threshold</b> - A program that breaks the private decryption key into <code>k</code> pieces, sets the threshold for reassembling the key, then sets the distribution to be given to each guardian node.</li>
+                </ol>
+			</div>
+            <div class="book-box-text proj">
+                <h3 class="center">The Frontend</h3>
+                <p>The frontend for PPB Polling is a React/Vite webapp written in TypeScript. TypeScript was chosen because MACI is written in it. The webapp is split into three sections:</p>
+                <ol>
+                    <li>The user interface - where people register, log in, and vote.</li>
+                    <li>The admin interface - where the admin can deploy, merge, and finalize polls.</li>
+                    <li>The demo interface - a demo site for our expo on the project, provides an interactive visualization of the system.</li>
+                </ol>
+                <p>Initially the site was a single-page webapp containing the user and admin interfaces with styling generated by <i>Claude</i>. I eventually got tired of the visual clutter of the interface and the overall "web3 aesthetic" of the site, so I redesigned it to be much simpler.</p>
+                <img class="book-box-ss" src="../../images/ppblogin.png"/>
+                <p class="book-box-ss-alt-text">A screenshot of the current PPB login page.</p>
+                <img class="book-box-ss" src="../../images/ppbadmin.png"/>
+                <p class="book-box-ss-alt-text">A screenshot of the current PPB admin panel.</p>
+                <p>The frontend isn't just an interface for using the MACI API calls though, it handles some important privacy-preserving functionality. This includes an account keypair, and one temporary keypair per vote.</p>
+                <p><b>MACI Identity Keypair</b> - Generated with BabyJubJub. When you register an account, a keypair is generated.</p>
+                <ol>
+                    <li>The public half of the keypair is sent to the coordinator to register the user. The private half <b>never leaves the client</b>.</li>
+                    <li>When the client votes, the vote is signed with their private key. This proves it's a legitimate vote, and allows a user to change their vote until the poll has ended.</li>
+                </ol>
+                <p>This keypair allows a user to join polls with a ZK-proof, meaning a user can say "I know the private half of a public key that's registered." This is done without revealing the public key in question, preventing double-registration.</p>
+                <p><b>The "Vote" Keypair</b> - Generated with BabyJubJub every time a user casts a vote.</p>
+                <ul>
+                    <li>This encrypts the PCommand (vote message format) and removes all linkability between votes, meaning a user can't be triangulated off multiple votes.</li>
+                    <li>These keypairs are used once, then discarded.</li>
+                </ul>
+                <h3>What about the crypto wallets?</h3>
+                <p>They're gone.</p>
+                <p>Everything crypto related is handled by the backend. Voting on PPB Polling requires not an ounce of knowledge on cryptocurrency. I'll go into more detail about how we abstracted this away from the end user when I talk about the backend.</p>
+                <p>The frontend is not just a UI atop MACI, it plays a vital role in protecting users confidentiality and privacy.</p>
+            </div>
+            <div class="book-box-text insi">
+                <details>
+				<summary><h3 class="center">The Private Half of the Identity Keypair</h3></summary>
+				<p>In the last section I noted that the private half of the identity keypair never leaves the client. This is an intentional design choice recommended by MACI. When creating the identity keypair we have two routes to go:</p>
+                <ol>
+                    <li>Send the whole keypair to the server.</li>
+                        <ul>
+                            <li><b>THE GOOD</b>: Users could sign in from any device since they can recall their private-key from the server.</li>
+                            <li><b>THE BAD</b>: If the private-keys were accessed by a malicious actor or made public, all votes could be decrypted and read in plaintext. The coordinator becomes a supreme liability and single-point-of-failure.</li>
+                        </ul>
+                    <li>Only send the public half of the keypair to the server.</li>
+                        <ul>
+                            <li><b>THE GOOD</b>: As long as a user keeps their private key secret, their votes will be encrypted, thus untraceable.</li>
+                            <li><b>THE BAD</b>: If you lose your private key, you lose your account. You also cannot vote on other devices.</li>
+                        </ul>
+                </ol>
+                <p>Weighing the good and bad, it's preferable to lose user accounts than it would be to lose the anti-collusion functionality of the server. This is the nature of blockchain though; centralized trustlessness means decentralized responsibility.</p>
+                <p><i>Potential PPB Polling upgrade: Keep a user's private key encrypted locally and only decrypt it when they've entered their password.</i></p>
+                </details>
+			</div>
+            <div class="book-box-text proj">
+                <h3 class="center">Custodial Wallets</h3>
+                <p>What percentage of people, when going to vote in a poll, would immediately click right off when they are prompted to connect their locally installed crypto-wallet to a virtual Ethereum network at a given RPC? I'd venture a guess at 99%.</p>
+                <p>Even those familiar with cryptocurrency would have their eyes glaze over at the prospect of hooking it up to a virtual network, so it was a high priority to abstract away all of the crypto wallet elements from the end-users.</p>
+                <p>Fortunately, this isn't as difficult as it may sound. We moved the responsibility to our backend where it creates a contained, managed wallet in association with every user account.</p>
+                <p>These custodial wallets are only accessible by the user account associated with it, these are a 1-to-1 pairing in the database.</p>
+                <img src="../../images/ppbdiagram2.png" class="book-box-ss-light"/>
+                <p class="book-box-ss-alt-text">A diagram showing the database creating a new account with an associated custodial wallet. Note that passwords are not stored in plaintext, but appear that way for visual clarity.</p>
+                <p>The Python <code>eth-account</code> <a href="https://eth-account.readthedocs.io/en/stable/eth_account.html">library</a> is an abstraction of the broader <code>Web3.py</code> <a href="https://github.com/ethereum/web3.py">library</a> that specifically handles Ethereum network accounts. Using <code>eth-account</code> we are able to generate a private wallet keypair for every user to associate to their custodial account. Then we can use the <code>Web3.py</code> library to sign a transaction from the deployer wallet into the newly created account, keeping it perpetually funded, and thus always able to participate in polls.</p>
+                <p>With these libraries available, custodial wallet management on the backend was really not too difficult. In fact it was more difficult removing the wallet connectivity artifacts from the frontend than adding the wallet management to the backend.</p>
+            </div>
+            <div class="book-box-text extr">
+            <details>
+				<summary><h3 class="center">Zero-Knowledge Proofs & zk-SNARKS</h3></summary>
+                <h3>Zero-Knowledge Proofs (ZKPs)</h3>
+				<p>Zero-Knowledge Proofs are foundational to how MACI creates a private, collusion resistant voting platform. Quoted from <code>Ethereum.org</code>:</p>
+                <p><i>A zero-knowledge proof is a way of proving the validity of a statement without revealing the statement itself. The ‘prover’ is the party trying to prove a claim, while the ‘verifier’ is responsible for validating the claim.</i></p>
+                <p>Let's say I'm the prover, and you are the verifier.</p>
+                <p><b>The Statement</b>: <i>Lightning McQueen</i> is hidden in this picture.</p>
+                <img class="book-box-ss-wider" src="../../images/hiddencharacter.png"/>
+                <p class="book-box-ss-alt-text">A picture filled with cartoon characters, with Lightning McQueen hidden among them.</p>
+                <p>I know where the hidden <i>Lightning McQueen</i> is in this image. Here's my proof:</p>
+                <img class="book-box-ss" src="../../images/hiddencharacter2.png"/>
+                <p>I haven't helped you find it, but you should now believe that <i>I</i> know where it is. This is a rather silly analogy, but it illustrates the point well. I've proven that I know certain information, without revealing anything about said information.</p>
+                <p><b>There is always a chance a proof could be guessed.</b> To account for this, provers and verifiers run ZKPs by each other many times, to virtually eliminate the chance of solutions being arbitrarily guessed. zk-SNARKs do not require this multi-pass setup however.</p>
+                <h3>How do they actually work?</h3>
+                <p>ZKPs and zk-SNARKs are advanced cryptographic methods for validation. They enable authentication by the verifier while maintaining the anonymity of the prover. I'll explain the fundamentals of how they work to provide a better understanding of <i>how</i> MACI can protect voters privacy, while still only counting legitimate votes.</p>
+                <p><b>Computationally Asymmetric Problems</b> - These are problems that are easy to verify, but hard to solve. Let's say I have the semiprime number <code>7.01770176x10<sup>9</sup></code>. What two prime numbers make up this number? It may be a bit difficult to compute that but if I gave you <code>83557</code> and <code>83987</code> and tell you it's the factors, you can easily multiply them to verify if I'm correct. The point here is we can verify correctness easily without exactly being able to reverse-engineer the problem.</p>
+                <p><b>Polynomials</b> - ZKPs convert statements into polynomial equations. The verifier then picks a random point and checks where it lies on the polynomial, a fake polynomial has a miniscule chance of getting the correct number. To use our previous example, we could try guessing random prime numbers, but the odds of picking the correct one are highly improbable. This is the foundation of <b>interactive</b> ZK proofs. However this is impractical in blockchain settings.</p>
+                <p><b>Non-Interactivity through Fiat-Shamir Transform</b> - <i>Bear with me here.</i> Instead of the verifier sending random challenges, the prover will just use the hashed value of their transcript so far. This means it can automatically generate unpredictable values to challenge the prover, so a dedicated verifier is unnecessary.</p>
+                <h3>zk-SNARKs</h3>
+                <p>Stands for <b>Z</b>ero-<b>K</b>nowledge <b>S</b>uccint <b>N</b>on-Interactive <b>AR</b>gument of <b>K</b>nowledge. zk-SNARKs are special in that they require no interaction between the prover and verifier, their proof size is small, and verification is fast. MACI uses zk-SNARKs, specifically <code>Groth16</code> proofs, exclusively.</p>
+                <p>SNARKs require a trusted setup ceremony, a computation involving multiple parties that generate public parameters called a <b>Common Reference String</b> (CRS). While the ceremony is happening; every attending party generates a secret, random value that contributes to the CRS. This value is called the "trapdoor", leaking of these values can lead to security compromises. So long as a single participant destroys their "trapdoor", the system is secure. This "trapdoor" leakage threshold is variable depending on the SNARK scheme being used.</p>
+                <p>I am not the person to explain them in full detail, so I will <a href="https://www.di.ens.fr/~nitulesc/files/Survey-SNARKs.pdf">provide</a> <a href="https://arxiv.org/abs/2202.06877">some</a> <a href="https://csrc.nist.gov/projects/pec/zkproof">links</a> if you'd like more advanced coverage of the subjects.</p>
+            </details>
+            </div>
+            <div class="book-box-text proj">
+                <h3 class="center">The Backend</h3>
+                <p>The backend is responsible for connecting all the pieces together, and as mentioned in the <b>Where to Begin</b> section, consists of three major parts: <b>The Coordinator, the Guardians, and the Threshold</b>. In this section we'll cover the general functionality of the backend, and the implementation of the MACI coordinator.</p>
+                <p>The backend is primarily written in Python and uses FastAPI for most of its work in communicating with other services, and importantly the smart contracts established by MACI. Some important libraries and their usages include:</p>
+                <ul>
+                    <li><b>SQLAlchemy</b> - Used for database operations with SQLite.</li>
+                    <li><b>Pydantic</b> - Defines the API structures for validation and reads configurations from environmental variables.</li>
+                    <li><b>Web3 & eth-account</b> - Handles the Ethereum interactions like signing transactions (voting), sending ETH to other wallets, and calling the smart contract functions.</li>
+                    <li><b>python-jose & passlib</b> - Jose for JWT creation and decoding. Passlib is for bcrypt password hashing.</li>
+                    <li><b>uvicorn</b> - Web server library for Python; it operates well with FastAPI.</li>
+                </ul>
+                <p>Remember from earlier, there's still one keypair left to cover! We've pretty much described everything this poor keypair is put through and it's responsibilities, but just for posterity:</p>
+                <p><b>The Coordinator Keypair</b> - The keypair used to decrypt votes.</p>
+                <ul>
+                    <li>Divided into pieces by SSS and distributed to the guardians.</li>
+                    <li>After the private key is split and distributed, the backend <b>cannot read or decrypt votes</b>.</li>
+                    <li>Private key is reassembled once the defined threshold is met, returned to the backend so it can read the votes, then destroyed again.</li>
+                </ul>
+                <p>With this, we've successfully weakened the coordinator drastically. By delegating key shares to guardians we've distributed the responsibilities of our system, protected the voters privacy, and alleviated one of the long-standing issues in MACI.</p>
+                <details>
+                    <summary><b>Summary Of Each File</b></summary>
+                    <p>The backend folder structure is a flat directory with every Python file in it. Not ideal, but works for our purposes.</p>
+                    <ul>
+                        <li><code>main.py</code> - FastAPI entry point. Creates the app, CORS middleware from settings, initializes the database schema, and mounts the routers.<b>The backend starting point.</b></li>
+                        <li><code>auth.py</code> - Handles authentication, hashes & verifies passwords (bcrypt), JWT creation & decoding, and handles bearer token extraction alongside with admin checking for certain privileges.</li>
+                        <li><code>database.py</code> - Starts SQLAlchemy engine and exports DB calls for FastAPI to call from for any persistent data.</li>
+                        <li><code>models.py</code> - Defines the 5 SQLAlchemy tables: User, CustodialWallet, Poll, TallyResult, and VoteReceipt. Also defines relationships, a User has one CustodialWallet and many VoteReceipt(s).</li>
+                        <li><code>schemas_threshold.py</code> - Pydantic schemas specific for the threshold system.</li>
+                        <li><code>schemas.py</code> - Pydantic models for request body validation and response creation in auth & poll routes.</li>
+                        <li><code>seed_admin.py</code> - Standalone script that creates an admin user in the database. Run during setup.</li>
+                        <li><code>settings.py</code> - Reads environment variables using pydantic-settings. Stores db url, blockchain RPC endpoint, MACI contract addresses, and more. <b>Everything imports this.</b></li>
+                        <li><code>tally_pipeline.py</code> - Pipeline for MACIs off-chain proof generation. Calls MACI PNPM scripts, parses resulting files into TallyResult dataclasses, and stores the results in a database. <b>Temporarily holds the MACI coordinator private key.</b></li>
+                        <li><code>wallet_service.py</code> - Custodial Wallet service. Creates Ethereum keypairs with <code>eth-account</code>, autofunds wallets with <code>Web3.py</code>. Handles MACI signups, poll joining, and message publishing.</li>
+                        <li><code>routes_auth.py</code> - Three endpoints under <code>/api/auth</code>, <code>POST /register</code> for creating a user which also generates them a custodial wallet and returns a JWT. <code>POST /login</code> authenticates form data and returns a JWT. <code>GET /me</code> returns the current users profile. These rely on <code>wallet_service</code> functions.</li>
+                        <li><code>routes_guardians.py</code> - Guardian node processes, accepts heartbeat signals for tracking a guardians state, provides a list of active nodes, and provides active ceremonies for guardians to check for submissions.</li>
+                        <li><code>routes_join.py</code> - One endpoint at <code>POST /api/polls/[poll-id]/join</code> that invokes an ECMAScript module as a subprocess for joining the poll. Generates a ZK inclusion proof for the user and submits the join poll transaction.</li>
+                        <li><code>routes_polls.py</code> - Endpoints for poll metadata and tally results. at <code>/api/polls</code> and <code>/api/poll-meta</code>. Admins can create and update polls. All users can list polls and retrieve results.</li>
+                        <li><code>routes_threshold.py</code> - Implements SSS for the coordinator private key, the endpoints allow the admin to split the key during initialization, list guardians, manage ceremonies, and trigger reconstruction. This culminates in <code>run_prove()</code> from <code>tally_pipeline.py</code> which temporarily reconstructs the key, then destroys it.</li>
+                        <li><code>routes_wallet.py</code> - Endpoints under <code>/api/wallet</code> for wallet operations and voting. Calls the MACI signup function, join poll function, and publish message function.</li>
+                    </ul>
+                </details>
+            </div>
+            <div class="book-box-text extr">
+            <details>
+                <summary><h3 class="center">The Universe: In a Cryptographic Context</h3></summary>
+                <p>In cryptography we need a couple of requirements:</p>
+                <ul>
+                    <li><b>Arithmetic must work</b> - All of our standard arithmetic operations need to behave normally and reversibly.</li>
+                    <li><b>Numbers must be bounded</b> - A 256-bit private key <b>must</b> remain 256-bits. Operations shouldn't change the bit count or make the numbers infeasible to work with (like multi-million digits).</li>
+                    <li><b>Certain problems should be hard to reverse</b> - Modular exponentiation (<code>a<sup>x</sup> % p</code>) is fast, but trying to solve for <code>x</code>? Not so fast, in fact at a certain point it's computationally infeasible. This is the <b>discrete logarithm problem</b>.</li>
+                </ul>
+                <p>So in order to accommodate these requirements, we create a <b>universe</b> of numbers in which our values can fall. This is easily applied by using the modulus (<code>%</code>) operator, which creates a bounding effect and a range of operable numbers. It also guarantees that the reversal of exponentiation on integers is no longer trivial. This modulus application <b>must be done with a prime number</b>.</p>
+                <p>Why a prime number? So our modulus can cover every number 0 - [prime] inclusively and so we can define multiplicative inverses (see Fermat's Little Theorem in the next section). Essentially, modular arithmetic doesn't naturally support division, so we must find the inverse of a number within the field. If <code>a⋅b=0</code>, either <code>a</code> or <code>b</code> <b>must</b> be 0. If we were using a nonprime number, say 100, we could multiply two non-zero numbers to arrive at 0. For example <code>(5 * 25) % 100 = 0</code>. These are <b>zero divisors</b> and their presence breaks arithmetic within our field prime.</p>
+                <p>In the case of PPB Polling we used the Ethereum standard field prime: <b>secp256k1</b>. This has been called <a href="https://www.nervos.org/knowledge-base/secp256k1_a_key%20algorithm_(explainCKBot)">cryptocurrency's key elliptical curve</a>. We modulus every arithmetic operation with this prime number when working within <b>modular arithmetic</b>.</p>
+            </details>
+            </div>
+            <div class="book-box-text extr">
+            <details>
+				<summary><h3 class="center">Shamir's Secret Sharing</h3></summary>
+                <p>Our guardian system is built on the concept of a <b>Threshold Cryptosystem</b> where we split our secret key among a number of independent parties. This section may get complex, so I'll do my best to balance the technical side with general explanations.</p>
+                <h3>Shamir's Secret Sharing (SSS)</h3>
+                <p>A secret sharing algorithm. A secret split by SSS cannot be revealed unless a predefined threshold is met. No information about the secret can be gained from any number of shares below the threshold.</p>
+                <p>Properties of SSS:</p>
+                <ul>
+                    <li><b>Highly Secure</b> - The system is <i>information-theoretic secure</i>, meaning an adversary with unlimited compute and time would still not be able to break it.</li>
+                    <li><b>Minimal</b> - The size of each piece will not exceed the size of the original data.</li>
+                    <li><b>Extensible</b> - Shares can be dynamically added or deleted without affecting existing shares.</li>
+                    <li><b>Dynamic</b> - We can strengthen the security without changing the secret. This can be done by occasionally changing the polynomial (with the exception of the free term, which will be static) and constructing new shares for the participants.</li>
+                    <li><b>Flexibility</b> - We can allocate varying numbers of shares to each participant. An example may be a company where we want our Chief-of-Security to have 3 shares instead of a standard 1 share.</li>
+                </ul>
+                <p>Weaknesses of SSS:</p>
+                <ul>
+                    <li><b>No verifiable secret sharing</b> - SSS does not provide a way to verify the correctness of each share, meaning fake shares may be submitted. These fake shares wouldn't work towards decryption, but cannot be verified upon submission. <i>However</i>, this can be addressed in our implementation.</li>
+                    <li><b>Single point of failure</b> - The entire key must exist somewhere before being split, and somewhere after being reassembled.</li>
+                </ul>
+                <p>The weaknesses of SSS are evident in PPB Polling as mentioned earlier. There are two points at which we are holding the entire decryption key, so there is still room for improvement on the security of the voting system.</p>
+                <h4>Mathematical Principles Of SSS</h4>
+                <p><i>Buckle Up.</i></p>
+                <p><b>Polynomial Interpolation</b> - A polynomial of degree <code>k-1</code> is uniquely determined by exactly <code>k</code> points. E.g. a line can be defined by 2 points, a parabola can be defined by 3, etc. This is a general problem and can be approached with something like solving a system of equations.</p>
+                <p><b>Lagrange Interpolation</b> - An alternative approach to finding a polynomial with the <code>k</code> points. For each given point <i>i</i>, we make a basis polynomial (g[x]) that equals 1 at g[i] and 0 at all other g[j]. This results in a final polynomial of <code>f[x] = &Sigma; y<sub>i</sub> · g[x]</code>. During Shamir reconstruction we want where f[0], so we evaluate every g[0] for each point, and sum up the share values.</p>
+                <p><i>Splitting Example:</i> Supposed we have the secret number <code>6767</code>, and we want to split it into 4 (n=4) shares with a threshold of 3 (k=3) <code>k-1=2</code> numbers are created at random, so we'll use a<sub>0</sub>=6767 (the secret), a<sub>1</sub>=123 and a<sub>2</sub>=456 Our polynomial for producing shares is therefore:</p>
+                <p><math class="math-block"><mrow><mi>f[x]</mi><mo>=</mo><mn>6767</mn><mo>+</mo><mn>123</mn><mi>x</mi><mo>+</mo><mn>456</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></math> We'll create 4 points to create the shares, starting from x=1 since x=0 is our secret:</p>
+                <ol>
+                    <li><i>S</i><sub>1</sub> = [1, 7346]</li>
+                    <li><i>S</i><sub>2</sub> = [2, 8837]</li>
+                    <li><i>S</i><sub>3</sub> = [3, 11240]</li>
+                    <li><i>S</i><sub>4</sub> = [4, 14555]</li>
+                </ol> 
+                <p><i>Reconstruction Example</i>: Any subset of 3 of these points is enough to reconstruct the original polynomial. We'll need to compute the Lagrange basis polynomials, remember that the goal is to reconstruct the polynomial in which f[0] results in our original secret.</p>
+                <p>We will be using the points:</p> 
+                <ol>
+                    <li><i>(x<sub>0</sub>, y<sub>0</sub>) = [1, 7346]</i></li>
+                    <li><i>(x<sub>1</sub>, y<sub>1</sub>) = [2, 8837]</i></li>
+                    <li><i>(x<sub>2</sub>, y<sub>2</sub>) = [4, 14555]</i></li>
+                </ol>
+                    <math display="block" class="math-block">
+                        <!-- l0 for Lagrange -->
+                        <mrow>
+                            <msub><mi>l</mi><mn>0</mn></msub><mi>(x)</mi>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub></mrow>
+                                <mrow><msub><mi>x</mi><mn>0</mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub></mrow>
+                                <mrow><msub><mi>x</mi><mn>0</mn></msub><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>2</mn></mrow>
+                                <mrow><mn>1</mn><mo>-</mo><mn>2</mn></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>4</mn></mrow>
+                                <mrow><mn>1</mn><mo>-</mo><mn>4</mn></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>4</mn></mrow>
+                                <mrow><mn>-1</mn></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>2</mn></mrow>
+                                <mrow><mn>-3</mn></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                                <mrow><mn>3</mn></mrow>
+                            </mfrac>
+                            <mo>-</mo>
+                            <mrow><mn>2</mn><mi>x</mi></mrow>
+                            <mo>+</mo>
+                            <mfrac>
+                                <mrow><mn>8</mn></mrow>
+                                <mrow><mn>3</mn></mrow>
+                            </mfrac>
+                        </mrow>
+                        </math>
+                        <!-- l1 for Lagrange -->
+                        <math display="block" style="margin-top:15px;" class="math-block">
+                        <mrow>
+                            <msub><mi>l</mi><mn>1</mn></msub><mi>(x)</mi>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><msub><mi>x</mi><mn>0</mn></msub></mrow>
+                                <mrow><msub><mi>x</mi><mn>1</mn></msub><mo>-</mo><msub><mi>x</mi><mn>0</mn></msub></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub></mrow>
+                                <mrow><msub><mi>x</mi><mn>1</mn></msub><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>1</mn></mrow>
+                                <mrow><mn>2</mn><mo>-</mo><mn>1</mn></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>4</mn></mrow>
+                                <mrow><mn>2</mn><mo>-</mo><mn>4</mn></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>1</mn></mrow>
+                                <mrow><mn>1</mn></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>4</mn></mrow>
+                                <mrow><mn>-2</mn></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mo>-</mo>
+                            <mfrac>
+                                <mrow><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                                <mrow><mn>2</mn></mrow>
+                            </mfrac>
+                            <mo>+</mo>
+                            <mfrac>
+                                <mrow><mn>5</mn><mi>x</mi></mrow>
+                                <mrow><mn>2</mn></mrow>
+                            </mfrac>
+                            <mo>-</mo>
+                            <mrow><mn>2</mn></mrow>
+                        </mrow>
+                        </math>
+                        <!-- l2 for Lagrange -->
+                        <math display="block" style="margin-top:15px;" class="math-block">
+                        <mrow>
+                            <msub><mi>l</mi><mn>2</mn></msub><mi>(x)</mi>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><msub><mi>x</mi><mn>0</mn></msub></mrow>
+                                <mrow><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>0</mn></msub></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub></mrow>
+                                <mrow><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>1</mn></mrow>
+                                <mrow><mn>4</mn><mo>-</mo><mn>1</mn></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>2</mn></mrow>
+                                <mrow><mn>4</mn><mo>-</mo><mn>2</mn></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>1</mn></mrow>
+                                <mrow><mn>3</mn></mrow>
+                            </mfrac>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mrow><msub><mi>x</mi><mn></mn></msub><mo>-</mo><mn>2</mn></mrow>
+                                <mrow><mn>2</mn></mrow>
+                            </mfrac>
+
+                            <mo>=</mo>
+
+                            <mfrac>
+                                <mrow><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                                <mrow><mn>6</mn></mrow>
+                            </mfrac>
+                            <mo>-</mo>
+                            <mfrac>
+                                <mrow><mi>x</mi></mrow>
+                                <mrow><mn>2</mn></mrow>
+                            </mfrac>
+                            <mo>+</mo>
+                            <mfrac>
+                                <mrow><mn>1</mn></mrow>
+                                <mrow><mn>3</mn></mrow>
+                            </mfrac>
+                        </mrow>
+                        </math>
+                        <br/>
+                        Now we'll use the formula for polynomial interpolation:
+                        <math display="block" style="margin-top: 15px;" class="math-block">
+                            <mrow><mi>f(x)</mi></mrow>
+                            <mo>=</mo>
+                            <munderover>
+                            <mo>&sum;</mo>
+                            <mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow>
+                            <mi>2</mi>
+                            </munderover>
+                            <mrow><msub><mi>y</mi><mi>j</mi></msub></mrow>
+                            <mo>⋅</mo>
+                            <mrow><msub><mi>l</mi><mi>j</mi></msub><mi>(x)</mi></mrow>
+                        </math>
+                        <math display="block" style="margin-top: 15px;" class="math-block">
+                            <mo>=</mo>
+                            <mrow><msub><mi>y</mi><mi>0</mi></msub><msub><mi>l</mi><mi>0</mi></msub><mi>(x)</mi></mrow>
+                            <mo>+</mo>
+                            <mrow><msub><mi>y</mi><mi>1</mi></msub><msub><mi>l</mi><mi>1</mi></msub><mi>(x)</mi></mrow>
+                            <mo>+</mo>
+                            <mrow><msub><mi>y</mi><mi>2</mi></msub><msub><mi>l</mi><mi>2</mi></msub><mi>(x)</mi></mrow>
+                        </math>
+                        <math display="block" style="margin-top: 15px;" class="math-block">
+                            <mo>=</mo>
+                            <mrow><mn>7346</mn>
+                            <mi>(</mi>                            
+                            <mfrac>
+                                <mrow><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                                <mrow><mn>3</mn></mrow>
+                            </mfrac>
+                            <mo>-</mo>
+                            <mrow><mn>2</mn><mi>x</mi>
+                            </mrow>
+                            <mo>+</mo>
+                            <mfrac>
+                                <mrow><mn>8</mn></mrow>
+                                <mrow><mn>3</mn></mrow>
+                            </mfrac>
+                            <mi>)</mi></mrow>
+
+                            <mo>+</mo>
+
+                            <mrow><mn>8837</mn>
+                            <mi>(</mi>
+                            <mo>-</mo>
+                            <mfrac>
+                                <mrow><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                                <mrow><mn>2</mn></mrow>
+                            </mfrac>
+                            <mo>+</mo>
+                            <mfrac>
+                                <mrow><mn>5</mn><mi>x</mi></mrow>
+                                <mrow><mn>2</mn></mrow>
+                            </mfrac>
+                            <mo>-</mo>
+                            <mrow><mn>2</mn></mrow>
+                            <mi>)</mi>
+                            </mrow>
+
+                            <mo>+</mo>
+
+                            <mrow><mn>14555</mn>
+                                <mi>(</mi>
+                                    <mfrac>
+                                    <mrow><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                                    <mrow><mn>6</mn></mrow>
+                                </mfrac>
+                                <mo>-</mo>
+                                <mfrac>
+                                    <mrow><mi>x</mi></mrow>
+                                    <mrow><mn>2</mn></mrow>
+                                </mfrac>
+                                <mo>+</mo>
+                                <mfrac>
+                                    <mrow><mn>1</mn></mrow>
+                                    <mrow><mn>3</mn></mrow>
+                                </mfrac>
+                                <mi>)</mi></mrow>
+                        </math>
+                        <math display="block" style="margin-top: 15px;" class="math-block">
+                            <mo>=</mo>
+                            <mrow><mi>f[x]</mi><mo>=</mo><mn>6767</mn><mo>+</mo><mn>123</mn><mi>x</mi><mo>+</mo><mn>456</mn><msup><mi>x</mi><mn>2</mn></msup></mrow>
+                        </math>
+                        <br/>
+                    What do we get at f[0]? <code>6767</code>, our secret key!
+                </p>
+                <p>This is the fundamental math behind Shamir's Secret Sharing, but modern interpretations optimize it to reduce the redundant calculations. To optimize it we split the computation into two phases by separating the parts that depend on x-coordinates from the parts that depend on y-values. This is called the <b>Barycentric Form</b> of Lagrange interpolation. In our implementation we use the standard Lagrange Interpolation since our share indices are just the natural numbers <code>1 -> n</code>, however if we had hashed guardian IDs or thousands of shares (large x-coordinates), we'd optimize it and use the Barycentric form.</p>
+                <p>The final thing I'd like to cover in this section is <b>Fermat's Little Theorem</b>, which states:</p>
+                <p><i>Let 'p' be a prime number, and 'a' be any integer. Then a<sup>p</sup>-a is always divisible by p.</i></p>
+                <p>If you read the above section on our operable "universe", inside of the modulus we <b>cannot divide</b> (in the way we do normally). Instead we need to multiply by the <b>modular inverse</b>, and this is computed using Fermat's theorem:</p>
+                <p><math display="block" style="line-height:2vw;" class="math-block">
+                    <mrow><msup><mi>a</mi><mn>-1</mn></msup><mo>=</mo><msup><mi>a</mi><mrow><mi>p</mi><mo>-</mo><mn>2</mn></mrow></msup><mo>%</mo><mi>p</mi></mrow>
+                </math>
+                <i>Example; say our "universe" is 0-7 (p) and we want to find the equivalent of dividing by 5 OR 1/5 (a)</i><br/>
+                <math display="block" style="margin-top: 5px;" class="math-block">
+                    <mrow><msup><mi>a</mi><mn>-1</mn></msup><mo>=</mo><msup><mi>5</mi><mrow><mi>7</mi><mo>-</mo><mn>2</mn></mrow></msup><mo>%</mo><mi>7</mi>
+                </math>
+                <math display="block" style="margin-top: 5px;" class="math-block">
+                    <mrow><msup><mi>a</mi><mn>-1</mn></msup><mo>=</mo><msup><mi>5</mi><mn>5</mn></msup><mo>%</mo><mi>7</mi>
+                </math>
+                <math display="block" style="margin-top: 5px;" class="math-block">
+                    <mrow><msup><mi>a</mi><mn>-1</mn></msup><mo>=</mo><mn>3125</mn><mo>%</mo><mi>7</mi>
+                </math>
+                <math display="block" style="margin-top: 5px; margin-bottom: 10px;" class="math-block">
+                    <mrow><msup><mi>a</mi><mn>-1</mn></msup><mo>=</mo><mn>3</mn>
+                </math>
+                To prove this result works, let's try multiplying it against 5, our result should be 1: <br/>
+                <math display="block" class="math-block">
+                    <mrow><mi>(</mi><mn>5</mn><mo>⋅</mo><mn>3</mn><mi>)</mi><mo>%</mo><mn>7</mn><mo>=</mo><mn>15</mn><mo>%</mo><mn>7</mn><mo>=</mo><mn>1</mn></mrow>
+                </math>
+                </p>
+                <p>We apply this every time we need to divide while operating in the bounded "universe", particularly during our Lagrange interpolation where we have fractional terms in the polynomial.</p>
+            </details>
+            </div>
+            <div class="book-box-text proj">
+                <h3 class="center">The Threshold</h3>
+                <p>The Threshold system is in place to remove power from the coordinator, and make sure no single-party can decrypt or read votes. The threshold system runs in four stages:</p>
+                <ol>
+                    <li><b>Setup</b> - Takes the created coordinator private key and splits it into <code>n</code> pieces, as defined by the admin. This creates an encrypted share file for each piece, and a state tracking file for the backend.</li>
+                    <li><b>Storage</b> - Each guardian is sent their encrypted share file, which is then reencrypted with their own password-key from PBKDF2. This share is stored locally on the guardians machine.</li>
+                    <li><b>Open Ceremony</b> - Guardians check if any poll ceremonies are created, upon finding an open one, they submit their share.</li>
+                    <li><b>Reassembly</b> - Upon meeting the share threshold, the threshold runs a checksum, polynomial verification, reconstructs the private key, proves it's correct, sends it off for decryption, then destroys it.</li>
+                </ol>
+                <p>The Threshold system only uses standard libraries:</p>
+                <ul>
+                    <li><code>hashlib</code> - hashing and key derivation.</li>
+                    <li><code>secrets</code> - cryptographically secure and randomized secrets</li>
+                    <li><code>getpass</code> - CLI password entering.</li>
+                    <li><code>base64</code> - Data blobbing.</li>
+                    <li><code>urllib</code> - For HTTP calls to the backend.</li>
+                </ul>
+                <p>Only using standard library functions protects the guardians from supply-chain risks and dependency management.</p>
+                <details>
+                    <summary><b>Summary Of Each File</b></summary>
+                    <p>Another flat directory with every file, although this one is far less complex.</p>
+                    <ul>
+                        <li><code>__init__.py</code> - Package initializer, exports <code>split_secret</code>, <code>reconstruct_secret</code>, <code>verify_share</code>, and the <code>ThresholdKeyManager</code> class to the backend.</li>
+                        <li><code>shamir.py</code> - Implements SSS using the <b>secp256k1 field prime</b> as our "universe". We use the secp256k1 field prime because MACI keys are BabyJubJub scalars that are ≤253 bits, so we know our field prime is larger, and therefore we don't risk losing information during modular arithmetic. Splits the key, reassembles the key, (Lagrange Interpolation) and verifies that newly submitted shares lie on the same polynomial as preexisting shares, providing consensus through verification.</li>
+                        <li><code>key_manager.py</code> - Controls the key ceremony lifecycles. The <code>ThresholdKeyManager</code> class holds guardian registry and the current state of the ceremony in memory. All instances of the existing key are kept a minimum, being zeroed out and deleted when not explicitly being passed to another function. It also verifies shares when they are submitted through their SHA256 checksums and polynomial consistency with <code>verify_share()</code>, meaning we mitigate one of the inherent weaknesses of SSS.</li>
+                        <li><code>guardian_service.py</code> - The Guardian CLI with two commands: save and submit. Save encrypts the guardians share and saves it to disk, while submit loads it, decrypts it, and sends it to the backend. It uses PBKDF2-HMAC-SHA256 as it's key derivation scheme with 100,000 iterations.</li>
+                        <li><code>setup_threshold.py</code> - Standalone, one-time setup CLI. Initializes the <code>ThresholdKeyManager</code>, splitting the secret key, encrypting every split, and writes the manager state (guardian IDs, names, share indices, and share checksums) to a local file - which is sent to the backend. <b>Once this script is finished, the private key will never be seen until reassembly</b>.</li>
+                    </ul>
+                    <p><i>Note: In guardian services we encrypt the local share over 100,000 passes because it is a defined <a href="https://aembit.io/glossary/master-password/">NIST Standard</a></i>.</p>
+                </details>
+                <p>The threshold is primarily used during the set up of the voting system, and is invoked as a library by the coordinator otherwise. It doesn't run independent services on it's own besides it's setup script.</p>
+            </div>
+            <div class="book-box-text proj">
+                <h3 class="center">The Guardians</h3>
+                <p>The Guardian nodes are each responsible for holding a piece of the split MACI coordinator private key. Our SSS implementation allows us to create as many guardian nodes as we desire, and with any defined threshold. Furthermore the dynamicism of SSS allows us to create more nodes for key-shares as long as we don't modify the currently existing shares.</p>
+                <p>In production environments, a guardian service would be isolated to its own machine or hardened container. They operate on a loop, conducting two actions every 6 seconds; their heartbeat and their ceremony checking. These nodes have three primary functions:</p>
+                <ol>
+                    <li><b>Heartbeat</b> - The guardians will send a heartbeat signal to the backend every 6 seconds to let it know they're alive and well.</li>
+                    <li><b>Watch For Ceremonies</b> - The guardians will check the available ceremonies API every 6 seconds</li>
+                    <li><b>Submit their share of the key</b> - If a ceremony is found they will submit their share of the key.</li>
+                </ol>
+                <p>It should be noted that the guardians as of now <b>immediately submit</b> their key share, with no preprocessing or integrity checking on the backend. The extensibility is readily apparent though and there are a few ways we can incorporate verification before guardian submission: </p>
+                <ul>
+                    <li><b>Human Oversight</b> - We could have it prompt a user in control of the guardian to actually accept before submission.</li>
+                    <li><b>Poll Validity</b> - If we sent out new polls to every guardian as they're created, we could have it crosscheck all poll ceremonies for the poll ID before submission.</li>
+                    <li><b>Peer-to-peer Coordination</b> - If we had all guardian nodes communicate via peer-to-peer we could automate a system in which consensus must be reached among subgroups before they submit their shares.</li>
+                </ul>
+                <p>The Guardian system is all contained in a single, fairly small, file. Similar to the Threshold it only uses standard libraries.</p>
+            </div>
+            <div class="book-box-text proj">
+                <h3 class="center">Rapidsnark</h3>
+                <p><b>Rapidsnark</b> is a <a href="https://github.com/iden3/rapidsnark">zk-SNARK prover</a> that is specifically made for Groth16 SNARKS. MACI will default to Rapidsnark if it's found on the system, otherwise it uses <i>snarkjs</i>.</p>
+                <p>I wanted to bring it up just to mention the sheer difference in speed that Rapidsnark makes. During testing when I was trying to join a poll it was taking AGES for the proof generation, to the point I kept hitting 10-minute timeout windows.</p>
+                <p>I built rapidsnark locally, directed MACI to it, and saw at least a 2500x faster proof speed. It makes the time for proofs negligible and was invaluable for testing.</p>
+            </div>
+            <div class="book-box-text proj">
+                <h3 class="center">The Development Environment</h3>
+                <p>MACI requires quite a bit of set up before you can begin using it for development or deployment. This is all <a href="https://maci.pse.dev/blog/getting-started-with-maci">documented here</a>. The basic steps for setting up are:</p>
+                <ol>
+                    <li>Build the MACI directory and install all pnpm dependencies (standard enough)</li>
+                    <li>Download zkeys for Groth16 proof generation. These are ~8GB big.</li>
+                    <li>Generate the coordinator's keypair.</li>
+                    <li>Configure the MACI environment</li>
+                    <ol>
+                        <li>Copies example values into .env using both our defined sample .env</li>
+                        <li>Copies over MACIs example deploy configs with the new public key injected.</li>
+                    </ol>
+                    <li>Deploy the smart contracts by temporarily bringing up a <b>Hardhat</b> network.</li>
+                    <li>Install optional dependencies including rapidsnark and poseidon2. These may be posited as optional but are very much necessary</li>
+                </ol>
+                <p>All of this has been automated with a Makefile command. This Makefile has several other vital development and deployment commands written into it:</p>
+                <ul>
+                    <li><code>make frontend</code> - Installs necessary packages then begins the frontend dev environment with Vite.</li>
+                    <li><code>make backend</code> - Begins the backend coordinator service with uvicorn. This <b>does not</b> include the threshold or guardians.</li>
+                    <li><code>make backend-setup</code> - Configures the .env, seeds an admin, and initializes the threshold.</li>
+                    <li><code>make hhup</code> - Brings up the virtual Ethereum network on Hardhat. Stores the PID locally to easily bring back down.</li>
+                    <li><code>make hhdown</code> - Takes down the virtual Ethereum network on Hardhat. Uses the locally saved PID from <code>make hhup</code></li>
+                    <li><code>make guardians</code> - Initializes and brings up three guardian nodes, saving all their PIDs for easy takedown.</li>
+                    <li><code>make guardians-stop</code> - Kills guardian nodes using the locally saved PIDs.</li>
+                    <li><code>make dev</code> - Brings up the hardhat network, backend service, and guardian nodes.</li>
+                    <li><code>make dev-stop</code> - Takes down the backend and the created guardian nodes.</li>
+                    <li><code>make clean</code> - Deletes all autogenerated files for a fresh start.</li>
+                </ul>
+                <p>All of this was added to make working with the system, and MACI, easier. It reduces a lot of the tedium that needed to be done manually before.</p>
+			</div>
+            <div class="book-box-text proj">
+                <h3 class="center">Terminus of PPB</h3>
+                <p>PPB, as a capstone project, has come to a conclusion. I'd like to present the original problem statement we were given when beginning this project:</p>
+                <p><i> Bitcoin’s blockchain is secure and transparent, but that transparency can reveal addresses, balances, and business relationships. In the Privacy-Preserving Blockchain project, we’ll apply cryptographic techniques to conceal who is transacting and how much is transferred, while still allowing anyone to verify the ledger’s integrity. By keeping data private yet provably correct, this approach opens blockchain to finance, healthcare, supply chains, and any field where confidentiality is essential.</i></p>
+                <p>I am pleased to say that we've fulfilled the problem statement. Voting, a field where integrity and confidentiality is essential, has already benefitted from the cryptographic security of through MACI. PPB Polling noted a vulnerability in the system and successfully established a mitigation.</p>
+            </div>
+            <p><i>Jon Rutan, 2026</i></p>
+		</div>
+	</div>
+	</div>
+<div class="container">
+<pre class="ascii, center">
+</pre>
+</div>
+<footer>
+<h2><a href="../Writeups.html">« Back</a></h2>
+</footer>
+    </div><!-- end .content -->
 </body>
 </html>

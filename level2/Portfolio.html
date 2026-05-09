@@ -16,8 +16,7 @@
         <a href="./Torii.html">Torii</a>
     </nav>
     <div class="content">
-        <div class="ascii-row">
-            <div class="portfolio-wide-content">
+        <div class="portfolio-wide-content">
 
                 <h1 class="center">[ Portfolio ]</h1>
 
@@ -27,7 +26,7 @@
                     <a href="#academic">Academic Projects</a>
                 </div>
 
-                <h2 id="work" class="center">Work Projects</h2>
+                <h2 id="work" class="port-section-header">Work Projects</h2>
 
                 <div style="max-width: 800px; margin: 0 auto 20px auto; text-align: left;">
                     <div class="container">
@@ -46,7 +45,7 @@
      / /## | ## /-\ ## | ##\ \
     / /### | # /---\ # | ###\ \
    / /###  | _/-----\_ |  ###\ \
-  / /##|__---         ---|##\ \
+  / /##|__---         ---|##\ \ \
  / /__--                   --__\ \
 /    VIRGINIA        SPACEPORT    \
 \____________AUTHORITY____________/
@@ -56,73 +55,85 @@
                     <p>During the Summer of 2025 I interned at the Virginia Spaceport Authority (VSA) as an IT/IS Intern. I worked primarily with the system administrator (Brian Bishop) and network engineer (John Phillips). At the beginning of my internship the VSA began to reintroduce Linux (RHEL) into their tech environment, which provided an opportunity for me to use some of my preexisting knowledge to help.</p>
                 </div>
 
-                <div class="project-grid">
-                    <div class="book-box">
-                        <h3>RHEL Integration</h3>
-                        <p>The VSA has to meet higher than usual security standards due to it's industry and position within the government. Standards like NIST must be met on deployed machines, and enhancing general security and auditing practices is just good housekeeping on our machines.</p>
-                        <p>I wrote a set of scripts to expedite the set up process and provide enhanced security on our machines</p>
-                        <ul>
-                            <li><b>VM_SETUP</b> - Script that ran all the other scripts for quick VM setups (similar to a Makefile).</li>
-                            <li><b>OVAL_SCAN</b> - Script for automating and logging <a href="https://oval.mitre.org/">OVAL</a> vulnerability scans.</li>
-                            <li><b>SSH_AUDIT</b> - Script for auditing SSH connections tracking login count, login times and IPs.</li>
-                            <li><b>ARCTIC_WOLF</b> - Enrolls and sets up SOC service <i>ArcticWolf</i>.</li>
-                            <li><b>REPO_ACCESS</b> - Script for enabling <a href="https://docs.fedoraproject.org/en-US/epel/">EPEL</a> on RHEL machines.</li>
-                        </ul>
-                        <p><i>No Public Repository, Sorry</i></p>
+                <div class="port-list">
+                    <div class="port-entry">
+                        <div class="port-entry-top">
+                            <div class="port-body"><h3>RHEL Integration</h3></div>
+                        </div>
+                        <div class="port-desc">
+                            <p>The VSA has to meet higher than usual security standards due to it's industry and position within the government. Standards like NIST must be met on deployed machines, and enhancing general security and auditing practices is just good housekeeping on our machines.</p>
+                                <p>I wrote a set of scripts to expedite the set up process and provide enhanced security on our machines</p>
+                                <ul>
+                                    <li><b>VM_SETUP</b> - Script that ran all the other scripts for quick VM setups (similar to a Makefile).</li>
+                                    <li><b>OVAL_SCAN</b> - Script for automating and logging <a href="https://oval.mitre.org/">OVAL</a> vulnerability scans.</li>
+                                    <li><b>SSH_AUDIT</b> - Script for auditing SSH connections tracking login count, login times and IPs.</li>
+                                    <li><b>ARCTIC_WOLF</b> - Enrolls and sets up SOC service <i>ArcticWolf</i>.</li>
+                                    <li><b>REPO_ACCESS</b> - Script for enabling <a href="https://docs.fedoraproject.org/en-US/epel/">EPEL</a> on RHEL machines.</li>
+                                </ul>
+                                <p><i>No Public Repository, Sorry</i></p>
+                        </div>
                     </div>
 
-                    <div class="book-box">
-                        <h3>CardDAV Server/Software</h3>
-                        <p>I was tasked with deploying a list of all VSA employees' contact information on everyone's phones within the company.</p>
-                        <p>I used three open source projects to accomplish this: PostgreSQL, Radicale, and NGINX.</p>
-                        <p>I combined all of these by building Python tools for generating vCards, managing the database (psycopg2), and updating the Radicale server.</p>
-                        <p>It also includes a Flask frontend for managing all these systems with a GUI.</p>
-                        <p><i>No Public Repository, Sorry</i></p>
+                    <div class="port-entry">
+                        <div class="port-entry-top">
+                            <div class="port-body"><h3>CardDAV Server/Software</h3></div>
+                        </div>
+                        <div class="port-desc">
+                            <p>I was tasked with deploying a list of all VSA employees' contact information on everyone's phones within the company.</p>
+                                <p>I used three open source projects to accomplish this: PostgreSQL, Radicale, and NGINX.</p>
+                                <p>I combined all of these by building Python tools for generating vCards, managing the database (psycopg2), and updating the Radicale server.</p>
+                                <p>It also includes a Flask frontend for managing all these systems with a GUI.</p>
+                                <p><i>No Public Repository, Sorry</i></p>
+                        </div>
                     </div>
 
-                    <div class="book-box">
-                        <h3>CACTI Server</h3>
-                        <p><a href="https://www.cacti.net/">Cacti</a> is a network fault monitoring and data visualization tool.</p>
-                        <p>Using a Rocky Linux VM in our cluster (ran out of RHEL licences), I set up and installed Cacti so that we could monitor the devices on our network using SNMP.</p>
-                        <p>Using this tool, we are able to track and monitor our core switches, down to individual interfaces.</p>
-                        <p><i>No Public Repository, Sorry</i></p>
+                    <div class="port-entry">
+                        <div class="port-entry-top">
+                            <div class="port-body"><h3>CACTI Server</h3></div>
+                        </div>
+                        <div class="port-desc">
+                            <p><a href="https://www.cacti.net/">Cacti</a> is a network fault monitoring and data visualization tool.</p>
+                                <p>Using a Rocky Linux VM in our cluster (ran out of RHEL licences), I set up and installed Cacti so that we could monitor the devices on our network using SNMP.</p>
+                                <p>Using this tool, we are able to track and monitor our core switches, down to individual interfaces.</p>
+                                <p><i>No Public Repository, Sorry</i></p>
+                        </div>
                     </div>
                 </div>
                 <h4 class="center">I presented my work to our company, which can be seen here: <a href="https://www.youtube.com/watch?v=kYNhL0u4j9o&amp;">Capstone Presentation »</a></h4>
-                <i style="font-size: .8em">All ASCII art was made by me during my time at the VSA.</i>
+                <i style="font-size: .8em; display:block; text-align:center;">All ASCII art was made by me during my time at the VSA.</i>
                 <img class="vsa-thumbnail" src="../images/radicalejfelix.png"/>
 
-                <h2 id="personal" class="center" style="margin-top: 50px">Personal Projects</h2>
-                <p><b>Check out my <a href="https://github.com/JonFRutan">GitHub »</a></b></p>
-                <div class="project-grid">
-                    <div class="book-box">
+                <h2 id="personal" class="port-section-header">Personal Projects</h2>
+                <p class="center"><b>Check out my <a href="https://github.com/JonFRutan">GitHub »</a></b></p>
+                <div class="port-list">
+                    <div class="port-entry"><img class="portfolio-thumbnail" src="../images/clijfelix.png"/>
                         <h3>CLI-GPT</h3>
-                        <img class="portfolio-thumbnail" style="object-position: 10px;" src="../images/clijfelix.png"/>
+                        
                         <p></p>
                         <p>CLI-GPT is a command line interface frontend for prompting with OpenAI's API. I developed so I could use OpenAI calls on my headless FreeBSD system and for use on any future headless servers where I may need to ask a quick question.</p>
                         <p><a href="https://github.com/JonFRutan/CLI-GPT">GitHub »</a></p>
                     </div>
 
-                    <div class="book-box">
+                    <div class="port-entry"><img class="portfolio-thumbnail" src="../images/musicjfelix.png"/>
                         <h3>music.jfelix.space</h3>
-                        <img class="portfolio-thumbnail" src="../images/musicjfelix.png"/>
+                        
                         <p><a href="https://music.jfelix.space">Visit it here »</a></p>
                         <p>An audiovisualized interface for tuning in to various college radio stations. Uses the UI I made for radio.jfelix.space, and uploaded October 3rd; national college radio day.</p>
                         <p></p>
                     </div>
 
-                    <div class="book-box">
+                    <div class="port-entry"><img class="portfolio-thumbnail" src="../images/gaoljfelix.png"/>
                         <h3>GAOL</h3>
-                        <img class="portfolio-thumbnail" src="../images/gaoljfelix.png"/>
+                        
                         <p><a href="https://gaol.jfelix.space">Visit it here »</a></p>
                         <p>A multiplayer AI storyteller using a RAG system to generate highly dynamic and persistent adventures.</p>
                         <p>Uses the Gemini API and a complex RAG and prompting system handled by a backend Flask API.</p>
                         <p><a href="https://github.com/JonFRutan/GAOL">GitHub »</a></p>
                     </div>
 
-                    <div class="book-box">
+                    <div class="port-entry"><img class="portfolio-thumbnail" src="../images/valvejfelix.png"/>
                         <h3>OpenValve [2.0]</h3>
-                        <img class="portfolio-thumbnail" src="../images/valvejfelix.png"/>
+                        
                         <p><a href="https://valve.jfelix.space">Visit it here »</a></p>
                         <p><i>Developed alongside Trevor Corcoran</i></p>
                         <p>A steam games database, data visualizer, and SteamAPI frontend. Database is pulled from <a href="https://www.kaggle.com/datasets/fronkongames/steam-games-dataset/data?select=games.json">Kaggle</a>.</p>
@@ -130,9 +141,9 @@
                         <p><a href="https://github.com/JonFRutan/OpenValve">GitHub »</a></p>
                     </div>
 
-                    <div class="book-box">
+                    <div class="port-entry"><img class="portfolio-thumbnail" src="../images/orbitjfelix.png"/>
                         <h3>Orbit Sound System Webapp</h3>
-                        <img class="portfolio-thumbnail" src="../images/orbitjfelix.png"/>
+                        
                         <p><a href="https://orbit.jfelix.space">Visit it here »</a></p>
                         <p>A webapp for generating tunes using text inputs with a backend for publishing systems. Uses the Web Audio API for note generation. CSS &amp; styling was mostly done with AI.</p>
                         <p>Audio API is laid out as such:
@@ -147,9 +158,9 @@
                         <p><a href="https://github.com/JonFRutan/Orbital">GitHub »</a></p>
                     </div>
 
-                    <div class="book-box">
+                    <div class="port-entry"><img class="portfolio-thumbnail" src="../images/jfelix.png"/>
                         <h3>jfelix.space</h3>
-                        <img class="portfolio-thumbnail" src="../images/jfelix.png"/>
+                        
                         <p>This website and domain.</p>
                         <p>Running off an Oracle Cloud VM on Rocky 9. jfelix.space is also the host of several of my other webpages and web applications, which can be viewed at the <a href="./Torii.html">Torii »</a> page.</p>
                         <p>While this particular site is hosted on Oracle Cloud, all my other services are self-hosted from a set of devices at my house. The services are divied up between a Raspberry Pi and an old Dell laptop both running Ubuntu servers.</p>
@@ -157,80 +168,103 @@
                         <p><a href="https://github.com/JonFRutan/jfelix">GitHub »</a></p>
                     </div>
 
-                    <div class="book-box">
+                    <div class="port-entry"><img class="portfolio-thumbnail" src="../images/doodlejfelix.png"/>
                         <h3>Doodle Brawl</h3>
-                        <img class="portfolio-thumbnail" src="../images/doodlejfelix.png"/>
+                        
                         <p><a href="https://doodlebrawl.com">Visit it here »</a></p>
                         <p>Created for VCU's 2026 24hr Hackathon with Trevor Corcoran &amp; Connor Fair.</p>
                         <p>Draw a fighter and watch them compete in the Doodle Brawl Arena. AI (Gemini API) is used to evaluate, assign stats, and play out every match.</p>
                         <p><a href="https://github.com/TheLUGnuts/DoodleBrawl">GitHub »</a></p>
                     </div>
 
-                    <div class="book-box">
+                    <div class="port-entry"><img class="portfolio-thumbnail" src="../images/fishjfelix.png"/>
                         <h3>fish.jfelix.space</h3>
-                        <img class="portfolio-thumbnail" src="../images/fishjfelix.png"/>
+                        
                         <p><a href="https://fish.jfelix.space">Visit it here »</a></p>
                         <p>A fishtank website used for a demo / workshop I ran on APIs. Using Go on the backend. Got some experience with backend rate-limiting after a few attendees decided to script the API calls (lol).</p>
                         <p>Accepts POST requests and GET requests so workshop attendees could get some experience running API calls. Assets drawn by me, if you couldn't tell.</p>
                         <p><a href="">GitHub »</a></p>
                     </div>
 
-                    <div class="book-box">
-                        <h3>The <b>Perpetual Music Machine</b></h3>
-                        <b>WORK IN PROGRESS</b>
-                        <p>An all-in-one software for hosting, managing, and broadcasting your own online radio.</p>
-                        <p>Ideally the software will be able to deploy and/or configure both the Icecast server and Liquidsoap generation while also maintaining playlist sync to outside sources for easy setlist management.</p>
-                        <p><a href="https://github.com/JonFRutan/Perpetual-Music-Machine">GitHub »</a></p>
+                    <div class="port-entry">
+                        <div class="port-entry-top">
+                            <div class="port-body"><h3>The <b>Perpetual Music Machine</b></h3></div>
+                        </div>
+                        <div class="port-desc">
+                            <b>WORK IN PROGRESS</b>
+                                <p>An all-in-one software for hosting, managing, and broadcasting your own online radio.</p>
+                                <p>Ideally the software will be able to deploy and/or configure both the Icecast server and Liquidsoap generation while also maintaining playlist sync to outside sources for easy setlist management.</p>
+                        </div>
+                        <div class="port-links">
+                            <a class="port-link" href="https://github.com/JonFRutan/Perpetual-Music-Machine">GitHub »</a>
+                        </div>
                     </div>
                 </div>
 
-                <h2 id="academic" class="center" style="margin-top: 50px">Academic Projects</h2>
+                <h2 id="academic" class="port-section-header">Academic Projects</h2>
 
-                <div class="project-grid">
-                    <div class="book-box">
+                <div class="port-list">
+                    <div class="port-entry"><img class="portfolio-thumbnail" src="../images/fusionjfelix.png"/>
                         <h3>Fusion Fighters - <i>GameDev</i></h3>
-                        <img class="portfolio-thumbnail" src="../images/fusionjfelix.png"/>
+                        
                         <i>Co-developed alongside Trevor Corcoran with Art by Chelsea Hodum &amp; Sage Laine</i>
                         <p>1v1 fighting game where you modify your character with unlockable body parts. Every part is different, and some synergize better with others.</p>
                         <p><a href="https://dougisdoug.itch.io/fusion-fighters">Itch.io »</a></p>
                     </div>
-                    <div class="book-box">
+                    <div class="port-entry"><img class="portfolio-thumbnail" src="../images/groundhogjfelix.png"/>
                         <h3>Groundhog Day - <i>GameDev</i></h3>
-                        <img class="portfolio-thumbnail" src="../images/groundhogjfelix.png"/>
+                        
                         <i>Art by Sage Laine</i>
                         <p>A silly physics sandbox game. Originally intended as a 2d <i>Human: Fall Flat</i> with the working title <i>Human: Is Flat</i>. It was transformed into a cute, lighthearted puzzle sandbox with the assets created by <a href="https://www.linkedin.com/in/sagelaine/">Sage Laine</a>.</p>
                         <p><a href="https://play.unity.com/en/games/66d371d0-f330-4844-a7b3-45dc424b5d4d/groundhog-day">Unity Play »</a></p>
                     </div>
-                    <div class="book-box">
+                    <div class="port-entry"><img class="portfolio-thumbnail" src="../images/cannibaljfelix.png"/>
                         <h3>Cannibal Quisine - <i>GameDev</i></h3>
-                        <img class="portfolio-thumbnail" src="../images/cannibaljfelix.png"/>
+                        
                         <i>Art by Chelsea Hodum</i>
                         <p>A parodical cooking game where you cook and serve rather... unique cuisine. Taking inspiration from <i>Papas Pizzeria</i> style games. Concept and assets were done by <a href="https://www.linkedin.com/in/chelsea-hodum-b98a4a2b5/">Chelsea Hodum</a>.</p>
                         <p><a href="https://play.unity.com/en/games/9a0503ee-457e-486a-af51-8e8008950df5/cannibal-quisine">Unity Play »</a></p>
                     </div>
-                    <div class="book-box">
-                        <h3>OpenValve - <i>Databases</i></h3>
-                        <p>OpenValve is a data collection project built for a database class.</p>
-                        <p>The goal was to create a system for generating game recommendations based on overlapping game tags from a user's library using SteamWorks API calls.</p>
-                        <p><a href="https://github.com/JonFRutan/SteamAppScrape">GitHub »</a></p>
+                    <div class="port-entry">
+                        <div class="port-entry-top">
+                            <div class="port-body"><h3>OpenValve - <i>Databases</i></h3></div>
+                        </div>
+                        <div class="port-desc">
+                            <p>OpenValve is a data collection project built for a database class.</p>
+                                <p>The goal was to create a system for generating game recommendations based on overlapping game tags from a user's library using SteamWorks API calls.</p>
+                        </div>
+                        <div class="port-links">
+                            <a class="port-link" href="https://github.com/JonFRutan/SteamAppScrape">GitHub »</a>
+                        </div>
                     </div>
 
-                    <div class="book-box">
-                        <h3>RamRanch - <i>VCU Hackathon</i></h3>
-                        <h4>2nd Place Winner</h4>
-                        <p>A habit tracking gamification project built during a 5-hour mini-hackathon.</p>
-                        <p>We developed a prototype of the ranch system with several rams, where their needs are to be tied to your general upkeep.</p>
-                        <p><a href="https://github.com/danielblackin/Ram-Ranch">GitHub »</a></p>
+                    <div class="port-entry">
+                        <div class="port-entry-top">
+                            <div class="port-body"><h3>RamRanch - <i>VCU Hackathon</i></h3></div>
+                        </div>
+                        <div class="port-desc">
+                            <h4>2nd Place Winner</h4>
+                                <p>A habit tracking gamification project built during a 5-hour mini-hackathon.</p>
+                                <p>We developed a prototype of the ranch system with several rams, where their needs are to be tied to your general upkeep.</p>
+                        </div>
+                        <div class="port-links">
+                            <a class="port-link" href="https://github.com/danielblackin/Ram-Ranch">GitHub »</a>
+                        </div>
                     </div>
 
-                    <div class="book-box">
-                        <h3>Prescription Effect Logging - <i>Software Engineering</i></h3>
-                        <p>We designed a logging application that takes daily inputs from a user based on their perceived effects of a prescriptions, logs them, then allows the user to visualize the data.</p>
-                        <p><a href="https://github.com/JonFRutan/AssignmentRepoDemoSE">GitHub »</a></p>
+                    <div class="port-entry">
+                        <div class="port-entry-top">
+                            <div class="port-body"><h3>Prescription Effect Logging - <i>Software Engineering</i></h3></div>
+                        </div>
+                        <div class="port-desc">
+                            <p>We designed a logging application that takes daily inputs from a user based on their perceived effects of a prescriptions, logs them, then allows the user to visualize the data.</p>
+                        </div>
+                        <div class="port-links">
+                            <a class="port-link" href="https://github.com/JonFRutan/AssignmentRepoDemoSE">GitHub »</a>
+                        </div>
                     </div>
                 </div>
 
-            </div>
         </div>
         <footer>
             <h2><a href="../index.html">« Back</a></h2>
