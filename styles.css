@@ -199,7 +199,7 @@ body {
   margin: 0 auto;
   width: 90%;
   max-width: 600px;
-  padding: clamp(10px, 4vw, 20px);
+  padding: 0 10px;
   text-align: center;
 }
 
@@ -336,7 +336,7 @@ footer {
 .portfolio-wide-content {
   margin: 0 auto;
   width: 90%;
-  padding: clamp(10px, 3vw, 20px);
+  padding: 0 10px;
 }
 
 .port-list {
@@ -347,49 +347,57 @@ footer {
 .port-entry {
   display: flex;
   flex-direction: column;
-  padding: 14px 0;
+  align-items: center;
+  padding: 16px 0;
   border-bottom: 1px solid #365874;
-  gap: 10px;
+  text-align: center;
 }
 
 .port-entry:last-child {
   border-bottom: none;
 }
 
-.port-entry-top {
-  display: flex;
-  gap: 14px;
-  align-items: center;
+.port-entry .portfolio-thumbnail {
+  width: 100%;
+  max-width: 340px;
+  height: 160px;
+  object-fit: cover;
+  border: 1px solid #2a3a46;
+  background-color: #000;
+  display: block;
 }
 
-.port-body {
-  flex: 1;
-  min-width: 0;
-  text-align: left;
-}
-
-.port-body h3 {
-  margin: 0;
-}
-
-.port-body > *:first-child {
-  margin-top: 0;
+.port-entry h3 {
+  margin: 8px 0 4px 0;
+  font-size: 1.05em;
 }
 
 .port-desc {
-  font-size: 0.9em;
+  font-size: 0.88em;
   color: #c8d8e4;
-  margin: 6px 0 0 0;
-  line-height: 1.5;
   text-align: left;
+  width: 100%;
+  max-width: 340px;
+  margin: 4px 0 8px 0;
+  line-height: 1.5;
+}
+
+.port-desc p {
+  margin: 2px 0;
+}
+
+.port-desc ul {
+  margin: 4px 0 4px 1em;
+  padding-left: 1em;
 }
 
 .port-links {
   display: flex;
   flex-direction: row;
-  gap: 8px;
   flex-wrap: wrap;
-  padding-top: 4px;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 6px;
 }
 
 .port-link {
@@ -398,11 +406,11 @@ footer {
   font-size: 0.8em;
   color: #38B2C2;
   text-decoration: none;
-  border: 1px solid #365874;
-  padding: 3px 12px;
-  min-width: 80px;
+  border: 1px solid #38B2C2;
+  padding: 4px 14px;
+  min-width: 90px;
   text-align: center;
-  background-color: #1a2830;
+  background-color: transparent;
   transition: background-color 0.15s, color 0.15s;
 }
 
@@ -416,22 +424,7 @@ footer {
   padding-bottom: 6px;
   margin-bottom: 4px;
   margin-top: 40px;
-}
-
-/* About page */
-.about-content {
-  width: 90%;
-  margin: 0 auto;
-  padding: 0 clamp(10px, 3vw, 20px);
-}
-
-.about-section {
-  padding: 16px 0;
-  border-bottom: 1px solid #365874;
-}
-
-.about-section:last-child {
-  border-bottom: none;
+  width: 100%;
 }
 
 .project-grid {
@@ -687,7 +680,8 @@ footer {
 
 .portfolio-thumbnail {
   display: block;
-  width: 160px;
+  justify-content: center;
+  width: 180px;
   height: 90px;
   object-fit: cover;
   flex-shrink: 0;
