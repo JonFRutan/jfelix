@@ -98,55 +98,6 @@ body {
     border: solid #456381;
 }
 
-/*.torii {
-  width: min-content; 
-  max-width: 100%;
-  margin: 24px auto 8px;
-}
-
-.torii-top,
-.torii-bottom {
-  white-space: pre;
-  margin: 0 auto;
-  line-height: 1.1;
-  display: table;
-  font-family: monospace;
-}
-
-.torii-bar {
-  margin-bottom: -10px
-}
-
-.torii-bar pre {
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  white-space: pre;
-  text-align: center; 
-}
-
-.torii-inner {
-  display: grid;
-  padding-left: 60px;
-  padding-right: 60px;
-  grid-template-columns: min-content 1fr min-content;
-  width: 100%;
-  column-gap: 0;
-  align-items: start;
-}
-
-.torii-side {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  line-height: 1.1;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-*/
-
-
 .torii-top {
   margin-bottom: -37px;
 }
@@ -481,6 +432,10 @@ footer {
   background-color: var(--extr-color);
 }
 
+.about-content {
+  padding: 10px;
+}
+
 .key-table, th {
   margin-top: 5px;
   border: solid 1px #365874;
@@ -497,7 +452,6 @@ footer {
   flex-direction: column;
   align-items: center;
   margin-bottom: -20px;
-
 }
 
 .book-box p:last-child {
@@ -691,10 +645,10 @@ footer {
 
 .vsa-thumbnail {
   display: block;
-  max-width: clamp(150px, 40%, 300px);
+  max-width: clamp(150px, 70%, 1000px);
   margin-top: 10px;
   height: auto;
-  max-height: 160px;
+  max-height: 200px;
   object-fit: cover;
   border: 1px solid #4AF626;
   margin-left: auto;
