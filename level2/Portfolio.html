@@ -4,129 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jfelix - portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/portfolio.css">
     <link rel="icon" href="../images/favicon.png" type="image/png">
 </head>
 <body>
-    <nav class="sidenav">
-        <a href="../index.html">Home</a>
-        <a href="./About.html">About</a>
-        <a href="./Portfolio.html">Portfolio</a>
-        <a href="./Writeups.html">Posts</a>
-        <a href="./Torii.html">Torii</a>
-    </nav>
     <div class="content">
-        <div class="ascii-row">
-            <div class="portfolio-wide-content">
+        <div class="portfolio-wide-content">
 
-                <h1 class="center">[ Portfolio ]</h1>
+            <h1 class="center">[ Portfolio ]</h1>
 
-                <div class="center jump-links">
-                    <a href="#work">Work Projects</a> |
-                    <a href="#personal">Personal Projects</a> |
-                    <a href="#academic">Academic Projects</a>
-                </div>
+            <div class="center jump-links">
+                <a href="#personal">Personal Projects</a> |
+                <a href="#academic">Academic Projects</a>
+            </div>
+            <!-- ==================== PERSONAL ==================== -->
+            <h2 id="personal" class="port-section-header">Personal Projects</h2>
+            <p class="center"><b>Check out my <a href="https://github.com/JonFRutan">GitHub »</a></b></p>
 
-                <h2 id="work" class="port-section-header">Work Projects</h2>
-
-                <div style="max-width: 800px; margin: 0 auto 20px auto; text-align: left;">
-                    <div class="container">
-                        <pre class="ascii" style="color: #f3b220; line-height:115%;">
-                _-_
-               / _ \
-              / /#\ \
-             / /###\ \
-            / /#####\ \
-    	   / /##/Λ\##\ \
-    	  / /#### ####\ \
-    	 / /#### | ####\ \
-    	/ /####  |  ####\ \
-       / /#####  |  #####\ \
-      / /## ###  _  ### ##\ \
-     / /## | ## /-\ ## | ##\ \
-    / /### | # /---\ # | ###\ \
-   / /###  | _/-----\_ |  ###\ \
-  / /##|__---         ---|##\ \
- / /__--                   --__\ \
-/    VIRGINIA        SPACEPORT    \
-\____________AUTHORITY____________/
-                        </pre>
-                    </div>
-                    <h3 class="center">Virginia Spaceport Authority</h3>
-                    <p>During the Summer of 2025 I interned at the Virginia Spaceport Authority (VSA) as an IT/IS Intern. I worked primarily with the system administrator (Brian Bishop) and network engineer (John Phillips). At the beginning of my internship the VSA began to reintroduce Linux (RHEL) into their tech environment, which provided an opportunity for me to use some of my preexisting knowledge to help.</p>
-                </div>
-
-                <div class="port-list">
-                    <div class="port-entry">
-                        <h3>RHEL Integration</h3>
-                        <div class="port-desc">
-                            <p>The VSA has to meet higher than usual security standards due to it's industry and position within the government. Standards like NIST must be met on deployed machines, and enhancing general security and auditing practices is just good housekeeping on our machines.</p>
-                            <p>I wrote a set of scripts to expedite the set up process and provide enhanced security on our machines</p>
-                            <ul>
-                            <li><b>VM_SETUP</b> - Script that ran all the other scripts for quick VM setups (similar to a Makefile).</li>
-                            <li><b>OVAL_SCAN</b> - Script for automating and logging <a href="https://oval.mitre.org/">OVAL</a> vulnerability scans.</li>
-                            <li><b>SSH_AUDIT</b> - Script for auditing SSH connections tracking login count, login times and IPs.</li>
-                            <li><b>ARCTIC_WOLF</b> - Enrolls and sets up SOC service <i>ArcticWolf</i>.</li>
-                            <li><b>REPO_ACCESS</b> - Script for enabling <a href="https://docs.fedoraproject.org/en-US/epel/">EPEL</a> on RHEL machines.</li>
-                            </ul>
-                            <p><i>No Public Repository, Sorry</i></p>
-                        </div>
-                    </div>
-
-                    <div class="port-entry">
-                        <h3>CardDAV Server/Software</h3>
-                        <div class="port-desc">
-                            <p>I was tasked with deploying a list of all VSA employees' contact information on everyone's phones within the company.</p>
-                            <p>I used three open source projects to accomplish this: PostgreSQL, Radicale, and NGINX.</p>
-                            <p>I combined all of these by building Python tools for generating vCards, managing the database (psycopg2), and updating the Radicale server.</p>
-                            <p>It also includes a Flask frontend for managing all these systems with a GUI.</p>
-                            <p><i>No Public Repository, Sorry</i></p>
-                        </div>
-                    </div>
-
-                    <div class="port-entry">
-                        <h3>CACTI Server</h3>
-                        <div class="port-desc">
-                            <p><a href="https://www.cacti.net/">Cacti</a> is a network fault monitoring and data visualization tool.</p>
-                            <p>Using a Rocky Linux VM in our cluster (ran out of RHEL licences), I set up and installed Cacti so that we could monitor the devices on our network using SNMP.</p>
-                            <p>Using this tool, we are able to track and monitor our core switches, down to individual interfaces.</p>
-                            <p><i>No Public Repository, Sorry</i></p>
-                        </div>
-                    </div>
-                </div>
-                <h4 class="center">I presented my work to our company, which can be seen here: <a href="https://www.youtube.com/watch?v=kYNhL0u4j9o&amp;">Capstone Presentation »</a></h4>
-                <i style="font-size: .8em; display:block; text-align:center;">All ASCII art was made by me during my time at the VSA.</i>
-                <img class="vsa-thumbnail" src="../images/radicalejfelix.png"/>
-
-                <h2 id="personal" class="port-section-header">Personal Projects</h2>
-                <p class="center"><b>Check out my <a href="https://github.com/JonFRutan">GitHub »</a></b></p>
-                <div class="port-list">
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" style="object-position: 10px;" src="../images/clijfelix.png"/>
+            <div class="port-list">
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" style="object-position: 10px;" src="../images/clijfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>CLI-GPT</h3>
                         <div class="port-desc">
-                            <p></p>
                             <p>CLI-GPT is a command line interface frontend for prompting with OpenAI's API. I developed so I could use OpenAI calls on my headless FreeBSD system and for use on any future headless servers where I may need to ask a quick question.</p>
                         </div>
                         <div class="port-links">
                             <a class="port-link" href="https://github.com/JonFRutan/CLI-GPT">GitHub »</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" src="../images/musicjfelix.png"/>
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" src="../images/musicjfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>music.jfelix.space</h3>
                         <div class="port-desc">
                             <p>An audiovisualized interface for tuning in to various college radio stations. Uses the UI I made for radio.jfelix.space, and uploaded October 3rd; national college radio day.</p>
-                            <p></p>
                         </div>
                         <div class="port-links">
                             <a class="port-link" href="https://music.jfelix.space">Visit it here »</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" src="../images/gaoljfelix.png"/>
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" src="../images/gaoljfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>GAOL</h3>
                         <div class="port-desc">
                             <p>A multiplayer AI storyteller using a RAG system to generate highly dynamic and persistent adventures.</p>
@@ -137,9 +65,11 @@
                             <a class="port-link" href="https://github.com/JonFRutan/GAOL">GitHub »</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" src="../images/valvejfelix.png"/>
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" src="../images/valvejfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>OpenValve [2.0]</h3>
                         <div class="port-desc">
                             <p><i>Developed alongside Trevor Corcoran</i></p>
@@ -151,30 +81,33 @@
                             <a class="port-link" href="https://github.com/JonFRutan/OpenValve">GitHub »</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" src="../images/orbitjfelix.png"/>
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" src="../images/orbitjfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>Orbit Sound System Webapp</h3>
                         <div class="port-desc">
                             <p>A webapp for generating tunes using text inputs with a backend for publishing systems. Uses the Web Audio API for note generation. CSS &amp; styling was mostly done with AI.</p>
-                            <p>Audio API is laid out as such:
+                            <p>Audio API is laid out as such:</p>
                             <ol>
-                            <li><b>Oscillator Node</b>: Make a note sound</li>
-                            <li><b>Gain Node</b>: Control the volume of the note sound</li>
-                            <li><b>Master Gain Node</b>: Control the overall volume of the site.</li>
-                            <li><b>Compressor Node</b>: Gate the max volume</li>
-                            <li><b>Output</b>: Play to user</li>
+                                <li><b>Oscillator Node</b>: Make a note sound</li>
+                                <li><b>Gain Node</b>: Control the volume of the note sound</li>
+                                <li><b>Master Gain Node</b>: Control the overall volume of the site.</li>
+                                <li><b>Compressor Node</b>: Gate the max volume</li>
+                                <li><b>Output</b>: Play to user</li>
                             </ol>
-                            </p>
                         </div>
                         <div class="port-links">
                             <a class="port-link" href="https://orbit.jfelix.space">Visit it here »</a>
                             <a class="port-link" href="https://github.com/JonFRutan/Orbital">GitHub »</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" src="../images/jfelix.png"/>
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" src="../images/jfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>jfelix.space</h3>
                         <div class="port-desc">
                             <p>This website and domain.</p>
@@ -186,9 +119,11 @@
                             <a class="port-link" href="https://github.com/JonFRutan/jfelix">GitHub »</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" src="../images/doodlejfelix.png"/>
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" src="../images/doodlejfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>Doodle Brawl</h3>
                         <div class="port-desc">
                             <p>Created for VCU's 2026 24hr Hackathon with Trevor Corcoran &amp; Connor Fair.</p>
@@ -199,9 +134,11 @@
                             <a class="port-link" href="https://github.com/TheLUGnuts/DoodleBrawl">GitHub »</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" src="../images/fishjfelix.png"/>
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" src="../images/fishjfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>fish.jfelix.space</h3>
                         <div class="port-desc">
                             <p>A fishtank website used for a demo / workshop I ran on APIs. Using Go on the backend. Got some experience with backend rate-limiting after a few attendees decided to script the API calls (lol).</p>
@@ -211,8 +148,10 @@
                             <a class="port-link" href="https://fish.jfelix.space">Visit it here »</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="port-entry">
+                <div class="port-entry">
+                    <div class="port-entry-body">
                         <h3>The <b>Perpetual Music Machine</b></h3>
                         <div class="port-desc">
                             <b>WORK IN PROGRESS</b>
@@ -223,9 +162,11 @@
                             <a class="port-link" href="https://github.com/JonFRutan/Perpetual-Music-Machine">GitHub »</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" src="../images/watchjfelix.png"/>
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" src="../images/watchjfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>watch.jfelix.space</h3>
                         <div class="port-desc">
                             <p>A streaming website I built for personal use. Uses Golang on the backend with Gorilla Websockets for upgrading HTTP connections into Websocket streaming. FFMPEG is used to generate the video stream.</p>
@@ -234,14 +175,16 @@
                             <a class="port-link" href="https://watch.jfelix.space">Visit it here »</a>
                         </div>
                     </div>
-
                 </div>
+            </div>
 
-                <h2 id="academic" class="port-section-header">Academic Projects</h2>
+            <!-- ==================== ACADEMIC ==================== -->
+            <h2 id="academic" class="port-section-header">Academic Projects</h2>
 
-                <div class="port-list">
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" src="../images/ppbjfelix.png"/>
+            <div class="port-list">
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" src="../images/ppbjfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>PPB Polling - <i>VCU Capstone</i></h3>
                         <div class="port-desc">
                             <p>PPB Polling is a privacy focused polling software using a virtual blockchain network. It's built on an Ethereum hardhat network using the MACI framework.</p>
@@ -251,8 +194,11 @@
                             <a class="port-link" href="../level2/Writeups/PPB.html">Read more »</a>
                         </div>
                     </div>
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" src="../images/fusionjfelix.png"/>
+                </div>
+
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" src="../images/fusionjfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>Fusion Fighters - <i>GameDev</i></h3>
                         <div class="port-desc">
                             <i>Co-developed alongside Trevor Corcoran with Art by Chelsea Hodum &amp; Sage Laine</i>
@@ -262,8 +208,11 @@
                             <a class="port-link" href="https://dougisdoug.itch.io/fusion-fighters">Itch.io »</a>
                         </div>
                     </div>
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" src="../images/groundhogjfelix.png"/>
+                </div>
+
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" src="../images/groundhogjfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>Groundhog Day - <i>GameDev</i></h3>
                         <div class="port-desc">
                             <i>Art by Sage Laine</i>
@@ -273,8 +222,11 @@
                             <a class="port-link" href="https://play.unity.com/en/games/66d371d0-f330-4844-a7b3-45dc424b5d4d/groundhog-day">Unity Play »</a>
                         </div>
                     </div>
-                    <div class="port-entry">
-                        <img class="portfolio-thumbnail" src="../images/cannibaljfelix.png"/>
+                </div>
+
+                <div class="port-entry">
+                    <img class="portfolio-thumbnail" src="../images/cannibaljfelix.png"/>
+                    <div class="port-entry-body">
                         <h3>Cannibal Quisine - <i>GameDev</i></h3>
                         <div class="port-desc">
                             <i>Art by Chelsea Hodum</i>
@@ -284,7 +236,10 @@
                             <a class="port-link" href="https://play.unity.com/en/games/9a0503ee-457e-486a-af51-8e8008950df5/cannibal-quisine">Unity Play »</a>
                         </div>
                     </div>
-                    <div class="port-entry">
+                </div>
+
+                <div class="port-entry">
+                    <div class="port-entry-body">
                         <h3>OpenValve - <i>Databases</i></h3>
                         <div class="port-desc">
                             <p>OpenValve is a data collection project built for a database class.</p>
@@ -294,8 +249,10 @@
                             <a class="port-link" href="https://github.com/JonFRutan/SteamAppScrape">GitHub »</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="port-entry">
+                <div class="port-entry">
+                    <div class="port-entry-body">
                         <h3>RamRanch - <i>VCU Hackathon</i></h3>
                         <div class="port-desc">
                             <h4>2nd Place Winner</h4>
@@ -306,8 +263,10 @@
                             <a class="port-link" href="https://github.com/danielblackin/Ram-Ranch">GitHub »</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="port-entry">
+                <div class="port-entry">
+                    <div class="port-entry-body">
                         <h3>Prescription Effect Logging - <i>Software Engineering</i></h3>
                         <div class="port-desc">
                             <p>We designed a logging application that takes daily inputs from a user based on their perceived effects of a prescriptions, logs them, then allows the user to visualize the data.</p>
@@ -317,8 +276,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
         <footer>
             <h2><a href="../index.html">« Back</a></h2>
