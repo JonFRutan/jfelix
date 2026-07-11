@@ -6,6 +6,20 @@
   margin-top: -10px;
 }
 
+@keyframes torii-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.torii-island {
+  display: inline-block;
+  animation: torii-bob 4s ease-in-out infinite;
+}
+
+.torii-island-1 { animation-delay: 0s; }
+.torii-island-2 { animation-delay: -1.3s; }
+.torii-island-3 { animation-delay: -2.6s; }
+
 .bars {
   border-left: double 11px white;
   border-right: double 11px white;

@@ -1,4 +1,44 @@
-/* Desktop only */
-@media (min-width: 820px) {
+.main-ascii {
+    line-height: .95;
+    font-family: monospace;
+    white-space: pre;
+    text-align: left;
+}
 
+.index-container {
+    text-align: center;
+    max-width: 100%;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.ascii-desktop,
+.ascii-mobile {
+    display: none;
+}
+
+/* desktop */
+@media (min-width: 820px) {
+    .ascii-desktop {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: end;
+        font-size: clamp(3px, 1.4vw, 11px);
+        line-height: 1;
+    }
+}
+
+/* mobile */
+@media (max-width: 819px) {
+    .ascii-mobile {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: end;
+        font-size: clamp(3px, 1.4vw, 11px);
+        line-height: 1;
+    }
 }

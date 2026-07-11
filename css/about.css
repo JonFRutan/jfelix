@@ -1,0 +1,55 @@
+.about-content {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 900px;
+  padding: 10px;
+}
+
+.about-content .port-entry {
+  border-top: 1px solid var(--accent-color);
+  align-items: center;
+}
+
+.about-content ul {
+  list-style-position: inside;
+  margin: 0 0 1em 0;
+  padding-left: 0;
+}
+
+.self-pic {
+  display: block;
+  width: 100%;
+  max-width: clamp(150px, 40%, 300px);
+  border: 1px solid #ffffff;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.list-header {
+  display: flex;
+  justify-content: left;
+  font-size: large;
+  font-weight: bold;
+}
+
+.info-text {
+  display: flex;
+  justify-content: left;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+@media (min-width: 820px) {
+  .port-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
