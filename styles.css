@@ -42,12 +42,12 @@ body {
 }
 
 main {
-  font-size: clamp(.3em, 6vw, .8em);
+  font-size: clamp(.3em, 6vw, 1.1em);
 }
 
 h1 {
   margin: 0;
-  font-size: clamp(1.8em, 6vw, 2em);
+  font-size: clamp(1.8em, 6vw, 3em);
   color: #FFFFFF;
 }
 
